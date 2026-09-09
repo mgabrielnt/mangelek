@@ -3,21 +3,20 @@
 import { useState } from "react";
 
 const menu = [
-  ["Education", "education.webp", 22],
-  ["Company", "company.webp", 35],
-  ["Beauty & Wellness", "beauty-wellness.webp", 48],
-  ["Restaurant", "restaurant.webp", 61],
-  ["Service", "service.webp", 74],
+  ["Education", "education.webp", 32.26],
+  ["Company", "company.webp", 41.28],
+  ["Beauty & Wellness", "beauty-wellness.webp", 49.9],
+  ["Restaurant", "restaurant.webp", 58.09],
+  ["Service", "service.webp", 66.77],
 ] as const;
 
 export function HeroScene() {
-  const [waiterX, setWaiterX] = useState(54);
+  const [waiterX, setWaiterX] = useState(43.9);
   const [hovered, setHovered] = useState(false);
-  const reset = () => { setWaiterX(54); setHovered(false); };
+  const reset = () => { setWaiterX(43.9); setHovered(false); };
 
   return (
     <div className="heroScene" onPointerLeave={reset}>
-      <img className="heroFrame" src="/images/marketing/hero/hero-menu-frame.webp" alt="" />
       <div className="heroMenu" aria-label="Kategori website">
         {menu.map(([label, file, x]) => (
           <a key={label} href="#templates" className="heroMenuItem"
@@ -26,6 +25,7 @@ export function HeroScene() {
           </a>
         ))}
       </div>
+      <img className="heroFrame" src="/images/marketing/hero/hero-menu-frame.webp" alt="" />
       <div className={`heroSpeech${hovered ? " isHidden" : ""}`} aria-hidden="true">
         <span>Mau Pesen apa?</span>
       </div>
