@@ -3,7 +3,7 @@
 Status: dipilih untuk implementasi homepage marketing pada 2026-09-09.
 
 - Node.js 24.20.0 LTS untuk runtime produksi.
-- pnpm 12.4.0 sebagai package manager workspace.
+- pnpm 12.3.4 sebagai package manager workspace (stable release).
 - Next.js 16.3.3 Active LTS.
 - React / React DOM 19.2.7.
 - TypeScript 7.0.2.
