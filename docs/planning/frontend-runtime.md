@@ -9,14 +9,15 @@ Status: dipilih untuk implementasi homepage marketing pada 2026-09-09.
 - TypeScript 7.0.2.
 - CSS native tanpa UI framework untuk mengurangi dependency dan runtime JS.
 - App Router dan React Server Components dipakai secara default.
-- Client component hanya untuk interaksi yang benar-benar memerlukan browser.
+- Client component hanya untuk interaksi yang memerlukan browser.
 
 ## Prinsip performa
-- Semua gambar lokal memakai WebP dan `next/image`, kecuali layer pointer kecil yang statis.
-- Tidak ada carousel library, icon library, animation library, atau state manager.
+- Aset visual lokal memakai WebP; hero dirender lewat `next/image`.
+- Sprite CSS menggabungkan preview statis untuk mengurangi request jaringan.
+- Tidak ada carousel, icon, animation library, atau state manager tambahan.
 - Horizontal carousel memakai native CSS scroll-snap.
 - Pointer animation dinonaktifkan saat `prefers-reduced-motion`.
-- Homepage tetap server-rendered; hanya gallery dan waiter tracker yang hydrate.
+- Homepage server-rendered; hanya gallery dan waiter tracker yang hydrate.
 
 ## Validasi
 `pnpm install`, `pnpm typecheck:platform`, lalu `pnpm build:platform`.

@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { templateCategories } from "@/data/templates";
 import { TemplateCard } from "./TemplateCard";
 
@@ -8,11 +8,17 @@ export function TemplateGallery() {
   const [active, setActive] = useState("company");
   const railRef = useRef<HTMLDivElement>(null);
 
+  function center(id: string, behavior: ScrollBehavior = "smooth") {
+    const target = railRef.current?.querySelector<HTMLElement>(`[data-id="${id}"]`);
+    target?.scrollIntoView({ behavior, block: "nearest", inline: "center" });
+  }
+
   function select(id: string) {
     setActive(id);
-    const target = railRef.current?.querySelector<HTMLElement>(`[data-id="${id}"]`);
-    target?.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+    center(id);
   }
+
+  useEffect(() => center("company", "instant"), []);
 
   return (
     <section className="templates" id="templates">
