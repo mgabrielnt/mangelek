@@ -6,8 +6,8 @@
   "packageManager": "pnpm@12.3.4",
   "engines": { "node": ">=24.20.0" },
   "scripts": {
-    "dev:platform": "pnpm --filter @saas/platform dev",
-    "build:platform": "pnpm --filter @saas/platform build",
-    "typecheck:platform": "pnpm --filter @saas/platform typecheck"
+    "dev:platform": "corepack pnpm --filter @saas/platform dev",
+    "build:platform": "corepack pnpm --filter @saas/platform build",
+    "typecheck:platform": "corepack pnpm --filter @saas/platform typecheck"
   }
 }
