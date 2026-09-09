@@ -1,0 +1,35 @@
+.hero {
+  position: relative;
+  padding-top: 62px;
+  background: #dfd1bd;
+}
+.heroVisual {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background: #dfd1bd;
+}
+.heroImage { width: 100%; height: auto; user-select: none; }
+.waiterHitbox {
+  position: absolute;
+  inset: 7% 26% 35% 26%;
+  pointer-events: auto;
+}
+.waiterHead {
+  --look-x: 0;
+  --look-y: 0;
+  position: absolute;
+  left: 35.6%;
+  top: 44.6%;
+  width: 18.4%;
+  height: auto;
+  transform-origin: 50% 82%;
+  transform:
+    translate(calc(var(--look-x) * 3px), calc(var(--look-y) * 1.5px))
+    rotate(calc(var(--look-x) * 2.2deg));
+  transition: transform 120ms ease-out;
+  pointer-events: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .waiterHead { transform: none; transition: none; }
+}

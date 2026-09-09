@@ -1,0 +1,41 @@
+@media (max-width: 900px) {
+  :root { --page: min(100% - 32px, 760px); }
+  .siteHeader { grid-template-columns: 1fr auto auto; gap: 16px; }
+  .desktopNav { display: none; }
+  .mobileMenu { display: block; }
+  .headerActions { gap: 12px; }
+  .loginLink { display: none; }
+  .hero { padding-top: 58px; }
+  .growthHeader { grid-template-columns: 1fr; gap: 22px; }
+  .growthHeader p { margin-left: 0; }
+  .featureRail {
+    display: flex;
+    width: auto;
+    padding: 0 16px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+  }
+  .featureCard { flex: 0 0 min(72vw, 320px); scroll-snap-align: start; }
+}
+@media (max-width: 600px) {
+  :root { --page: calc(100vw - 24px); }
+  .siteHeader { height: 56px; font-size: 11px; }
+  .primaryButton { padding: 9px 11px; }
+  .hero { padding-top: 56px; }
+  .heroVisual { min-height: 244px; }
+  .heroImage { width: 100%; min-height: 244px; object-fit: cover; object-position: 50% 0; }
+  .waiterHitbox { inset: 4% 18% 28%; }
+  .waiterHead { display: none; }
+  .templates { padding-top: 38px; }
+  .sectionIntro { text-align: left; }
+  .sectionIntro h2 { font-size: 31px; line-height: 1; }
+  .categoryTabs { margin-left: 12px; margin-right: 12px; }
+  .templateRail { gap: 12px; padding: 0 12px; }
+  .templateCard { flex-basis: 88vw; border-radius: 14px; }
+  .templateMeta { padding: 14px; }
+  .templateMeta a { display: none; }
+  .growth { padding: 68px 0 76px; }
+  .growthHeader { margin-bottom: 36px; }
+  .growthHeader h2 { font-size: 42px; }
+  .growthHeader p { font-size: 15px; }
+}

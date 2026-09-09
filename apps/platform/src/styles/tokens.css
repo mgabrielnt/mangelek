@@ -1,0 +1,11 @@
+:root {
+  --ink: #11110f;
+  --paper: #fff;
+  --sand: #e9ddcc;
+  --cream: #f3eee5;
+  --muted: #6d685f;
+  --line: rgba(17, 17, 15, 0.16);
+  --radius: 24px;
+  --page: min(1280px, calc(100vw - 48px));
+  --shadow: 0 18px 50px rgba(31, 25, 18, 0.09);
+}
