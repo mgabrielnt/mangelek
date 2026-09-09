@@ -3,14 +3,21 @@
   z-index: 20;
   inset: 0 0 auto;
   height: 62px;
+
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
+
   width: var(--page);
   margin: 0 auto;
+
   font-size: 12px;
   text-transform: uppercase;
   letter-spacing: 0.04em;
+
+  background: transparent;
+  border: none;
+  box-shadow: none;
 }
 .brand { font-weight: 800; }
 .desktopNav { display: flex; gap: 42px; }
