@@ -18,7 +18,7 @@ export function TemplateGallery() {
     center(id);
   }
 
-  useEffect(() => center("company", "instant"), []);
+  useEffect(() => center("company", "auto"), []);
 
   return (
     <section className="templates" id="templates">
