@@ -1,0 +1,6 @@
+{
+    "name":  "@saas/sites",
+    "version":  "0.0.0",
+    "private":  true,
+    "type":  "module"
+}
