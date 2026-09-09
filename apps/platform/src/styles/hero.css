@@ -3,33 +3,95 @@
   padding-top: 62px;
   background: #dfd1bd;
 }
-.heroVisual {
+.heroScene {
   position: relative;
-  width: 100%;
+  width: min(100%, 1440px);
+  aspect-ratio: 1440 / 1024;
+  margin: 0 auto;
   overflow: hidden;
-  background: #dfd1bd;
 }
-.heroImage { width: 100%; height: auto; user-select: none; }
-.waiterHitbox {
+.heroFrame {
   position: absolute;
-  inset: 7% 26% 35% 26%;
-  pointer-events: auto;
-}
-.waiterHead {
-  --look-x: 0;
-  --look-y: 0;
-  position: absolute;
-  left: 35.6%;
-  top: 44.6%;
-  width: 18.4%;
+  left: 16.2%;
+  top: 2.5%;
+  width: 67%;
   height: auto;
-  transform-origin: 50% 82%;
-  transform:
-    translate(calc(var(--look-x) * 3px), calc(var(--look-y) * 1.5px))
-    rotate(calc(var(--look-x) * 2.2deg));
-  transition: transform 120ms ease-out;
+}
+.heroMenu {
+  position: absolute;
+  left: 26.5%;
+  top: 14.2%;
+  width: 47.5%;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  align-items: end;
+  gap: 1.2%;
+  z-index: 4;
+}
+.heroMenuItem { display: block; }
+.heroMenuItem img {
+  width: 100%;
+  height: auto;
+  transition: transform 160ms ease, filter 160ms ease;
+}
+.heroMenuItem:hover img,
+.heroMenuItem:focus-visible img {
+  transform: translateY(-5px) scale(1.035);
+  filter: drop-shadow(0 8px 10px rgb(0 0 0 / .16));
+}
+.heroWaiter {
+  position: absolute;
+  top: 34.4%;
+  width: 15.8%;
+  height: auto;
+  transform: translateX(-50%);
+  transition: left 260ms cubic-bezier(.2,.8,.2,1);
+  z-index: 5;
   pointer-events: none;
 }
-@media (prefers-reduced-motion: reduce) {
-  .waiterHead { transform: none; transition: none; }
+.heroSpeech {
+  position: absolute;
+  left: 27%;
+  top: 35.5%;
+  width: 15.2%;
+  aspect-ratio: 2 / 1;
+  border: 2px solid #111;
+  border-radius: 999px;
+  background: #fff;
+  z-index: 6;
+}
+.heroSpeech::after {
+  content: "";
+  position: absolute;
+  right: -13%;
+  top: 46%;
+  border: 12px solid transparent;
+  border-left-color: #111;
+}
+.heroSpeech span {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font: 400 clamp(10px, .85vw, 12px)/1.2 Georgia, serif;
+  transition: opacity 120ms ease;
+}
+.heroSpeech .isHidden { opacity: 0; }
+.heroCounter {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: auto;
+  z-index: 7;
+}
+@media (max-width: 768px) {
+  .hero { padding-top: 54px; }
+  .heroMenu { left: 18%; width: 64%; top: 13%; }
+  .heroFrame { left: 7%; width: 86%; }
+  .heroWaiter { width: 22%; top: 34%; }
+  .heroSpeech { left: 17%; width: 22%; }
+}
+@media (hover: none), (prefers-reduced-motion: reduce) {
+  .heroWaiter, .heroMenuItem img { transition: none; }
 }
