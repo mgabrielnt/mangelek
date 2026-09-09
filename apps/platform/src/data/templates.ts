@@ -2,14 +2,14 @@ export type TemplateCategory = {
   id: string;
   label: string;
   title: string;
-  slot: number;
+  image: string;
 };
 
 export const templateCategories: TemplateCategory[] = [
-  { id: "service", label: "Service", title: "Service Modern", slot: 0 },
-  { id: "restaurant", label: "Restaurant", title: "Restaurant Premium", slot: 1 },
-  { id: "company", label: "Company", title: "Company Profile", slot: 2 },
-  { id: "beauty", label: "Beauty & Wellness", title: "Beauty & Wellness", slot: 3 },
-  { id: "property", label: "Property", title: "Property Showcase", slot: 4 },
-  { id: "education", label: "Education", title: "Education Hub", slot: 5 },
+  { id: "service", label: "Service", title: "Service Modern", image: "service.webp" },
+  { id: "restaurant", label: "Restaurant", title: "Restaurant Premium", image: "restaurant.webp" },
+  { id: "company", label: "Company", title: "Company Profile", image: "company.webp" },
+  { id: "beauty", label: "Beauty & Wellness", title: "Beauty & Wellness", image: "beauty-wellness.webp" },
+  { id: "property", label: "Property", title: "Property Showcase", image: "property.webp" },
+  { id: "education", label: "Education", title: "Education Hub", image: "education.webp" },
 ];
