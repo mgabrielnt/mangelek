@@ -2,5 +2,14 @@
   "name": "saas-platform",
   "version": "0.0.0",
   "private": true,
-  "description": "SaaS managed website platform - structure baseline v1.0"
+  "description": "SaaS managed website platform",
+  "packageManager": "pnpm@12.4.0",
+  "engines": {
+    "node": ">=24.0.0"
+  },
+  "scripts": {
+    "dev": "pnpm --filter @saas/platform dev",
+    "build": "pnpm --filter @saas/platform build",
+    "typecheck": "pnpm --filter @saas/platform typecheck"
+  }
 }
