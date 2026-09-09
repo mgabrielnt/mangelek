@@ -2,7 +2,7 @@
   position: absolute;
   z-index: 20;
   inset: 0 0 auto;
-  height: 62px;
+  height: 42px;
 
   display: grid;
   grid-template-columns: 1fr auto 1fr;
