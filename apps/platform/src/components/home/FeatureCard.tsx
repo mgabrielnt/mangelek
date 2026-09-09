@@ -1,16 +1,12 @@
-import type { CSSProperties } from "react";
+type Props = { title: string; text: string; image: string };
 
-type Props = { title: string; text: string; slot: number };
-
-export function FeatureCard({ title, text, slot }: Props) {
-  const style = { "--slot": slot } as CSSProperties;
+export function FeatureCard({ title, text, image }: Props) {
   return (
     <article className="featureCard">
-      <div
+      <img
         className="featureImage"
-        style={style}
-        role="img"
-        aria-label={`Tampilan ${title}`}
+        src={`/images/marketing/features/${image}`}
+        alt={`Tampilan ${title}`}
       />
       <div className="featureCopy">
         <h3>{title}</h3>
