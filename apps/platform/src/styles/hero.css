@@ -1,7 +1,7 @@
 .hero {
   position: relative;
   padding-top: 62px;
-  background: #dfd1bd;
+  background: #d8c6ae url("/images/marketing/hero/background.png") center / cover no-repeat;
 }
 .heroScene {
   position: relative;
@@ -77,7 +77,7 @@
   pointer-events: none;
 }
 @media (max-width: 768px) {
-  .hero { padding-top: 54px; }
+  .hero { padding-top: 54px; background-position: center top; }
   .heroMenu { left: 18%; width: 64%; top: 13%; }
   .heroFrame { left: 7%; width: 86%; }
   .heroWaiter { width: 22%; top: 34%; }
