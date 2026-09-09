@@ -7,9 +7,9 @@
   margin: 0 auto 18px;
   text-align: center;
 }
-.sectionIntro h2 { margin-bottom: 8px; font-size: clamp(28px, 3vw, 44px); letter-spacing: -0.04em; }
+.sectionIntro h2 { margin-bottom: 8px; font-size: clamp(28px, 3vw, 44px); letter-spacing: -.04em; }
 .sectionIntro p { margin-bottom: 0; color: var(--muted); }
-.eyebrow { font-size: 11px; text-transform: uppercase; letter-spacing: 0.14em; }
+.eyebrow { font-size: 11px; text-transform: uppercase; letter-spacing: .14em; }
 .categoryTabs {
   display: flex;
   gap: 4px;
@@ -45,19 +45,27 @@
   overflow: hidden;
   border-radius: 18px;
   border: 1px solid var(--line);
-  background: #f3f1eb;
-  opacity: 0.78;
-  transform: scale(0.985);
+  background: #f7f4ee;
+  opacity: .78;
+  transform: scale(.985);
   transition: 180ms ease;
 }
 .templateCard.isActive { opacity: 1; transform: scale(1); box-shadow: var(--shadow); }
 .templatePreview {
+  display: grid;
+  place-items: center;
   aspect-ratio: 1.65;
-  background: #e9e4db url("/images/home/template-sprite.webp") no-repeat;
-  background-size: 600% 100%;
-  background-position: calc(var(--slot) * 20%) center;
+  padding: clamp(20px, 4vw, 54px);
+  overflow: hidden;
+  background: #eee7dc;
 }
-.templateMeta { display: flex; justify-content: space-between; gap: 20px; padding: 18px 20px; }
+.templatePreview img {
+  width: min(72%, 520px);
+  max-height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 18px 30px rgb(0 0 0 / .14));
+}
+.templateMeta { display: flex; justify-content: space-between; gap: 20px; padding: 18px 20px; background: #fff; }
 .templateMeta span { color: var(--muted); font-size: 12px; }
 .templateMeta h3 { margin: 4px 0 0; font-size: 19px; }
 .templateMeta a { align-self: center; padding: 9px 12px; border: 1px solid var(--ink); border-radius: 999px; font-size: 12px; }
