@@ -1,38 +1,4 @@
-.templates { padding: 72px 0 44px; background: #fff; }
-.sectionIntro { width: var(--page); margin: 0 auto 22px; text-align: center; }
-.sectionIntro h2 { margin-bottom: 10px; font-size: clamp(32px, 3.6vw, 52px); letter-spacing: -.045em; line-height: .98; }
-.sectionIntro p { margin-bottom: 0; color: var(--muted); font-size: 15px; }
-.eyebrow { font-size: 11px!important; font-weight: 700; text-transform: uppercase; letter-spacing: .16em; }
-.categoryTabs { display: flex; gap: 5px; width: max-content; max-width: calc(100vw - 24px); margin: 26px auto 22px; overflow-x: auto; scrollbar-width: none; }
-.categoryTabs::-webkit-scrollbar, .showcaseRail::-webkit-scrollbar { display: none; }
-.categoryTabs button { flex: 0 0 auto; min-height: 42px; padding: 0 15px; border: 1px solid transparent; border-radius: 999px; background: transparent; color: #656159; cursor: pointer; font-weight: 600; transition: 160ms ease; }
-.categoryTabs button:hover { color: var(--ink); background: #f5f2ed; }
-.categoryTabs button.active { color: var(--ink); border-color: #e5dfd7; background: #f0ece6; }
-.showcase { --card-w: 1196; --card-h: 719; --card-gap: 20px; position: relative; width: 100%; }
-.showcaseRail { width: 100%; overflow-x: auto; overscroll-behavior-x: contain; scrollbar-width: none; }
-.showcaseTrack { display: flex; width: max-content; padding: 18px max(24px, calc((100vw - 1280px)/2)) 8px; }
-.showcaseGroup { display: flex; gap: var(--card-gap); padding-right: var(--card-gap); }
-.showcaseCard { position: relative; flex: 0 0 min(calc(var(--card-w)*1px), calc(100vw - 96px)); width: min(calc(var(--card-w)*1px), calc(100vw - 96px)); aspect-ratio: var(--card-w)/var(--card-h); padding: 0; overflow: hidden; border: 0; border-radius: 32px; background: #ebe6de; cursor: pointer; text-align: left; box-shadow: 0 16px 42px rgba(24,20,15,.09); animation: cardIn 240ms ease both; transition: transform 180ms ease, box-shadow 180ms ease; }
-.showcaseCard:hover { transform: translateY(-4px); box-shadow: 0 24px 56px rgba(24,20,15,.14); }
-.showcaseCard > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-.showcaseShade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10,9,8,.48), rgba(10,9,8,.08) 42%, transparent 72%); }
-.showcaseCopy { position: absolute; inset: 0 auto auto 0; z-index: 1; display: grid; gap: 10px; padding: clamp(28px, 3vw, 44px); color: #fff; }
-.showcaseCopy small { font-size: 13px; font-weight: 650; opacity: .84; }
-.showcaseCopy strong { max-width: 560px; font-size: clamp(30px, 3.2vw, 46px); line-height: 1.02; letter-spacing: -.04em; }
-.showcaseControls { display: flex; justify-content: flex-end; gap: 8px; width: var(--page); margin: 16px auto 0; }
-.showcaseControls button { display: grid; width: 44px; height: 44px; place-items: center; border: 0; border-radius: 50%; background: #f0ede8; color: #35322d; cursor: pointer; font-size: 22px; transition: 150ms ease; }
-.showcaseControls button:hover { background: #e5e0d9; transform: translateY(-1px); }
-.showcaseModal { position: fixed; inset: 0; z-index: 90; display: grid; place-items: center; padding: 24px; }
-.showcaseBackdrop { position: absolute; inset: 0; background: rgba(14,12,10,.58); backdrop-filter: blur(6px); animation: fadeIn 160ms ease both; }
-.showcaseDialog { position: relative; z-index: 1; width: min(900px, 100%); max-height: calc(100vh - 48px); padding: 28px; overflow: auto; border-radius: 28px; background: #fbfaf8; box-shadow: 0 30px 80px rgba(0,0,0,.22); animation: dialogIn 180ms ease both; }
-.showcaseDialog > small { color: var(--muted); font-size: 12px; font-weight: 650; }
-.showcaseDialog > h3 { margin: 6px 48px 22px 0; font-size: clamp(28px, 4vw, 46px); letter-spacing: -.04em; }
-.showcaseClose { position: sticky; top: 0; float: right; width: 38px; height: 38px; border: 0; border-radius: 50%; background: #171614; color: #fff; cursor: pointer; font-size: 24px; }
-.templateDetail { display: grid; gap: 18px; }
-.templateDetail img { width: 100%; max-height: 470px; object-fit: contain; border-radius: 20px; background: #efeae3; }
-.templateDetail p { max-width: 620px; margin: 0; color: var(--muted); font-size: 15px; line-height: 1.65; }
-.templateDetail a { width: fit-content; padding: 11px 17px; border-radius: 999px; background: var(--ink); color: #fff; font-size: 13px; font-weight: 650; }
-@keyframes cardIn { from { opacity: 0; transform: translateY(12px); } }
-@keyframes fadeIn { from { opacity: 0; } }
-@keyframes dialogIn { from { opacity: 0; transform: translateY(16px) scale(.985); } }
-@media (prefers-reduced-motion: reduce) { .showcaseCard, .showcaseControls button, .showcaseBackdrop, .showcaseDialog { transition: none; animation: none; } }
+@import "./templates/layout.css";
+@import "./templates/showcase.css";
+@import "./templates/modal.css";
+@import "./templates/responsive.css";
