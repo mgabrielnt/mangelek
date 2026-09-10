@@ -3,24 +3,42 @@
   .navShell { width: min(100% - 24px, 760px); grid-template-columns: 1fr auto; padding-inline: 12px; }
   .isFloating .navShell { width: min(100% - 24px, 620px); padding-inline: 14px 8px; }
   .hoverMenu, .navbarActions { display: none; }
-  .mobileToggle { display: grid; width: 38px; height: 38px; place-items: center; border: 0; border-radius: 50%; background: transparent; font-size: 20px; cursor: pointer; }
+  .mobileToggle {
+    display: grid;
+    width: 38px;
+    height: 38px;
+    place-items: center;
+    border: 0;
+    border-radius: 50%;
+    background: transparent;
+    font-size: 20px;
+    cursor: pointer;
+  }
   .mobileToggle:hover { background: rgba(255,255,255,.34); }
-  .mobilePanel { position: absolute; top: calc(100% + 10px); right: 0; display: grid; width: min(300px, calc(100vw - 32px)); gap: 3px; padding: 10px; border: 1px solid rgba(255,255,255,.48); border-radius: 16px; background: rgba(255,255,255,.76); box-shadow: var(--shadow); backdrop-filter: blur(18px) saturate(135%); }
+  .mobilePanel {
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    display: grid;
+    width: min(300px, calc(100vw - 32px));
+    gap: 3px;
+    padding: 10px;
+    border: 1px solid rgba(255,255,255,.48);
+    border-radius: 16px;
+    background: rgba(255,255,255,.76);
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(18px) saturate(135%);
+  }
   .mobilePanel > a:not(.navbarButton) { padding: 11px 12px; border-radius: 9px; font-size: 13px; }
   .mobilePanel > a:hover { background: rgba(255,255,255,.42); }
   .mobilePanel .navbarButton { width: 100%; margin-top: 3px; }
   .hero { padding-top: 58px; }
-  .showcase { --card-gap: 14px; }
-  .showcaseTrack { padding-inline: 20px; }
-  .showcaseCard { flex-basis: calc(100vw - 40px); width: calc(100vw - 40px); border-radius: 26px; }
-  .showcaseCopy { padding: 26px; }
-  .showcaseCopy strong { font-size: clamp(28px, 5vw, 38px); }
-  .showcaseControls { width: calc(100% - 40px); }
   .growthHeader { grid-template-columns: 1fr; gap: 22px; }
   .growthHeader p { margin-left: 0; }
   .featureRail { display: flex; width: auto; padding: 0 16px; overflow-x: auto; scroll-snap-type: x mandatory; }
   .featureCard { flex: 0 0 min(72vw, 320px); scroll-snap-align: start; }
 }
+
 @media (max-width: 600px) {
   :root { --page: calc(100vw - 24px); }
   .siteHeader { padding-inline: 0; }
@@ -32,21 +50,6 @@
   .heroImage { width: 100%; min-height: 244px; object-fit: cover; object-position: 50% 0; }
   .waiterHitbox { inset: 4% 18% 28%; }
   .waiterHead { display: none; }
-  .templates { padding: 54px 0 36px; }
-  .sectionIntro { text-align: left; }
-  .sectionIntro h2 { font-size: 36px; }
-  .categoryTabs { margin: 20px 12px 14px; }
-  .showcase { --card-gap: 12px; }
-  .showcaseTrack { padding: 12px 12px 6px; }
-  .showcaseCard { flex-basis: calc(100vw - 24px); width: calc(100vw - 24px); border-radius: 20px; }
-  .showcaseCopy { padding: 20px; gap: 6px; }
-  .showcaseCopy small { font-size: 11px; }
-  .showcaseCopy strong { max-width: 78%; font-size: clamp(22px, 7vw, 30px); }
-  .showcaseControls { width: calc(100% - 24px); margin-top: 12px; }
-  .showcaseControls button { width: 40px; height: 40px; }
-  .showcaseModal { padding: 12px; }
-  .showcaseDialog { max-height: calc(100vh - 24px); padding: 20px; border-radius: 22px; }
-  .showcaseDialog > h3 { font-size: 30px; }
   .growth { padding: 68px 0 76px; }
   .growthHeader { margin-bottom: 36px; }
   .growthHeader h2 { font-size: 42px; }
