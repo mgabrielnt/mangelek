@@ -1,22 +1,20 @@
 const productItems = [
-  ["Product One", "#features"],
-  ["Product Two", "#features"],
-  ["Product Three", "#features"],
+  ["Website Builder", "#templates"], ["Managed Hosting", "#features"],
+  ["Business CMS", "#features"], ["Ecommerce", "#templates"],
+  ["Domains", "#features"], ["Analytics", "#features"],
 ] as const;
 
 const supportItems = [
-  ["Help Center", "#features"],
-  ["Documentation", "#features"],
-  ["Contact", "#features"],
+  ["Help Center", "#support"], ["Documentation", "#support"],
+  ["Contact Support", "#support"], ["System Status", "#support"],
 ] as const;
 
-function Dropdown({ label, items }: {
-  label: string;
-  items: readonly (readonly [string, string])[];
-}) {
+type Items = readonly (readonly [string, string])[];
+
+function Dropdown({ label, items }: { label: string; items: Items }) {
   return (
     <details className="navDropdown">
-      <summary>{label}</summary>
+      <summary>{label}<span aria-hidden="true">⌄</span></summary>
       <div className="dropdownPanel">
         {items.map(([name, href]) => <a key={name} href={href}>{name}</a>)}
       </div>
@@ -35,14 +33,15 @@ export function Header() {
         <a href="#features">Blog</a>
       </nav>
       <div className="headerActions">
-        <a className="loginLink" href="#templates">Log in</a>
+        <a className="loginLink" href="#login">Log in</a>
         <a className="primaryButton" href="#templates">Get started</a>
       </div>
       <details className="mobileMenu">
         <summary aria-label="Buka menu">Menu</summary>
-        <div>
-          <a href="#features">Products</a><a href="#templates">Pricing</a>
-          <a href="#features">Support</a><a href="#features">Blog</a>
+        <div className="mobilePanel">
+          <strong>Products</strong>{productItems.slice(0, 4).map(([n, h]) => <a key={n} href={h}>{n}</a>)}
+          <strong>Support</strong>{supportItems.slice(0, 3).map(([n, h]) => <a key={n} href={h}>{n}</a>)}
+          <a href="#templates">Pricing</a><a href="#features">Blog</a>
         </div>
       </details>
     </header>
