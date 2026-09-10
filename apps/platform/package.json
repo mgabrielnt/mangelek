@@ -11,6 +11,8 @@
     "typecheck": "pnpm clean:dev-types && tsc --noEmit"
   },
   "dependencies": {
+    "@tabler/icons-react": "^3.46.0",
+    "motion": "^13.2.0",
     "next": "16.3.3",
     "react": "19.2.7",
     "react-dom": "19.2.7"
