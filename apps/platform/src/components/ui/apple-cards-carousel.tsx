@@ -7,20 +7,33 @@ export type AppleCard = { src: string; title: string; category: string; content:
 
 export function Carousel({ items, initialScroll = 0 }: { items: ReactNode[]; initialScroll?: number }) {
   const rail = useRef<HTMLDivElement>(null);
-  const [edge, setEdge] = useState({ left: true, right: false });
-  const sync = () => {
-    const el = rail.current;
-    if (!el) return;
-    const next = { left: el.scrollLeft <= 2, right: el.scrollLeft + el.clientWidth >= el.scrollWidth - 2 };
-    setEdge((prev) => prev.left === next.left && prev.right === next.right ? prev : next);
+  const firstGroup = useRef<HTMLDivElement>(null);
+  const ready = useRef(false);
+  const metrics = () => {
+    const group = firstGroup.current;
+    return group ? { start: group.offsetLeft, span: group.offsetWidth } : null;
   };
-  useEffect(() => { rail.current?.scrollTo({ left: initialScroll, behavior: "smooth" }); requestAnimationFrame(sync); }, [initialScroll]);
+  const loop = () => {
+    const el = rail.current, m = metrics();
+    if (!el || !m) return;
+    if (el.scrollLeft < m.start + m.span) el.scrollLeft += m.span;
+    else if (el.scrollLeft >= m.start + m.span * 2) el.scrollLeft -= m.span;
+  };
+  useEffect(() => {
+    const el = rail.current, m = metrics();
+    if (!el || !m) return;
+    const left = m.start + m.span + initialScroll;
+    if (!ready.current) { el.scrollLeft = left; ready.current = true; }
+    else el.scrollTo({ left, behavior: "smooth" });
+  }, [initialScroll]);
   const move = (x: number) => rail.current?.scrollBy({ left: x, behavior: "smooth" });
   return <div className="appleCarousel">
-    <div className="appleRail" ref={rail} onScroll={sync}><div className="appleTrack">{items}</div></div>
+    <div className="appleRail" ref={rail} onScroll={loop}><div className="appleTrack">
+      {[0, 1, 2].map((copy) => <div className="appleLoopGroup" ref={copy === 0 ? firstGroup : undefined} key={copy}>{items}</div>)}
+    </div></div>
     <div className="appleControls">
-      <button onClick={() => move(-360)} disabled={edge.left} aria-label="Previous templates"><span aria-hidden>←</span></button>
-      <button onClick={() => move(360)} disabled={edge.right} aria-label="Next templates"><span aria-hidden>→</span></button>
+      <button onClick={() => move(-360)} aria-label="Previous templates"><span aria-hidden>←</span></button>
+      <button onClick={() => move(360)} aria-label="Next templates"><span aria-hidden>→</span></button>
     </div>
   </div>;
 }
@@ -43,10 +56,8 @@ export function Card({ card, index }: { card: AppleCard; index: number }) {
       <span className="appleCopy"><small>{card.category}</small><strong>{card.title}</strong></span>
     </button>
     {open && <div className="appleModal"><div className="appleBackdrop" />
-      <div ref={ref} className="appleDialog">
-        <button className="appleClose" onClick={close} aria-label="Close"><span aria-hidden>×</span></button>
-        <small>{card.category}</small><h3>{card.title}</h3>{card.content}
-      </div>
+      <div ref={ref} className="appleDialog"><button className="appleClose" onClick={close} aria-label="Close"><span aria-hidden>×</span></button>
+        <small>{card.category}</small><h3>{card.title}</h3>{card.content}</div>
     </div>}
   </>;
 }
