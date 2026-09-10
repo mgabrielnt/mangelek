@@ -11,9 +11,9 @@
   .mobilePanel .navbarButton { width: 100%; margin-top: 3px; }
   .hero { padding-top: 58px; }
   .appleTrack { --card-gap: 14px; padding-inline: 20px; }
-  .appleCard { flex-basis: 310px; width: 310px; height: 474px; border-radius: 24px; }
-  .appleCopy { padding: 22px; }
-  .appleCopy strong { font-size: 24px; }
+  .appleCard { flex-basis: calc(100vw - 40px); width: calc(100vw - 40px); height: auto; aspect-ratio: 1196/719; border-radius: 26px; }
+  .appleCopy { padding: 26px; }
+  .appleCopy strong { font-size: clamp(28px, 5vw, 38px); }
   .appleControls { width: calc(100% - 40px); }
   .growthHeader { grid-template-columns: 1fr; gap: 22px; }
   .growthHeader p { margin-left: 0; }
@@ -36,9 +36,10 @@
   .sectionIntro h2 { font-size: 36px; }
   .categoryTabs { margin: 20px 12px 14px; }
   .appleTrack { --card-gap: 12px; padding: 12px 12px 6px; }
-  .appleCard { flex-basis: min(82vw, 300px); width: min(82vw, 300px); height: auto; aspect-ratio: 340/520; }
-  .appleCopy { padding: 20px; }
-  .appleCopy strong { font-size: 22px; }
+  .appleCard { flex-basis: calc(100vw - 24px); width: calc(100vw - 24px); height: auto; aspect-ratio: 1196/719; border-radius: 20px; }
+  .appleCopy { padding: 20px; gap: 6px; }
+  .appleCopy small { font-size: 11px; }
+  .appleCopy strong { max-width: 78%; font-size: clamp(22px, 7vw, 30px); }
   .appleControls { width: calc(100% - 24px); margin-top: 12px; }
   .appleControls button { width: 40px; height: 40px; }
   .appleModal { padding: 12px; }
