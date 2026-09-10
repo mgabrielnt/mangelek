@@ -1,34 +1,45 @@
 .siteHeader {
-  position: absolute;
-  z-index: 20;
-  inset: 0 0 auto;
-  height: 42px;
-
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  height: 56px;
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
-
   width: var(--page);
   margin: 0 auto;
-
   font-size: 12px;
   text-transform: uppercase;
   letter-spacing: 0.04em;
-
   background: transparent;
-  border: none;
+  border: 0;
   box-shadow: none;
 }
 .brand { font-weight: 800; }
-.desktopNav { display: flex; gap: 42px; }
-.desktopNav a, .loginLink { opacity: 0.82; transition: opacity 160ms ease; }
-.desktopNav a:hover, .loginLink:hover { opacity: 1; }
-.headerActions {
-  justify-self: end;
-  display: flex;
-  align-items: center;
-  gap: 24px;
+.desktopNav { display: flex; align-items: center; gap: 42px; }
+.desktopNav a, .loginLink, .navDropdown summary {
+  opacity: 0.82;
+  transition: opacity 160ms ease;
 }
+.desktopNav a:hover, .loginLink:hover, .navDropdown summary:hover { opacity: 1; }
+.navDropdown { position: relative; }
+.navDropdown summary { cursor: pointer; list-style: none; }
+.navDropdown summary::-webkit-details-marker { display: none; }
+.dropdownPanel {
+  position: absolute;
+  top: calc(100% + 14px);
+  left: 50%;
+  transform: translateX(-50%);
+  display: grid;
+  min-width: 220px;
+  gap: 4px;
+  padding: 10px;
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,0.96);
+  box-shadow: var(--shadow);
+}
+.dropdownPanel a { padding: 10px 12px; white-space: nowrap; }
+.headerActions { justify-self: end; display: flex; align-items: center; gap: 24px; }
 .primaryButton {
   padding: 11px 16px;
   border: 1px solid var(--ink);
@@ -39,7 +50,7 @@
 .mobileMenu div {
   position: absolute;
   right: 0;
-  top: 26px;
+  top: 32px;
   display: grid;
   min-width: 180px;
   gap: 4px;
