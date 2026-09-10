@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { Carousel } from "@/components/ui/apple-cards-carousel";
+import { TemplateShowcase } from "@/components/ui/template-showcase";
 import { templateCategories } from "@/data/templates";
 import { TemplateCard } from "./TemplateCard";
 
@@ -9,7 +9,7 @@ export function TemplateGallery() {
   const initial = templateCategories.findIndex((item) => item.id === "company");
   const [active, setActive] = useState(initial < 0 ? 0 : initial);
   const cards = useMemo(
-    () => templateCategories.map((item, index) => <TemplateCard key={item.id} item={item} index={index} />),
+    () => templateCategories.map((item) => <TemplateCard key={item.id} item={item} />),
     [],
   );
   return (
@@ -27,7 +27,7 @@ export function TemplateGallery() {
           </button>
         ))}
       </div>
-      <Carousel items={cards} initialIndex={active} />
+      <TemplateShowcase items={cards} activeIndex={active} />
     </section>
   );
 }
