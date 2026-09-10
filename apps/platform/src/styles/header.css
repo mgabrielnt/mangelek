@@ -3,57 +3,60 @@
   pointer-events: none; transition: padding 220ms ease;
 }
 .navShell {
-  position: relative; width: min(1280px, calc(100vw - 48px)); height: 64px;
+  position: relative; width: min(1320px, calc(100vw - 48px)); height: 68px;
   margin: 0 auto; padding: 0; display: grid; grid-template-columns: 1fr auto 1fr;
   align-items: center; pointer-events: auto; background: transparent; border: 1px solid transparent;
   border-radius: 0; box-shadow: none; backdrop-filter: none; -webkit-backdrop-filter: none;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  font-feature-settings: "kern" 1, "liga" 1;
   transition: width 220ms ease, height 220ms ease, padding 220ms ease, background 220ms ease,
     border-color 220ms ease, border-radius 220ms ease, box-shadow 220ms ease;
 }
 .isFloating { padding-top: 12px; }
 .isFloating .navShell {
-  width: min(940px, calc(100vw - 32px)); height: 54px; padding: 0 10px 0 20px;
-  border-color: rgba(255,255,255,.62); border-radius: 999px;
-  background: linear-gradient(135deg, rgba(255,255,255,.72), rgba(255,255,255,.48));
-  box-shadow: 0 12px 40px rgba(20,16,12,.12), inset 0 1px 0 rgba(255,255,255,.72), inset 0 -1px 0 rgba(255,255,255,.18);
+  width: min(980px, calc(100vw - 32px)); height: 56px; padding: 0 10px 0 22px;
+  border-color: rgba(255,255,255,.68); border-radius: 999px;
+  background: linear-gradient(135deg, rgba(255,255,255,.76), rgba(255,255,255,.50));
+  box-shadow: 0 14px 42px rgba(20,16,12,.12), inset 0 1px 0 rgba(255,255,255,.78), inset 0 -1px 0 rgba(255,255,255,.20);
   backdrop-filter: blur(18px) saturate(145%); -webkit-backdrop-filter: blur(18px) saturate(145%);
 }
-.brand { font-size: 12px; font-weight: 800; letter-spacing: .09em; }
-.hoverMenu { display: flex; align-items: center; gap: 4px; }
+.brand { font-size: 13.5px; font-weight: 800; letter-spacing: .12em; line-height: 1; }
+.hoverMenu { display: flex; align-items: center; gap: 6px; }
 .hoverMenu > a, .hoverMenuItem > button {
-  border: 0; border-radius: 999px; padding: 9px 13px; background: transparent; color: var(--ink);
-  cursor: pointer; font: inherit; font-size: 12px; text-transform: uppercase; letter-spacing: .04em;
-  transition: background 150ms ease, box-shadow 150ms ease, transform 150ms ease;
+  border: 0; border-radius: 999px; padding: 10px 14px; background: transparent;
+  color: rgba(17,17,15,.78); cursor: pointer; font: inherit; font-size: 13px; font-weight: 600;
+  letter-spacing: .012em; line-height: 1; transition: color 150ms ease, background 150ms ease, box-shadow 150ms ease;
 }
 .hoverMenu > a:hover, .hoverMenuItem > button:hover,
-.hoverMenuItem > button[aria-expanded="true"] { background: rgba(255,255,255,.20); box-shadow: inset 0 0 0 1px rgba(255,255,255,.18); }
+.hoverMenuItem > button[aria-expanded="true"] { color: var(--ink); background: rgba(255,255,255,.20); box-shadow: inset 0 0 0 1px rgba(255,255,255,.18); }
 .isFloating .hoverMenu > a:hover, .isFloating .hoverMenuItem > button:hover,
-.isFloating .hoverMenuItem > button[aria-expanded="true"] { background: rgba(255,255,255,.50); box-shadow: inset 0 0 0 1px rgba(255,255,255,.34); }
+.isFloating .hoverMenuItem > button[aria-expanded="true"] { background: rgba(255,255,255,.54); box-shadow: inset 0 0 0 1px rgba(255,255,255,.38); }
 .hoverMenuItem { position: relative; }
-.hoverMenuItem > button { display: flex; align-items: center; gap: 6px; }
+.hoverMenuItem > button { display: flex; align-items: center; gap: 7px; }
+.hoverMenuItem > button span { font-size: 13px; opacity: .62; }
 .hoverMenuPanel {
-  position: absolute; top: calc(100% + 12px); left: 50%; transform: translateX(-50%); width: max-content;
-  padding: 10px; border: 1px solid rgba(255,255,255,.62); border-radius: 18px;
-  background: linear-gradient(145deg, rgba(255,255,255,.88), rgba(255,255,255,.68));
-  box-shadow: 0 18px 50px rgba(24,20,15,.14), inset 0 1px 0 rgba(255,255,255,.75);
-  backdrop-filter: blur(18px) saturate(140%); -webkit-backdrop-filter: blur(18px) saturate(140%); animation: menuIn 150ms ease-out;
+  position: absolute; top: calc(100% + 14px); left: 50%; transform: translateX(-50%); width: max-content;
+  padding: 11px; border: 1px solid rgba(255,255,255,.68); border-radius: 20px;
+  background: linear-gradient(145deg, rgba(255,255,255,.91), rgba(255,255,255,.72));
+  box-shadow: 0 20px 54px rgba(24,20,15,.14), inset 0 1px 0 rgba(255,255,255,.82);
+  backdrop-filter: blur(20px) saturate(145%); -webkit-backdrop-filter: blur(20px) saturate(145%); animation: menuIn 150ms ease-out;
 }
-.hoverMenuPanel::before { content: ""; position: absolute; inset: -14px 0 auto; height: 14px; }
-.productGrid { width: 560px; display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
-.productItem { display: grid; grid-template-columns: 92px 1fr; gap: 10px; padding: 8px; border-radius: 12px; }
-.productItem:hover, .hoveredLink:hover { background: rgba(255,255,255,.52); }
-.productItem img { width: 92px; height: 62px; object-fit: cover; border-radius: 9px; }
-.productItem span { display: grid; align-content: center; gap: 4px; }
-.productItem strong { font-size: 13px; }
-.productItem small { max-width: 170px; color: var(--muted); font-size: 11px; line-height: 1.4; }
-.supportLinks { width: 220px; display: grid; gap: 3px; }
-.hoveredLink { padding: 10px 12px; border-radius: 10px; font-size: 13px; }
-.navbarActions { justify-self: end; display: flex; align-items: center; gap: 6px; }
-.navbarButton { display: inline-flex; min-height: 36px; align-items: center; justify-content: center; padding: 0 15px; border-radius: 999px; font-size: 12px; transition: background 150ms ease, color 150ms ease, box-shadow 150ms ease; }
-.navbarButton.primary { background: var(--ink); color: white; box-shadow: 0 4px 14px rgba(17,17,15,.14); }
-.navbarButton.primary:hover { background: #292824; }
-.navbarButton.ghost:hover { background: rgba(255,255,255,.22); }
-.isFloating .navbarButton.ghost:hover { background: rgba(255,255,255,.52); }
+.hoverMenuPanel::before { content: ""; position: absolute; inset: -16px 0 auto; height: 16px; }
+.productGrid { width: 580px; display: grid; grid-template-columns: 1fr 1fr; gap: 7px; }
+.productItem { display: grid; grid-template-columns: 96px 1fr; gap: 12px; padding: 9px; border-radius: 13px; }
+.productItem:hover, .hoveredLink:hover { background: rgba(255,255,255,.56); }
+.productItem img { width: 96px; height: 64px; object-fit: cover; border-radius: 10px; }
+.productItem span { display: grid; align-content: center; gap: 5px; }
+.productItem strong { font-size: 13.5px; font-weight: 700; letter-spacing: -.01em; }
+.productItem small { max-width: 180px; color: var(--muted); font-size: 11.5px; line-height: 1.45; }
+.supportLinks { width: 230px; display: grid; gap: 3px; }
+.hoveredLink { padding: 11px 13px; border-radius: 11px; font-size: 13px; font-weight: 600; }
+.navbarActions { justify-self: end; display: flex; align-items: center; gap: 8px; }
+.navbarButton { display: inline-flex; min-height: 38px; align-items: center; justify-content: center; padding: 0 16px; border-radius: 999px; font-size: 12.5px; font-weight: 650; letter-spacing: .005em; transition: background 150ms ease, color 150ms ease, box-shadow 150ms ease; }
+.navbarButton.primary { background: var(--ink); color: white; box-shadow: 0 5px 16px rgba(17,17,15,.16); }
+.navbarButton.primary:hover { background: #292824; box-shadow: 0 7px 20px rgba(17,17,15,.20); }
+.navbarButton.ghost:hover { background: rgba(255,255,255,.24); }
+.isFloating .navbarButton.ghost:hover { background: rgba(255,255,255,.56); }
 .mobileToggle, .mobilePanel { display: none; }
 @keyframes menuIn { from { opacity: 0; transform: translate(-50%,-6px); } to { opacity: 1; transform: translate(-50%,0); } }
 @media (prefers-reduced-motion: reduce) { .siteHeader, .navShell, .hoverMenuPanel { transition: none; animation: none; } }
