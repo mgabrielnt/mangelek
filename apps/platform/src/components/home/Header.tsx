@@ -8,10 +8,10 @@ import {
 import { HoveredLink, Menu, MenuItem, ProductItem } from "@/components/ui/navbar-menu";
 
 const products = [
-  ["Website Builder", "/themes", "Build and launch a polished business website."],
-  ["Business CMS", "#features", "Manage pages, content, and business updates."],
-  ["Ecommerce", "#features", "Create a storefront and manage online sales."],
-  ["Managed Hosting", "#features", "Fast, secure hosting managed for you."],
+  ["Website Builder", "/themes", "/images/marketing/features/website-editor.webp", "Build and launch a polished business website."],
+  ["Business CMS", "#features", "/images/marketing/features/cms-dashboard.webp", "Manage pages, content, and business updates."],
+  ["Domains", "#features", "/images/marketing/features/domain-management.webp", "Connect and manage your business domain."],
+  ["Managed Hosting", "#features", "/images/marketing/features/business-dashboard.webp", "Fast, secure hosting managed for you."],
 ] as const;
 const support = [
   ["Help Center", "/contact"], ["Documentation", "/contact"],
@@ -31,9 +31,7 @@ export function Header() {
         <NavbarLogo />
         <Menu setActive={setActive}>
           <MenuItem setActive={setActive} active={active} item="Products">
-            <div className="productGrid">
-              {products.map(([title, href, description]) => <ProductItem key={title} title={title} href={href} description={description} />)}
-            </div>
+            <div className="productGrid">{products.map(([title, href, src, description]) => <ProductItem key={title} title={title} href={href} src={src} description={description} />)}</div>
           </MenuItem>
           <a href="/pricing">Pricing</a>
           <MenuItem setActive={setActive} active={active} item="Support">
