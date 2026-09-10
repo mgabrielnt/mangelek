@@ -7,8 +7,9 @@ function getMetrics(group: HTMLDivElement | null) {
   const first = group.children.item(0) as HTMLElement | null;
   const second = group.children.item(1) as HTMLElement | null;
   if (!first) return null;
+
   const step = second ? second.offsetLeft - first.offsetLeft : first.offsetWidth;
-  return { start: group.offsetLeft, span: group.offsetWidth, step };
+  return { span: group.offsetWidth, step };
 }
 
 export function TemplateShowcase({ items, activeIndex = 0 }: {
@@ -23,22 +24,25 @@ export function TemplateShowcase({ items, activeIndex = 0 }: {
     const rail = railRef.current;
     const metrics = getMetrics(groupRef.current);
     if (!rail || !metrics) return;
-    if (rail.scrollLeft < metrics.start + metrics.span) rail.scrollLeft += metrics.span;
-    if (rail.scrollLeft >= metrics.start + metrics.span * 2) rail.scrollLeft -= metrics.span;
+
+    if (rail.scrollLeft < metrics.span) rail.scrollLeft += metrics.span;
+    else if (rail.scrollLeft >= metrics.span * 2) rail.scrollLeft -= metrics.span;
   };
 
   useEffect(() => {
     const rail = railRef.current;
     const metrics = getMetrics(groupRef.current);
     if (!rail || !metrics) return;
-    const left = metrics.start + metrics.span + activeIndex * metrics.step;
+
+    const left = metrics.span + activeIndex * metrics.step;
     if (readyRef.current) rail.scrollTo({ left, behavior: "smooth" });
     else { rail.scrollLeft = left; readyRef.current = true; }
   }, [activeIndex]);
 
   const move = (direction: number) => {
+    const rail = railRef.current;
     const metrics = getMetrics(groupRef.current);
-    if (railRef.current && metrics) railRef.current.scrollBy({ left: direction * metrics.step, behavior: "smooth" });
+    if (rail && metrics) rail.scrollBy({ left: direction * metrics.step, behavior: "smooth" });
   };
 
   return <div className="showcase">
