@@ -1,0 +1,39 @@
+.templates { padding: 72px 0 44px; background: #fff; }
+.sectionIntro { width: var(--page); margin: 0 auto 22px; text-align: center; }
+.sectionIntro h2 {
+  margin-bottom: 10px;
+  font-size: clamp(32px, 3.6vw, 52px);
+  letter-spacing: -.045em;
+  line-height: .98;
+}
+.sectionIntro p { margin-bottom: 0; color: var(--muted); font-size: 15px; }
+.eyebrow {
+  font-size: 11px !important;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .16em;
+}
+.categoryTabs {
+  display: flex;
+  gap: 5px;
+  width: max-content;
+  max-width: calc(100vw - 24px);
+  margin: 26px auto 22px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.categoryTabs::-webkit-scrollbar { display: none; }
+.categoryTabs button {
+  flex: 0 0 auto;
+  min-height: 42px;
+  padding: 0 15px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  background: transparent;
+  color: #656159;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 160ms ease;
+}
+.categoryTabs button:hover { color: var(--ink); background: #f5f2ed; }
+.categoryTabs button.active { color: var(--ink); border-color: #e5dfd7; background: #f0ece6; }
