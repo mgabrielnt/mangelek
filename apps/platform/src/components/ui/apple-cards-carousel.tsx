@@ -1,7 +1,5 @@
 "use client";
 
-import { IconArrowNarrowLeft, IconArrowNarrowRight, IconX } from "@tabler/icons-react";
-import { AnimatePresence, motion } from "motion/react";
 import { useCallback, useEffect, useRef, useState, type ReactNode } from "react";
 import { useOutsideClick } from "@/hooks/use-outside-click";
 
@@ -20,8 +18,8 @@ export function Carousel({ items, initialScroll = 0 }: { items: ReactNode[]; ini
   return <div className="appleCarousel">
     <div className="appleRail" ref={rail} onScroll={sync}><div className="appleTrack">{items}</div></div>
     <div className="appleControls">
-      <button onClick={() => move(-360)} disabled={edge.left} aria-label="Previous templates"><IconArrowNarrowLeft /></button>
-      <button onClick={() => move(360)} disabled={edge.right} aria-label="Next templates"><IconArrowNarrowRight /></button>
+      <button onClick={() => move(-360)} disabled={edge.left} aria-label="Previous templates"><span aria-hidden>←</span></button>
+      <button onClick={() => move(360)} disabled={edge.right} aria-label="Next templates"><span aria-hidden>→</span></button>
     </div>
   </div>;
 }
@@ -39,13 +37,15 @@ export function Card({ card, index }: { card: AppleCard; index: number }) {
     return () => { document.body.style.overflow = old; window.removeEventListener("keydown", key); };
   }, [open, close]);
   return <>
-    <motion.button className="appleCard" onClick={() => setOpen(true)} initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: index * .06 }}>
+    <button className="appleCard" style={{ animationDelay: `${index * 45}ms` }} onClick={() => setOpen(true)}>
       <img src={card.src} alt={card.title} loading="lazy" /><span className="appleShade" />
       <span className="appleCopy"><small>{card.category}</small><strong>{card.title}</strong></span>
-    </motion.button>
-    <AnimatePresence>{open && <div className="appleModal"><motion.div className="appleBackdrop" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} />
-      <motion.div ref={ref} className="appleDialog" initial={{ opacity: 0, y: 24, scale: .98 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: 16, scale: .98 }}>
-        <button className="appleClose" onClick={close} aria-label="Close"><IconX /></button><small>{card.category}</small><h3>{card.title}</h3>{card.content}
-      </motion.div></div>}</AnimatePresence>
+    </button>
+    {open && <div className="appleModal"><div className="appleBackdrop" />
+      <div ref={ref} className="appleDialog">
+        <button className="appleClose" onClick={close} aria-label="Close"><span aria-hidden>×</span></button>
+        <small>{card.category}</small><h3>{card.title}</h3>{card.content}
+      </div>
+    </div>}
   </>;
 }
