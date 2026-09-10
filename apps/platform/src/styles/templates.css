@@ -11,7 +11,7 @@
 .appleCarousel { position: relative; width: 100%; }
 .appleRail { width: 100%; overflow-x: auto; overscroll-behavior-x: contain; scroll-behavior: smooth; scrollbar-width: none; }
 .appleTrack { display: flex; gap: 18px; width: max-content; padding: 18px max(24px, calc((100vw - 1280px)/2)) 8px; }
-.appleCard { position: relative; flex: 0 0 340px; width: 340px; height: 520px; padding: 0; overflow: hidden; border: 0; border-radius: 28px; background: #ebe6de; cursor: pointer; text-align: left; box-shadow: 0 12px 34px rgba(24,20,15,.08); transition: transform 180ms ease, box-shadow 180ms ease; }
+.appleCard { position: relative; flex: 0 0 340px; width: 340px; height: 520px; padding: 0; overflow: hidden; border: 0; border-radius: 28px; background: #ebe6de; cursor: pointer; text-align: left; box-shadow: 0 12px 34px rgba(24,20,15,.08); animation: cardIn 260ms ease both; transition: transform 180ms ease, box-shadow 180ms ease; }
 .appleCard:hover { transform: translateY(-4px); box-shadow: 0 20px 44px rgba(24,20,15,.13); }
 .appleCard > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .appleShade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10,9,8,.54) 0%, rgba(10,9,8,.08) 42%, transparent 68%); }
@@ -22,16 +22,19 @@
 .appleControls button { display: grid; width: 44px; height: 44px; place-items: center; border: 0; border-radius: 50%; background: #f0ede8; color: #35322d; cursor: pointer; transition: 150ms ease; }
 .appleControls button:hover:not(:disabled) { background: #e5e0d9; transform: translateY(-1px); }
 .appleControls button:disabled { cursor: default; opacity: .38; }
-.appleControls svg { width: 20px; height: 20px; }
+.appleControls span { font-size: 22px; line-height: 1; }
 .appleModal { position: fixed; inset: 0; z-index: 90; display: grid; place-items: center; padding: 24px; }
-.appleBackdrop { position: absolute; inset: 0; background: rgba(14,12,10,.58); backdrop-filter: blur(8px); }
-.appleDialog { position: relative; z-index: 1; width: min(900px, 100%); max-height: calc(100vh - 48px); padding: 28px; overflow: auto; border: 1px solid rgba(255,255,255,.72); border-radius: 28px; background: #fbfaf8; box-shadow: 0 30px 80px rgba(0,0,0,.22); }
+.appleBackdrop { position: absolute; inset: 0; background: rgba(14,12,10,.58); backdrop-filter: blur(8px); animation: fadeIn 160ms ease both; }
+.appleDialog { position: relative; z-index: 1; width: min(900px, 100%); max-height: calc(100vh - 48px); padding: 28px; overflow: auto; border: 1px solid rgba(255,255,255,.72); border-radius: 28px; background: #fbfaf8; box-shadow: 0 30px 80px rgba(0,0,0,.22); animation: dialogIn 180ms ease both; }
 .appleDialog > small { color: var(--muted); font-size: 12px; font-weight: 650; }
 .appleDialog > h3 { margin: 6px 48px 22px 0; font-size: clamp(28px, 4vw, 46px); letter-spacing: -.04em; }
 .appleClose { position: sticky; top: 0; float: right; z-index: 2; display: grid; width: 38px; height: 38px; place-items: center; border: 0; border-radius: 50%; background: #171614; color: #fff; cursor: pointer; }
-.appleClose svg { width: 19px; height: 19px; }
+.appleClose span { font-size: 24px; line-height: 1; }
 .templateDetail { display: grid; gap: 18px; }
 .templateDetail img { width: 100%; max-height: 470px; object-fit: contain; border-radius: 20px; background: #efeae3; }
 .templateDetail p { max-width: 620px; margin: 0; color: var(--muted); font-size: 15px; line-height: 1.65; }
 .templateDetail a { width: fit-content; padding: 11px 17px; border-radius: 999px; background: var(--ink); color: #fff; font-size: 13px; font-weight: 650; }
-@media (prefers-reduced-motion: reduce) { .appleCard, .appleControls button { transition: none; } }
+@keyframes cardIn { from { opacity: 0; transform: translateY(14px); } }
+@keyframes fadeIn { from { opacity: 0; } }
+@keyframes dialogIn { from { opacity: 0; transform: translateY(18px) scale(.985); } }
+@media (prefers-reduced-motion: reduce) { .appleCard, .appleControls button, .appleBackdrop, .appleDialog { transition: none; animation: none; } }
