@@ -1,52 +1,52 @@
 .siteHeader {
-  position: sticky; top: 0; z-index: 50;
+  position: fixed; inset: 0 0 auto; z-index: 50; height: 64px;
+  width: 100%; background: transparent; border: 0; box-shadow: none;
+}
+.desktopNav {
   width: var(--page); height: 64px; margin: 0 auto;
   display: grid; grid-template-columns: 1fr auto 1fr; align-items: center;
   font-size: 12px; text-transform: uppercase; letter-spacing: .04em;
-  background: transparent; border: 0; box-shadow: none;
 }
 .brand { font-weight: 800; letter-spacing: .08em; }
-.desktopNav { display: flex; align-items: center; gap: 34px; }
-.desktopNav > a, .loginLink, .navDropdown summary {
-  color: var(--ink); opacity: .78; transition: opacity 160ms ease;
+.hoverMenu { display: flex; align-items: center; gap: 32px; }
+.hoverMenu > a, .hoverMenuItem > button {
+  border: 0; padding: 8px 0; background: transparent; cursor: pointer;
+  color: var(--ink); font: inherit; text-transform: inherit; letter-spacing: inherit;
+  opacity: .78; transition: opacity 160ms ease;
 }
-.desktopNav > a:hover, .loginLink:hover, .navDropdown summary:hover { opacity: 1; }
-.navDropdown { position: relative; }
-.navDropdown summary {
-  display: flex; align-items: center; gap: 6px;
-  cursor: pointer; list-style: none; user-select: none;
-}
-.navDropdown summary::-webkit-details-marker { display: none; }
-.navDropdown summary span { font-size: 14px; transition: transform 160ms ease; }
-.navDropdown[open] summary span { transform: rotate(180deg); }
-.dropdownPanel {
-  position: absolute; top: calc(100% + 16px); left: 50%;
-  transform: translateX(-50%); display: grid; width: 500px;
-  grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 5px; padding: 8px;
-  border: 1px solid var(--line); border-radius: 14px;
-  background: rgba(255,255,255,.96); box-shadow: var(--shadow);
+.hoverMenu > a:hover, .hoverMenuItem > button:hover { opacity: 1; }
+.hoverMenuItem { position: relative; }
+.hoverMenuItem > button { display: flex; align-items: center; gap: 6px; }
+.hoverMenuItem > button span { font-size: 14px; }
+.hoverMenuPanel {
+  position: absolute; top: calc(100% + 10px); left: 50%; transform: translateX(-50%);
+  width: max-content; min-width: 220px; padding: 9px; border: 1px solid var(--line);
+  border-radius: 14px; background: rgba(255,255,255,.97); box-shadow: var(--shadow);
   text-transform: none; letter-spacing: normal;
 }
-.dropdownPanel a { display: grid; gap: 3px; padding: 12px; border-radius: 9px; }
-.dropdownPanel a:hover { background: rgba(17,17,15,.06); }
-.dropdownPanel b { font-size: 13px; font-weight: 650; }
-.dropdownPanel small { color: var(--muted); font-size: 11px; line-height: 1.35; }
-.headerActions { justify-self: end; display: flex; align-items: center; gap: 20px; }
-.primaryButton {
-  padding: 10px 15px; border: 1px solid rgba(17,17,15,.7);
-  border-radius: 7px; background: rgba(255,255,255,.18);
-  transition: background 160ms ease, color 160ms ease;
+.productGrid { width: 500px; display: grid; grid-template-columns: 1fr 1fr; gap: 5px; }
+.productItem { display: grid; gap: 4px; padding: 12px; border-radius: 9px; }
+.productItem:hover, .hoveredLink:hover { background: rgba(17,17,15,.06); }
+.productItem strong { font-size: 13px; font-weight: 650; }
+.productItem small { max-width: 210px; color: var(--muted); font-size: 11px; line-height: 1.4; }
+.supportLinks { width: 220px; display: grid; gap: 3px; }
+.hoveredLink { padding: 10px 12px; border-radius: 8px; font-size: 13px; }
+.navbarActions { justify-self: end; display: flex; align-items: center; gap: 10px; }
+.navbarButton {
+  display: inline-flex; align-items: center; justify-content: center; min-height: 38px;
+  padding: 0 14px; border: 1px solid transparent; border-radius: 8px;
+  background: transparent; color: var(--ink); font-size: 12px; cursor: pointer;
 }
-.primaryButton:hover { background: var(--ink); color: white; }
-.mobileMenu { display: none; justify-self: end; position: relative; }
-.mobileMenu summary { cursor: pointer; list-style: none; font-weight: 700; }
-.mobileMenu summary::-webkit-details-marker { display: none; }
+.navbarButton.primary { border-color: rgba(17,17,15,.65); background: rgba(255,255,255,.22); }
+.navbarButton.primary:hover { background: var(--ink); color: white; }
+.mobileMenu { display: none; }
+.mobileNavHeader { width: var(--page); height: 56px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
+.mobileToggle { border: 0; background: transparent; font-size: 21px; cursor: pointer; }
 .mobilePanel {
-  position: absolute; right: 0; top: 30px; display: grid; width: min(280px, 82vw);
-  gap: 2px; padding: 10px; border: 1px solid var(--line); border-radius: 12px;
+  position: absolute; top: 56px; right: 12px; display: grid; width: min(280px, calc(100vw - 24px));
+  gap: 3px; padding: 10px; border: 1px solid var(--line); border-radius: 12px;
   background: rgba(255,255,255,.97); box-shadow: var(--shadow);
-  text-transform: none; letter-spacing: normal;
 }
-.mobilePanel strong { padding: 9px 10px 4px; font-size: 11px; text-transform: uppercase; opacity: .55; }
-.mobilePanel a { padding: 9px 10px; border-radius: 8px; }
-.mobilePanel a:hover { background: rgba(17,17,15,.06); }
+.mobilePanel > a { padding: 10px; border-radius: 8px; }
+.mobilePanel > a:hover { background: rgba(17,17,15,.06); }
+.mobilePanel .navbarButton { width: 100%; margin-top: 4px; }
