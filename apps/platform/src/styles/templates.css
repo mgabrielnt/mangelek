@@ -9,7 +9,7 @@
 .categoryTabs button:hover { color: var(--ink); background: #f5f2ed; }
 .categoryTabs button.active { color: var(--ink); border-color: #e5dfd7; background: #f0ece6; }
 .appleCarousel { position: relative; width: 100%; }
-.appleRail { width: 100%; overflow-x: auto; overscroll-behavior-x: contain; scroll-behavior: smooth; scrollbar-width: none; }
+.appleRail { width: 100%; overflow-x: auto; overscroll-behavior-x: contain; scrollbar-width: none; }
 .appleTrack { --card-gap: 18px; display: flex; width: max-content; padding: 18px max(24px, calc((100vw - 1280px)/2)) 8px; }
 .appleLoopGroup { display: flex; gap: var(--card-gap); padding-right: var(--card-gap); }
 .appleCard { position: relative; flex: 0 0 340px; width: 340px; height: 520px; padding: 0; overflow: hidden; border: 0; border-radius: 28px; background: #ebe6de; cursor: pointer; text-align: left; box-shadow: 0 12px 34px rgba(24,20,15,.08); animation: cardIn 260ms ease both; transition: transform 180ms ease, box-shadow 180ms ease; }
