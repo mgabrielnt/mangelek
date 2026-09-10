@@ -9,8 +9,11 @@ export function TemplateGallery() {
   const railRef = useRef<HTMLDivElement>(null);
 
   function center(id: string, behavior: ScrollBehavior = "smooth") {
-    const target = railRef.current?.querySelector<HTMLElement>(`[data-id="${id}"]`);
-    target?.scrollIntoView({ behavior, block: "nearest", inline: "center" });
+    const rail = railRef.current;
+    const target = rail?.querySelector<HTMLElement>(`[data-id="${id}"]`);
+    if (!rail || !target) return;
+    const left = target.offsetLeft - (rail.clientWidth - target.clientWidth) / 2;
+    rail.scrollTo({ left, behavior });
   }
 
   function select(id: string) {
@@ -29,13 +32,10 @@ export function TemplateGallery() {
       </div>
       <div className="categoryTabs" role="tablist" aria-label="Kategori template">
         {templateCategories.map((item) => (
-          <button
-            key={item.id}
-            className={active === item.id ? "active" : ""}
-            onClick={() => select(item.id)}
-            role="tab"
-            aria-selected={active === item.id}
-          >{item.label}</button>
+          <button key={item.id} className={active === item.id ? "active" : ""}
+            onClick={() => select(item.id)} role="tab" aria-selected={active === item.id}>
+            {item.label}
+          </button>
         ))}
       </div>
       <div className="templateRail" ref={railRef}>
