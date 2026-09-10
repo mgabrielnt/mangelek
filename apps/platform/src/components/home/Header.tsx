@@ -1,58 +1,52 @@
-type NavItem = { title: string; description: string; href: string };
+"use client";
 
-const productItems: NavItem[] = [
-  { title: "Website Builder", description: "Build a polished site fast", href: "/themes" },
-  { title: "Managed Hosting", description: "Fast, secure managed hosting", href: "#features" },
-  { title: "Business CMS", description: "Manage pages and content", href: "#features" },
-  { title: "Ecommerce", description: "Launch and manage your store", href: "#features" },
-  { title: "Domains", description: "Connect your business domain", href: "#features" },
-  { title: "Analytics", description: "Understand site performance", href: "#features" },
+import {
+  Navbar, NavBody, NavItems, MobileNav, NavbarLogo, NavbarButton,
+  MobileNavHeader, MobileNavToggle, MobileNavMenu,
+} from "@/components/ui/resizable-navbar";
+import { useState } from "react";
+
+const navItems = [
+  { name: "Products", link: "#products", children: [
+    { name: "Website Builder", link: "/themes" },
+    { name: "Managed Hosting", link: "#features" },
+    { name: "Business CMS", link: "#features" },
+    { name: "Ecommerce", link: "#features" },
+  ]},
+  { name: "Pricing", link: "/pricing" },
+  { name: "Support", link: "#support", children: [
+    { name: "Help Center", link: "/contact" },
+    { name: "Documentation", link: "/contact" },
+    { name: "Contact Support", link: "/contact" },
+  ]},
+  { name: "Blog", link: "#features" },
 ];
-
-const supportItems: NavItem[] = [
-  { title: "Help Center", description: "Answers to common questions", href: "/contact" },
-  { title: "Documentation", description: "Guides for using Mangelek", href: "/contact" },
-  { title: "Contact Support", description: "Get help from our team", href: "/contact" },
-  { title: "System Status", description: "Check platform availability", href: "/contact" },
-];
-
-function Dropdown({ label, items }: { label: string; items: NavItem[] }) {
-  return (
-    <details className="navDropdown">
-      <summary>{label}<span aria-hidden="true">⌄</span></summary>
-      <div className="dropdownPanel">
-        {items.map((item) => (
-          <a key={item.title} href={item.href}>
-            <b>{item.title}</b><small>{item.description}</small>
-          </a>
-        ))}
-      </div>
-    </details>
-  );
-}
 
 export function Header() {
+  const [open, setOpen] = useState(false);
   return (
-    <header className="siteHeader">
-      <a className="brand" href="/" aria-label="Mangelek home">MANGELEK</a>
-      <nav className="desktopNav" aria-label="Navigasi utama">
-        <Dropdown label="Products" items={productItems} />
-        <a href="/pricing">Pricing</a>
-        <Dropdown label="Support" items={supportItems} />
-        <a href="#features">Blog</a>
-      </nav>
-      <div className="headerActions">
-        <a className="loginLink" href="#login">Log in</a>
-        <a className="primaryButton" href="/themes">Get started</a>
-      </div>
-      <details className="mobileMenu">
-        <summary aria-label="Buka menu">Menu</summary>
-        <div className="mobilePanel">
-          <strong>Products</strong>{productItems.map((x) => <a key={x.title} href={x.href}>{x.title}</a>)}
-          <strong>Support</strong>{supportItems.map((x) => <a key={x.title} href={x.href}>{x.title}</a>)}
-          <a href="/pricing">Pricing</a><a href="#features">Blog</a>
+    <Navbar>
+      <NavBody>
+        <NavbarLogo />
+        <NavItems items={navItems} />
+        <div className="navbarActions">
+          <NavbarButton href="#login" variant="secondary">Login</NavbarButton>
+          <NavbarButton href="/themes" variant="primary">Get started</NavbarButton>
         </div>
-      </details>
-    </header>
+      </NavBody>
+      <MobileNav>
+        <MobileNavHeader>
+          <NavbarLogo />
+          <MobileNavToggle isOpen={open} onClick={() => setOpen(!open)} />
+        </MobileNavHeader>
+        <MobileNavMenu isOpen={open} onClose={() => setOpen(false)}>
+          {navItems.map((item) => (
+            <a key={item.name} href={item.link} onClick={() => setOpen(false)}>{item.name}</a>
+          ))}
+          <NavbarButton href="#login" variant="secondary">Login</NavbarButton>
+          <NavbarButton href="/themes" variant="primary">Get started</NavbarButton>
+        </MobileNavMenu>
+      </MobileNav>
+    </Navbar>
   );
 }
