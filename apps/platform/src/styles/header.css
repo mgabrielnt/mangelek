@@ -21,13 +21,16 @@
 .navDropdown[open] summary span { transform: rotate(180deg); }
 .dropdownPanel {
   position: absolute; top: calc(100% + 16px); left: 50%;
-  transform: translateX(-50%); display: grid; min-width: 230px;
-  gap: 3px; padding: 8px; border: 1px solid var(--line);
-  border-radius: 12px; background: rgba(255,255,255,.96);
-  box-shadow: var(--shadow); text-transform: none; letter-spacing: normal;
+  transform: translateX(-50%); display: grid; width: 500px;
+  grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 5px; padding: 8px;
+  border: 1px solid var(--line); border-radius: 14px;
+  background: rgba(255,255,255,.96); box-shadow: var(--shadow);
+  text-transform: none; letter-spacing: normal;
 }
-.dropdownPanel a { padding: 10px 12px; border-radius: 8px; white-space: nowrap; }
+.dropdownPanel a { display: grid; gap: 3px; padding: 12px; border-radius: 9px; }
 .dropdownPanel a:hover { background: rgba(17,17,15,.06); }
+.dropdownPanel b { font-size: 13px; font-weight: 650; }
+.dropdownPanel small { color: var(--muted); font-size: 11px; line-height: 1.35; }
 .headerActions { justify-self: end; display: flex; align-items: center; gap: 20px; }
 .primaryButton {
   padding: 10px 15px; border: 1px solid rgba(17,17,15,.7);
