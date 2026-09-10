@@ -1,6 +1,6 @@
 .showcase {
-  --card-w: 1196;
-  --card-h: 719;
+  --card-w: 896;
+  --card-h: 519;
   --card-gap: 20px;
   --card-gutter: 96px;
   --card-radius: 32px;
@@ -19,7 +19,7 @@
 .showcaseTrack {
   display: flex;
   width: max-content;
-  padding: 18px max(24px, calc((100vw - 1280px) / 2)) 8px;
+  padding: 18px max(444px, calc((100vw - 1280px) / 2)) 8px;
 }
 .showcaseGroup {
   display: flex;

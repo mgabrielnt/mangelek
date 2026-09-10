@@ -1,11 +1,12 @@
 .hero {
   position: relative;
-  padding-top: clamp(54px, 4.3vw, 62px);
+  padding-top: 30px; padding-bottom: 0px;
   background: #d8c6ae url("/images/marketing/hero/background.png") center / cover no-repeat;
 }
 .heroScene {
   position: relative;
   isolation: isolate;
+  top: -0px;
   width: min(100%, 1440px);
   aspect-ratio: 1440 / 1050;
   margin-inline: auto;
@@ -13,16 +14,16 @@
 }
 .heroFrame {
   position: absolute;
-  left: 16.18%; top: -10.59%; width: 66.94%;
+  left: 16.18%; top: -10.59%; width: 76.94%;
   z-index: 3; pointer-events: none;
 }
 .heroMenu { position: absolute; inset: 0; z-index: 2; }
 .heroMenuItem { position: absolute; display: block; transform-origin: 50% 100%; }
-.heroMenuItem:nth-child(1) { left: 27.47%; top: 17.10%; width: 8.82%; }
-.heroMenuItem:nth-child(2) { left: 36.88%; top: 16.38%; width: 8.82%; }
-.heroMenuItem:nth-child(3) { left: 45.69%; top: 17.01%; width: 8.40%; }
-.heroMenuItem:nth-child(4) { left: 53.68%; top: 16.38%; width: 8.82%; }
-.heroMenuItem:nth-child(5) { left: 62.36%; top: 16.39%; width: 8.82%; }
+.heroMenuItem:nth-child(1) { left: 30.47%; top: 20.10%; width: 9.82%; }
+.heroMenuItem:nth-child(2) { left: 39.88%; top: 20.38%; width: 9.82%; }
+.heroMenuItem:nth-child(3) { left: 49.92%; top: 22.01%; width: 8.40%; }
+.heroMenuItem:nth-child(4) { left: 59.98%; top: 20.38%; width: 9.82%; }
+.heroMenuItem:nth-child(5) { left: 70.16%; top: 20.39%; width: 9.82%; }
 .heroMenuItem img {
   display: block; width: 100%; height: auto;
   transition: transform 160ms ease, filter 160ms ease;

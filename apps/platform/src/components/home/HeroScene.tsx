@@ -3,11 +3,11 @@
 import { useState } from "react";
 
 const menu = [
-  ["Education", "education.webp", 41.28],
-  ["Company", "company.webp", 49.9],
-  ["Beauty & Wellness", "beauty-wellness.webp", 41.28],
-  ["Restaurant", "restaurant.webp", 49.9],
-  ["Service", "service.webp", 58.77],
+  ["Education", "education.webp", 27.47],
+  ["Company", "company.webp", 36.88],
+  ["Beauty & Wellness", "beauty-wellness.webp", 45.69],
+  ["Restaurant", "restaurant.webp", 53.68],
+  ["Service", "service.webp", 62.36],
 ] as const;
 
 export function HeroScene() {
