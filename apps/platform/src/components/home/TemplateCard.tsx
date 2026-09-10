@@ -1,9 +1,9 @@
-import { Card, type AppleCard } from "@/components/ui/apple-cards-carousel";
+import { ShowcaseItem, type ShowcaseCard } from "@/components/ui/template-showcase";
 import type { TemplateCategory } from "@/data/templates";
 
-export function TemplateCard({ item, index }: { item: TemplateCategory; index: number }) {
+export function TemplateCard({ item }: { item: TemplateCategory }) {
   const src = `/images/marketing/categories/${item.image}`;
-  const card: AppleCard = {
+  const card: ShowcaseCard = {
     src,
     title: item.title,
     category: item.label,
@@ -15,5 +15,5 @@ export function TemplateCard({ item, index }: { item: TemplateCategory; index: n
       </div>
     ),
   };
-  return <Card card={card} index={index} />;
+  return <ShowcaseItem card={card} />;
 }
