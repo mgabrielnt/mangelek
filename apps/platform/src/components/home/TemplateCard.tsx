@@ -1,4 +1,5 @@
-import { ShowcaseItem, type ShowcaseCard } from "@/components/ui/template-showcase";
+import { ShowcaseItem } from "@/components/ui/showcase/card";
+import type { ShowcaseCard } from "@/components/ui/showcase/types";
 import type { TemplateCategory } from "@/data/templates";
 
 export function TemplateCard({ item }: { item: TemplateCategory }) {
@@ -15,5 +16,6 @@ export function TemplateCard({ item }: { item: TemplateCategory }) {
       </div>
     ),
   };
+
   return <ShowcaseItem card={card} />;
 }
