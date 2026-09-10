@@ -12,9 +12,9 @@
 .isFloating { padding-top: 12px; }
 .isFloating .navShell {
   width: min(920px, calc(100vw - 32px)); height: 52px; padding: 0 10px 0 18px;
-  border: 1px solid rgba(17,17,15,.11); border-radius: 999px;
-  background: rgba(255,255,255,.78); box-shadow: 0 10px 36px rgba(24,20,15,.10);
-  backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(17,17,15,.12); border-radius: 999px;
+  background: rgba(255,255,255,.94); box-shadow: 0 10px 32px rgba(24,20,15,.10);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
 }
 .brand { font-size: 12px; font-weight: 800; letter-spacing: .08em; }
 .hoverMenu { display: flex; align-items: center; gap: 4px; }
@@ -30,7 +30,7 @@
 .hoverMenuPanel {
   position: absolute; top: calc(100% + 12px); left: 50%; transform: translateX(-50%);
   width: max-content; padding: 9px; border: 1px solid var(--line); border-radius: 16px;
-  background: rgba(255,255,255,.96); box-shadow: var(--shadow); animation: menuIn 150ms ease-out;
+  background: rgba(255,255,255,.98); box-shadow: var(--shadow); animation: menuIn 150ms ease-out;
 }
 .hoverMenuPanel::before { content: ""; position: absolute; inset: -14px 0 auto; height: 14px; }
 .productGrid { width: 560px; display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
@@ -52,3 +52,4 @@
 .navbarButton.ghost:hover { background: rgba(17,17,15,.07); }
 .mobileToggle, .mobilePanel { display: none; }
 @keyframes menuIn { from { opacity: 0; transform: translate(-50%,-6px); } to { opacity: 1; transform: translate(-50%,0); } }
+@media (prefers-reduced-motion: reduce) { .siteHeader, .navShell, .hoverMenuPanel { transition: none; animation: none; } }
