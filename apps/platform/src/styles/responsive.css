@@ -10,11 +10,12 @@
   .mobilePanel > a:hover { background: rgba(255,255,255,.42); }
   .mobilePanel .navbarButton { width: 100%; margin-top: 3px; }
   .hero { padding-top: 58px; }
-  .appleTrack { --card-gap: 14px; padding-inline: 20px; }
-  .appleCard { flex-basis: calc(100vw - 40px); width: calc(100vw - 40px); height: auto; aspect-ratio: 1196/719; border-radius: 26px; }
-  .appleCopy { padding: 26px; }
-  .appleCopy strong { font-size: clamp(28px, 5vw, 38px); }
-  .appleControls { width: calc(100% - 40px); }
+  .showcase { --card-gap: 14px; }
+  .showcaseTrack { padding-inline: 20px; }
+  .showcaseCard { flex-basis: calc(100vw - 40px); width: calc(100vw - 40px); border-radius: 26px; }
+  .showcaseCopy { padding: 26px; }
+  .showcaseCopy strong { font-size: clamp(28px, 5vw, 38px); }
+  .showcaseControls { width: calc(100% - 40px); }
   .growthHeader { grid-template-columns: 1fr; gap: 22px; }
   .growthHeader p { margin-left: 0; }
   .featureRail { display: flex; width: auto; padding: 0 16px; overflow-x: auto; scroll-snap-type: x mandatory; }
@@ -35,16 +36,17 @@
   .sectionIntro { text-align: left; }
   .sectionIntro h2 { font-size: 36px; }
   .categoryTabs { margin: 20px 12px 14px; }
-  .appleTrack { --card-gap: 12px; padding: 12px 12px 6px; }
-  .appleCard { flex-basis: calc(100vw - 24px); width: calc(100vw - 24px); height: auto; aspect-ratio: 1196/719; border-radius: 20px; }
-  .appleCopy { padding: 20px; gap: 6px; }
-  .appleCopy small { font-size: 11px; }
-  .appleCopy strong { max-width: 78%; font-size: clamp(22px, 7vw, 30px); }
-  .appleControls { width: calc(100% - 24px); margin-top: 12px; }
-  .appleControls button { width: 40px; height: 40px; }
-  .appleModal { padding: 12px; }
-  .appleDialog { max-height: calc(100vh - 24px); padding: 20px; border-radius: 22px; }
-  .appleDialog > h3 { font-size: 30px; }
+  .showcase { --card-gap: 12px; }
+  .showcaseTrack { padding: 12px 12px 6px; }
+  .showcaseCard { flex-basis: calc(100vw - 24px); width: calc(100vw - 24px); border-radius: 20px; }
+  .showcaseCopy { padding: 20px; gap: 6px; }
+  .showcaseCopy small { font-size: 11px; }
+  .showcaseCopy strong { max-width: 78%; font-size: clamp(22px, 7vw, 30px); }
+  .showcaseControls { width: calc(100% - 24px); margin-top: 12px; }
+  .showcaseControls button { width: 40px; height: 40px; }
+  .showcaseModal { padding: 12px; }
+  .showcaseDialog { max-height: calc(100vh - 24px); padding: 20px; border-radius: 22px; }
+  .showcaseDialog > h3 { font-size: 30px; }
   .growth { padding: 68px 0 76px; }
   .growthHeader { margin-bottom: 36px; }
   .growthHeader h2 { font-size: 42px; }
