@@ -11,7 +11,8 @@ export function Carousel({ items, initialScroll = 0 }: { items: ReactNode[]; ini
   const sync = () => {
     const el = rail.current;
     if (!el) return;
-    setEdge({ left: el.scrollLeft <= 2, right: el.scrollLeft + el.clientWidth >= el.scrollWidth - 2 });
+    const next = { left: el.scrollLeft <= 2, right: el.scrollLeft + el.clientWidth >= el.scrollWidth - 2 };
+    setEdge((prev) => prev.left === next.left && prev.right === next.right ? prev : next);
   };
   useEffect(() => { rail.current?.scrollTo({ left: initialScroll, behavior: "smooth" }); requestAnimationFrame(sync); }, [initialScroll]);
   const move = (x: number) => rail.current?.scrollBy({ left: x, behavior: "smooth" });
