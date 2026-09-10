@@ -1,71 +1,37 @@
-.templates {
-  padding: 48px 0 32px;
-  background: #fff;
-}
-.sectionIntro {
-  width: var(--page);
-  margin: 0 auto 18px;
-  text-align: center;
-}
-.sectionIntro h2 { margin-bottom: 8px; font-size: clamp(28px, 3vw, 44px); letter-spacing: -.04em; }
-.sectionIntro p { margin-bottom: 0; color: var(--muted); }
-.eyebrow { font-size: 11px; text-transform: uppercase; letter-spacing: .14em; }
-.categoryTabs {
-  display: flex;
-  gap: 4px;
-  width: max-content;
-  max-width: calc(100vw - 24px);
-  margin: 22px auto 28px;
-  overflow-x: auto;
-  scrollbar-width: none;
-}
-.categoryTabs::-webkit-scrollbar { display: none; }
-.categoryTabs button {
-  flex: 0 0 auto;
-  min-height: 44px;
-  padding: 8px 12px;
-  border: 0;
-  border-radius: 999px;
-  background: transparent;
-  cursor: pointer;
-}
-.categoryTabs button.active { background: #efede7; }
-.templateRail {
-  display: flex;
-  gap: 22px;
-  padding: 0 max(5vw, calc((100vw - 1280px) / 2));
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scrollbar-width: none;
-}
-.templateRail::-webkit-scrollbar { display: none; }
-.templateCard {
-  flex: 0 0 min(78vw, 980px);
-  scroll-snap-align: center;
-  overflow: hidden;
-  border-radius: 18px;
-  border: 1px solid var(--line);
-  background: #f7f4ee;
-  opacity: .78;
-  transform: scale(.985);
-  transition: 180ms ease;
-}
-.templateCard.isActive { opacity: 1; transform: scale(1); box-shadow: var(--shadow); }
-.templatePreview {
-  display: grid;
-  place-items: center;
-  aspect-ratio: 1.65;
-  padding: clamp(20px, 4vw, 54px);
-  overflow: hidden;
-  background: #eee7dc;
-}
-.templatePreview img {
-  width: min(72%, 520px);
-  max-height: 100%;
-  object-fit: contain;
-  filter: drop-shadow(0 18px 30px rgb(0 0 0 / .14));
-}
-.templateMeta { display: flex; justify-content: space-between; gap: 20px; padding: 18px 20px; background: #fff; }
-.templateMeta span { color: var(--muted); font-size: 12px; }
-.templateMeta h3 { margin: 4px 0 0; font-size: 19px; }
-.templateMeta a { align-self: center; padding: 9px 12px; border: 1px solid var(--ink); border-radius: 999px; font-size: 12px; }
+.templates { padding: 72px 0 44px; background: #fff; }
+.sectionIntro { width: var(--page); margin: 0 auto 22px; text-align: center; }
+.sectionIntro h2 { margin-bottom: 10px; font-size: clamp(32px, 3.6vw, 52px); letter-spacing: -.045em; line-height: .98; }
+.sectionIntro p { margin-bottom: 0; color: var(--muted); font-size: 15px; }
+.eyebrow { font-size: 11px!important; font-weight: 700; text-transform: uppercase; letter-spacing: .16em; }
+.categoryTabs { display: flex; gap: 5px; width: max-content; max-width: calc(100vw - 24px); margin: 26px auto 22px; overflow-x: auto; scrollbar-width: none; }
+.categoryTabs::-webkit-scrollbar, .appleRail::-webkit-scrollbar { display: none; }
+.categoryTabs button { flex: 0 0 auto; min-height: 42px; padding: 0 15px; border: 1px solid transparent; border-radius: 999px; background: transparent; color: #656159; cursor: pointer; font-weight: 600; transition: 160ms ease; }
+.categoryTabs button:hover { color: var(--ink); background: #f5f2ed; }
+.categoryTabs button.active { color: var(--ink); border-color: #e5dfd7; background: #f0ece6; }
+.appleCarousel { position: relative; width: 100%; }
+.appleRail { width: 100%; overflow-x: auto; overscroll-behavior-x: contain; scroll-behavior: smooth; scrollbar-width: none; }
+.appleTrack { display: flex; gap: 18px; width: max-content; padding: 18px max(24px, calc((100vw - 1280px)/2)) 8px; }
+.appleCard { position: relative; flex: 0 0 340px; width: 340px; height: 520px; padding: 0; overflow: hidden; border: 0; border-radius: 28px; background: #ebe6de; cursor: pointer; text-align: left; box-shadow: 0 12px 34px rgba(24,20,15,.08); transition: transform 180ms ease, box-shadow 180ms ease; }
+.appleCard:hover { transform: translateY(-4px); box-shadow: 0 20px 44px rgba(24,20,15,.13); }
+.appleCard > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.appleShade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10,9,8,.54) 0%, rgba(10,9,8,.08) 42%, transparent 68%); }
+.appleCopy { position: absolute; inset: 0 auto auto 0; z-index: 1; display: grid; gap: 8px; padding: 26px; color: #fff; }
+.appleCopy small { font-size: 12px; font-weight: 650; opacity: .82; }
+.appleCopy strong { max-width: 260px; font-size: 27px; line-height: 1.05; letter-spacing: -.035em; }
+.appleControls { display: flex; justify-content: flex-end; gap: 8px; width: var(--page); margin: 16px auto 0; }
+.appleControls button { display: grid; width: 44px; height: 44px; place-items: center; border: 0; border-radius: 50%; background: #f0ede8; color: #35322d; cursor: pointer; transition: 150ms ease; }
+.appleControls button:hover:not(:disabled) { background: #e5e0d9; transform: translateY(-1px); }
+.appleControls button:disabled { cursor: default; opacity: .38; }
+.appleControls svg { width: 20px; height: 20px; }
+.appleModal { position: fixed; inset: 0; z-index: 90; display: grid; place-items: center; padding: 24px; }
+.appleBackdrop { position: absolute; inset: 0; background: rgba(14,12,10,.58); backdrop-filter: blur(8px); }
+.appleDialog { position: relative; z-index: 1; width: min(900px, 100%); max-height: calc(100vh - 48px); padding: 28px; overflow: auto; border: 1px solid rgba(255,255,255,.72); border-radius: 28px; background: #fbfaf8; box-shadow: 0 30px 80px rgba(0,0,0,.22); }
+.appleDialog > small { color: var(--muted); font-size: 12px; font-weight: 650; }
+.appleDialog > h3 { margin: 6px 48px 22px 0; font-size: clamp(28px, 4vw, 46px); letter-spacing: -.04em; }
+.appleClose { position: sticky; top: 0; float: right; z-index: 2; display: grid; width: 38px; height: 38px; place-items: center; border: 0; border-radius: 50%; background: #171614; color: #fff; cursor: pointer; }
+.appleClose svg { width: 19px; height: 19px; }
+.templateDetail { display: grid; gap: 18px; }
+.templateDetail img { width: 100%; max-height: 470px; object-fit: contain; border-radius: 20px; background: #efeae3; }
+.templateDetail p { max-width: 620px; margin: 0; color: var(--muted); font-size: 15px; line-height: 1.65; }
+.templateDetail a { width: fit-content; padding: 11px 17px; border-radius: 999px; background: var(--ink); color: #fff; font-size: 13px; font-weight: 650; }
+@media (prefers-reduced-motion: reduce) { .appleCard, .appleControls button { transition: none; } }
