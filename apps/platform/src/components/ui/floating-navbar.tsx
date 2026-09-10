@@ -5,7 +5,11 @@ import { useEffect, useState, type ReactNode } from "react";
 export function FloatingNav({ children }: { children: ReactNode }) {
   const [floating, setFloating] = useState(false);
   useEffect(() => {
-    const onScroll = () => setFloating(window.scrollY > 48);
+    let current = false;
+    const onScroll = () => {
+      const next = window.scrollY > 48;
+      if (next !== current) { current = next; setFloating(next); }
+    };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
