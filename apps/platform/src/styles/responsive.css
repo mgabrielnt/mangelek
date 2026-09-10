@@ -10,7 +10,7 @@
   .mobilePanel > a:hover { background: rgba(255,255,255,.42); }
   .mobilePanel .navbarButton { width: 100%; margin-top: 3px; }
   .hero { padding-top: 58px; }
-  .appleTrack { gap: 14px; padding-inline: 20px; }
+  .appleTrack { --card-gap: 14px; padding-inline: 20px; }
   .appleCard { flex-basis: 310px; width: 310px; height: 474px; border-radius: 24px; }
   .appleCopy { padding: 22px; }
   .appleCopy strong { font-size: 24px; }
@@ -35,7 +35,7 @@
   .sectionIntro { text-align: left; }
   .sectionIntro h2 { font-size: 36px; }
   .categoryTabs { margin: 20px 12px 14px; }
-  .appleTrack { gap: 12px; padding: 12px 12px 6px; }
+  .appleTrack { --card-gap: 12px; padding: 12px 12px 6px; }
   .appleCard { flex-basis: min(82vw, 300px); width: min(82vw, 300px); height: auto; aspect-ratio: 340/520; }
   .appleCopy { padding: 20px; }
   .appleCopy strong { font-size: 22px; }
