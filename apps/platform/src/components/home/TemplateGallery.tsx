@@ -5,8 +5,6 @@ import { Carousel } from "@/components/ui/apple-cards-carousel";
 import { templateCategories } from "@/data/templates";
 import { TemplateCard } from "./TemplateCard";
 
-const CARD_STEP = 360;
-
 export function TemplateGallery() {
   const initial = templateCategories.findIndex((item) => item.id === "company");
   const [active, setActive] = useState(initial < 0 ? 0 : initial);
@@ -29,7 +27,7 @@ export function TemplateGallery() {
           </button>
         ))}
       </div>
-      <Carousel items={cards} initialScroll={active * CARD_STEP} />
+      <Carousel items={cards} initialIndex={active} />
     </section>
   );
 }
