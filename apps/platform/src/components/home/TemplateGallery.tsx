@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { TemplateShowcase } from "@/components/ui/template-showcase";
+import { TemplateShowcase } from "@/components/ui/showcase/carousel";
 import { templateCategories } from "@/data/templates";
 import { TemplateCard } from "./TemplateCard";
 
@@ -12,6 +12,7 @@ export function TemplateGallery() {
     () => templateCategories.map((item) => <TemplateCard key={item.id} item={item} />),
     [],
   );
+
   return (
     <section className="templates" id="templates">
       <div className="sectionIntro">
@@ -21,8 +22,13 @@ export function TemplateGallery() {
       </div>
       <div className="categoryTabs" role="tablist" aria-label="Kategori template">
         {templateCategories.map((item, index) => (
-          <button key={item.id} className={active === index ? "active" : ""}
-            onClick={() => setActive(index)} role="tab" aria-selected={active === index}>
+          <button
+            key={item.id}
+            className={active === index ? "active" : ""}
+            onClick={() => setActive(index)}
+            role="tab"
+            aria-selected={active === index}
+          >
             {item.label}
           </button>
         ))}
