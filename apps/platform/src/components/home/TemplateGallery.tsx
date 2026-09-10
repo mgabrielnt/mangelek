@@ -1,48 +1,35 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useMemo, useState } from "react";
+import { Carousel } from "@/components/ui/apple-cards-carousel";
 import { templateCategories } from "@/data/templates";
 import { TemplateCard } from "./TemplateCard";
 
+const CARD_STEP = 360;
+
 export function TemplateGallery() {
-  const [active, setActive] = useState("company");
-  const railRef = useRef<HTMLDivElement>(null);
-
-  function center(id: string, behavior: ScrollBehavior = "smooth") {
-    const rail = railRef.current;
-    const target = rail?.querySelector<HTMLElement>(`[data-id="${id}"]`);
-    if (!rail || !target) return;
-    const left = target.offsetLeft - (rail.clientWidth - target.clientWidth) / 2;
-    rail.scrollTo({ left, behavior });
-  }
-
-  function select(id: string) {
-    setActive(id);
-    center(id);
-  }
-
-  useEffect(() => center("company", "auto"), []);
-
+  const initial = templateCategories.findIndex((item) => item.id === "company");
+  const [active, setActive] = useState(initial < 0 ? 0 : initial);
+  const cards = useMemo(
+    () => templateCategories.map((item, index) => <TemplateCard key={item.id} item={item} index={index} />),
+    [],
+  );
   return (
     <section className="templates" id="templates">
       <div className="sectionIntro">
-        <p className="eyebrow">Products</p>
+        <p className="eyebrow">Templates</p>
         <h2>Temukan Website yang Cocok.</h2>
-        <p>Mulai bisnis Anda dengan tema yang siap disesuaikan.</p>
+        <p>Mulai bisnis Anda dengan tema premium yang siap disesuaikan.</p>
       </div>
       <div className="categoryTabs" role="tablist" aria-label="Kategori template">
-        {templateCategories.map((item) => (
-          <button key={item.id} className={active === item.id ? "active" : ""}
-            onClick={() => select(item.id)} role="tab" aria-selected={active === item.id}>
+        {templateCategories.map((item, index) => (
+          <button key={item.id} className={active === index ? "active" : ""}
+            onClick={() => setActive(index)} role="tab" aria-selected={active === index}>
             {item.label}
           </button>
         ))}
       </div>
-      <div className="templateRail" ref={railRef}>
-        {templateCategories.map((item) => (
-          <TemplateCard key={item.id} item={item} active={active === item.id} />
-        ))}
-      </div>
+      <Carousel items={cards} initialScroll={active * CARD_STEP} />
     </section>
   );
 }
