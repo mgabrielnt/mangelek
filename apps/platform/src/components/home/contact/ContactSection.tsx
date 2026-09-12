@@ -8,22 +8,22 @@ export function ContactSection() {
       <div className="contactShell">
         <div className="contactVisual">
           <div className="contactCopy">
-            <span className="contactEyebrow">Mulai percakapan</span>
-            <h2>Mari bangun website yang bekerja untuk bisnis Anda.</h2>
+            <span className="contactEyebrow">Mulai dari Indonesia</span>
+            <h2>Bangun kehadiran digital yang siap berkembang.</h2>
             <p>
-              Ceritakan apa yang ingin Anda capai. Kami bantu menyederhanakan
-              langkah dari pilihan desain hingga website siap digunakan.
+              Ceritakan kebutuhan bisnis Anda. Mangelek membantu menyederhanakan
+              proses dari pilihan desain hingga website siap digunakan.
             </p>
           </div>
           <div className="contactGlobeWrap">
             <GithubGlobe arcs={contactGlobeArcs} />
-            <span className="contactLocation">Indonesia · siap berkembang lebih jauh</span>
+            <span className="contactLocation">Pekanbaru · Indonesia · terhubung lebih jauh</span>
           </div>
         </div>
         <div className="contactPanel">
           <span className="contactPanelIndex">05 / CONTACT</span>
-          <h3>Ceritakan kebutuhan Anda.</h3>
-          <p>Kami hanya meminta informasi yang diperlukan untuk memahami proyek Anda.</p>
+          <h3>Mulai percakapan.</h3>
+          <p>Empat informasi singkat sudah cukup untuk memahami kebutuhan awal Anda.</p>
           <ContactForm />
         </div>
       </div>
