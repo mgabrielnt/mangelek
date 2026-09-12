@@ -31,7 +31,7 @@ export async function createGlobeScene(host: HTMLDivElement, arcs: GlobeArc[]) {
   controls.enableZoom = false;
   controls.enableDamping = true;
   controls.dampingFactor = .06;
-  controls.autoRotate = true;
+  controls.autoRotate = !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   controls.autoRotateSpeed = .42;
 
   const resize = () => {
