@@ -1,0 +1,51 @@
+.scrollTimeline { position: relative; }
+.timelineEntries { padding: 0; margin: 0; list-style: none; }
+.timelineTrack {
+  position: absolute;
+  inset: 20px auto 80px 12px;
+  width: 2px;
+  overflow: hidden;
+  background: #e1c79720;
+}
+.timelineBeam {
+  height: 100%;
+  transform-origin: top;
+  background: linear-gradient(#736451, #cbb18a 55%, #eee0bd);
+}
+.timelineEntry {
+  --sticky-top: clamp(112px, 25vh, 230px);
+  position: relative;
+  display: grid;
+  grid-template-columns: 26px minmax(220px, .7fr) minmax(0, 1.3fr);
+  gap: 34px;
+  align-items: start;
+  min-height: 660px;
+  padding-bottom: 120px;
+  scroll-margin-top: 100px;
+}
+.timelineMarker {
+  position: sticky;
+  top: calc(var(--sticky-top) + 8px);
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  margin-top: 5px;
+  border: 1px solid #a594754d;
+  border-radius: 50%;
+  background: #090a09;
+}
+.timelineMarker i { width: 8px; height: 8px; border-radius: 50%; background: #d7bf8d; }
+.timelineCopy { position: sticky; top: var(--sticky-top); padding-top: 10px; }
+.timelineCopy .sectionLabel { text-transform: uppercase; }
+.timelineCopy h3 {
+  max-width: 320px;
+  margin: 24px 0 20px;
+  font-size: clamp(28px, 3vw, 43px);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -.045em;
+  text-wrap: balance;
+}
+.timelineCopy p { max-width: 280px; color: #969e93; font-size: 13px; line-height: 1.8; }
+.timelineCopy .marketingLink { color: #c9b28a; margin-top: 18px; border-color: #bc9e674f; font-size: 11px; }

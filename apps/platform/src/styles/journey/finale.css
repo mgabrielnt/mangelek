@@ -1,0 +1,25 @@
+.feyFinale { position: relative; min-height: 135svh; }
+.feyFinalePin { position: sticky; top: 0; height: 100svh; overflow: clip; }
+.feyFinaleScene { position: relative; z-index: 1; }
+.feyFinale .feyScene { background: transparent; }
+.feyFinaleAura {
+  position: absolute;
+  inset: 5% 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse at 50% 48%, #657b4824, transparent 56%);
+}
+.feyFinaleNext {
+  position: absolute;
+  z-index: 3;
+  left: 50%;
+  bottom: 8%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  min-height: 44px;
+  color: #c5b699;
+  font-size: 11px;
+  white-space: nowrap;
+}
+.feyFinaleNext span { font-size: 18px; }

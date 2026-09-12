@@ -1,6 +1,11 @@
 .whySection {
-  min-height: 100svh;
   width: 100%;
-  overflow: hidden;
+  overflow: clip;
+  padding-top: clamp(64px, 7vw, 110px);
+  color: #f2efe6;
   background: #000;
 }
+.whySection > .scrollScene { margin-bottom: 76px; }
+.whySection .sectionIntro h2 { max-width: 880px; }
+.whySection .sectionIntro em { color: #b7a482; }
+.whySection .sectionLabel { color: #b8a88a; }

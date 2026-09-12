@@ -2,7 +2,7 @@
   .templates { padding-bottom: 42px; }
   .categoryTabs { width: calc(100% - 40px); gap: 6px; margin-block: 26px 18px; }
   .categoryTabs button { padding-inline: 13px; font-size: 11px; }
-  .templateRail { --card-width: min(78vw, 360px); gap: 12px; }
+  .templateViewport { --card-width: min(78vw, 360px); --card-gap: 12px; }
   .templateOpen { padding: 18px; border-radius: 18px; }
   .templateControls { padding-top: 8px; }
   .templateControls p { display: none; }

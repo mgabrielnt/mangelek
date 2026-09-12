@@ -1,0 +1,50 @@
+.templateViewport {
+  --card-width: clamp(280px, 29vw, 390px);
+  --card-gap: 20px;
+  width: min(100%, 1600px);
+  margin-inline: auto;
+  overflow: hidden;
+  touch-action: pan-y pinch-zoom;
+}
+.templateViewport[data-ready="false"] { overflow-x: auto; scrollbar-width: none; }
+.templateRail {
+  display: flex;
+  padding-block: 16px 28px;
+  touch-action: pan-y pinch-zoom;
+}
+.templateCard {
+  position: relative;
+  flex: 0 0 var(--card-width);
+  min-width: 0;
+  margin-right: var(--card-gap);
+}
+.templateContinue {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  min-height: 64px;
+  margin-top: 24px;
+  padding-block: 18px;
+  color: #74664f;
+  font-size: 11px;
+  letter-spacing: .02em;
+}
+.templateContinue > span:nth-child(2) { font-size: 19px; }
+.templateContinueLine {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  overflow: hidden;
+  background: #b8a48344;
+}
+.templateContinueLine i {
+  display: block;
+  width: 100%;
+  height: 100%;
+  transform-origin: left;
+  background: #87714e;
+}

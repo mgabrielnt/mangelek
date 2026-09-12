@@ -1,5 +1,7 @@
 # Mangelek marketing redesign — 12 September 2026
 
+Follow-up: [scroll story](2026-09-12-scroll-story.md) updates carousel and motion decisions.
+
 ## Scope
 
 Redesign template discovery, the platform feature presentation, contact, and footer.

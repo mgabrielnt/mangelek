@@ -1,0 +1,29 @@
+@media (max-width: 1000px) {
+  .timelineEntry { grid-template-columns: 26px minmax(180px, .7fr) minmax(0, 1.3fr); gap: 24px; min-height: 580px; }
+  .journeyVisual { aspect-ratio: .85; }
+  .journeyImage { width: 82%; inset: 4% 9% 14%; }
+  .journeyBadge { right: 6%; bottom: 12%; padding: 16px; gap: 10px; }
+  .journeyBadgeMark { width: 30px; height: 30px; font-size: 18px; }
+  .journeyBadge strong { font-size: 11px; }
+}
+@media (max-width: 700px) {
+  .whySection > .scrollScene { margin-bottom: 44px; }
+  .timelineEntry { grid-template-columns: 18px minmax(0, 1fr); gap: 26px 20px; min-height: 0; padding-bottom: 72px; }
+  .timelineTrack { left: 8px; bottom: 60px; }
+  .timelineMarker { width: 18px; height: 18px; top: 120px; }
+  .timelineMarker i { width: 6px; height: 6px; }
+  .timelineCopy { position: relative; top: auto; padding-top: 0; }
+  .timelineCopy h3 { margin-block: 18px 14px; font-size: 32px; }
+  .timelineCopy p { font-size: 12px; }
+  .timelineCopy .marketingLink { margin-top: 0; }
+  .journeyVisual { grid-column: 2; aspect-ratio: .86; border-radius: 18px; }
+  .journeyBadge { right: 5%; bottom: 12%; padding: 14px; }
+  .journeyVisualFooter { left: 18px; right: 18px; bottom: 16px; font-size: 7px; }
+  .feyFinale { min-height: 100svh; }
+  .feyFinalePin { position: relative; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .timelineCopy, .timelineMarker { position: relative; top: auto; }
+  .feyFinale { min-height: 100svh; }
+  .feyFinalePin { position: relative; }
+}

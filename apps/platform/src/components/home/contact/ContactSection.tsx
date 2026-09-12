@@ -1,6 +1,6 @@
 import { GithubGlobe } from "@/components/ui/aceternity/github-globe";
 import { contactGlobeArcs } from "@/data/contact-globe";
-import { Reveal } from "../shared/Reveal";
+import { ScrollScene } from "../shared/ScrollScene";
 import { ContactForm } from "./components/ContactForm";
 
 export function ContactSection() {
@@ -14,9 +14,9 @@ export function ContactSection() {
         <span className="contactCoordinates">6.21° S / 106.85° E <i /> INDONESIA</span>
       </div>
       <div className="contactPanel">
-        <Reveal><span className="sectionLabel">03 / LANGKAH SELANJUTNYA</span>
+        <ScrollScene><span className="sectionLabel">04 / GILIRAN CERITA ANDA</span>
           <h2 id="contact-title">Mulai sesuatu<br /><em>yang berarti.</em></h2>
-          <p className="contactLead">Ceritakan bisnis Anda. Kita mulai dari sana.</p></Reveal>
+          <p className="contactLead">Ceritakan bisnis Anda. Kita mulai dari sana.</p></ScrollScene>
         <ContactForm />
       </div>
     </div>
