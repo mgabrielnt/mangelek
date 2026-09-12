@@ -2,22 +2,24 @@ export function ContactForm() {
   return (
     <form className="contactForm" aria-label="Form kontak Mangelek">
       <div className="contactField">
-        <label htmlFor="contact-name">Nama lengkap</label>
-        <input id="contact-name" name="name" autoComplete="name" placeholder="Nama Anda" />
+        <label htmlFor="contact-name">Nama</label>
+        <input id="contact-name" name="name" autoComplete="name" />
       </div>
       <div className="contactField">
         <label htmlFor="contact-email">Email</label>
-        <input id="contact-email" name="email" type="email" autoComplete="email" placeholder="nama@bisnis.com" />
+        <input id="contact-email" name="email" type="email" autoComplete="email" />
       </div>
       <div className="contactField">
-        <label htmlFor="contact-company">Bisnis / perusahaan</label>
-        <input id="contact-company" name="company" autoComplete="organization" placeholder="Nama bisnis Anda" />
+        <label htmlFor="contact-company">Bisnis</label>
+        <input id="contact-company" name="company" autoComplete="organization" />
       </div>
       <div className="contactField">
-        <label htmlFor="contact-message">Apa yang ingin Anda bangun?</label>
-        <textarea id="contact-message" name="message" rows={5} placeholder="Ceritakan kebutuhan website Anda..." />
+        <label htmlFor="contact-message">Kebutuhan</label>
+        <textarea id="contact-message" name="message" rows={5} />
       </div>
-      <button className="contactSubmit" type="button">Kirim permintaan <span>↗</span></button>
+      <button className="contactSubmit" type="button">
+        Kirim <span aria-hidden>↗</span>
+      </button>
     </form>
   );
 }
