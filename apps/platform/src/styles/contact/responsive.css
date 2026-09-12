@@ -1,25 +1,35 @@
-@media (max-width: 900px) {
-  .contactSection { padding: 88px 0 96px; }
-  .contactShell { grid-template-columns: 1fr; border-radius: 28px; }
-  .contactVisual { min-height: 600px; border-right: 0; border-bottom: 1px solid rgba(255,255,255,.08); }
-  .contactCopy { padding: 46px 46px 0; }
-  .contactGlobeWrap { height: 68%; }
-  .contactLocation { left: 46px; }
-  .contactPanel { padding: 46px; }
+@media (max-width: 980px) {
+  .contactSection { padding: 82px 0 90px; }
+  .contactShell { grid-template-columns: minmax(0,1fr) minmax(340px,.92fr); min-height: 520px; border-radius: 24px; }
+  .contactVisual { min-height: 520px; }
+  .contactCopy { padding: 36px 34px 0; }
+  .contactCopy h2 { font-size: clamp(34px,5vw,46px); }
+  .contactGlobeWrap { height: 58%; }
+  .contactLocation { left: 34px; }
+  .contactPanel { padding: 36px 32px; }
+}
+
+@media (max-width: 760px) {
+  .contactShell { grid-template-columns: 1fr; }
+  .contactVisual { min-height: 470px; border-right: 0; border-bottom: 1px solid rgba(255,255,255,.07); }
+  .contactGlobeWrap { right: -8%; bottom: -9%; left: -8%; height: 62%; }
+  .contactPanel { padding: 38px 34px; }
 }
 
 @media (max-width: 600px) {
-  .contactSection { padding: 72px 0 80px; }
-  .contactShell { border-radius: 22px; }
-  .contactVisual { min-height: 520px; }
-  .contactCopy { padding: 34px 28px 0; }
-  .contactCopy h2 { font-size: clamp(36px, 11vw, 48px); }
-  .contactCopy p { font-size: 14px; }
-  .contactGlobeWrap { right: -26%; bottom: -12%; left: -26%; height: 64%; }
-  .contactLocation { bottom: 24px; left: 28px; font-size: 9px; }
-  .contactPanel { padding: 34px 28px; }
-  .contactPanelIndex { margin-bottom: 26px; }
-  .contactPanel > p { margin-bottom: 28px; }
+  .contactSection { padding: 68px 0 76px; }
+  .contactShell { border-radius: 20px; }
+  .contactVisual { min-height: 430px; }
+  .contactCopy { padding: 30px 24px 0; }
+  .contactCopy h2 { font-size: clamp(34px,10vw,44px); }
+  .contactCopy p { font-size: 13px; }
+  .contactGlobeWrap { right: -18%; bottom: -8%; left: -18%; height: 60%; }
+  .contactLocation { bottom: 20px; left: 24px; font-size: 8px; }
+  .contactPanel { padding: 32px 24px; }
+  .contactPanelIndex { margin-bottom: 22px; }
+  .contactPanel > p { margin-bottom: 24px; }
+  .contactForm { grid-template-columns: 1fr; }
+  .contactField, .contactField:nth-child(n+3), .contactSubmit { grid-column: 1; }
 }
 
 @media (prefers-reduced-motion: reduce) {
