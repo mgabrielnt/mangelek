@@ -28,8 +28,6 @@
 }
 .contactField input { height: 46px; padding: 0 13px; }
 .contactField textarea { min-height: 112px; padding: 12px 13px; resize: vertical; }
-.contactField input::placeholder,
-.contactField textarea::placeholder { color: #9ba1aa; }
 .contactField input:focus,
 .contactField textarea:focus {
   border-color: rgba(100,129,170,.42);
