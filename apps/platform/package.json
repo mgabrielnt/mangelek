@@ -11,20 +11,18 @@
     "typecheck": "pnpm clean:dev-types && tsc --noEmit"
   },
   "dependencies": {
-    "@react-three/drei": "11.0.0-alpha.7",
-    "@react-three/fiber": "10.0.0-alpha.5",
     "motion": "13.2.0",
     "next": "16.3.3",
     "react": "19.2.7",
     "react-dom": "19.2.7",
-    "three": "0.186.0",
+    "three": "0.185.1",
     "three-globe": "2.45.2"
   },
   "devDependencies": {
     "@types/node": "24.10.1",
     "@types/react": "19.2.7",
     "@types/react-dom": "19.2.7",
-    "@types/three": "0.186.0",
+    "@types/three": "0.185.4",
     "typescript": "7.0.2"
   }
 }
