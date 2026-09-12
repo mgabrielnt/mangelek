@@ -31,7 +31,7 @@ export function TypingText({ text, speed = 45, delay = 0 }: TypingTextProps) {
       setLength(text.length);
       return;
     }
-    let timer: ReturnType<typeof setTimeout>;
+    let timer: ReturnType<typeof setTimeout> | undefined;
     const start = setTimeout(() => {
       const type = (next: number) => {
         setLength(next);
@@ -39,7 +39,10 @@ export function TypingText({ text, speed = 45, delay = 0 }: TypingTextProps) {
       };
       type(1);
     }, delay);
-    return () => { clearTimeout(start); clearTimeout(timer); };
+    return () => {
+      clearTimeout(start);
+      if (timer) clearTimeout(timer);
+    };
   }, [started, text, speed, delay]);
 
   const done = length >= text.length;
