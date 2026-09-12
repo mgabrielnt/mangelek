@@ -16,6 +16,7 @@
     linear-gradient(rgba(80, 67, 50, .055) 1px, transparent 1px),
     linear-gradient(90deg, rgba(80, 67, 50, .055) 1px, transparent 1px);
   background-size: 42px 42px;
+  -webkit-mask-image: radial-gradient(ellipse at 74% 40%, #000 0%, transparent 70%);
   mask-image: radial-gradient(ellipse at 74% 40%, #000 0%, transparent 70%);
 }
 .featureHeader {
