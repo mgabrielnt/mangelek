@@ -18,7 +18,6 @@ export function ContactForm() {
         <textarea id="contact-message" name="message" rows={5} placeholder="Ceritakan kebutuhan website Anda..." />
       </div>
       <button className="contactSubmit" type="button">Kirim permintaan <span>↗</span></button>
-      <p className="contactNote">Form siap dihubungkan ke endpoint contact saat backend diaktifkan.</p>
     </form>
   );
 }
