@@ -14,11 +14,16 @@ export function useGlobeScene(arcs: GlobeArc[]) {
     let cleanup = () => {};
 
     const start = () => {
-      void createGlobeScene(host, arcs).then((stop) => {
-        if (disposed) stop();
-        else cleanup = stop;
-      });
+      void createGlobeScene(host, arcs)
+        .then((stop) => {
+          if (disposed) stop();
+          else cleanup = stop;
+        })
+        .catch(() => {
+          if (!disposed) host.dataset.globe = "unavailable";
+        });
     };
+
     const observer = new IntersectionObserver(([entry]) => {
       if (!entry?.isIntersecting) return;
       observer.disconnect();
