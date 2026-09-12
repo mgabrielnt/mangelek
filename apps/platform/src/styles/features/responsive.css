@@ -1,63 +1,43 @@
 @media (max-width: 900px) {
-  .featureSection { padding: 82px 0 92px; }
-  .featureHeader { grid-template-columns: 1fr; gap: 14px; margin-bottom: 58px; }
-  .featureHeader h2 { max-width: 660px; font-size: clamp(38px, 7.5vw, 54px); }
+  .featureSection { padding: 82px 0 94px; }
+  .featureHeader { grid-template-columns: 1fr; gap: 14px; margin-bottom: 54px; }
+  .featureHeader h2 { max-width: 660px; font-size: clamp(38px,7.5vw,54px); }
   .featureHeader p { max-width: 580px; margin: 0; font-size: 15px; }
-  .featureFlow { gap: 64px; }
-  .featureRow,
-  .featureRow.isReverse {
-    grid-template-columns: minmax(220px, .88fr) minmax(0, 1.12fr);
-    gap: 30px;
-  }
-  .featureRowCopy,
-  .featureRow.isReverse .featureRowCopy { grid-column: 1; grid-row: 1; justify-self: start; }
-  .featureRowVisual,
-  .featureRow.isReverse .featureRowVisual { grid-column: 2; grid-row: 1; justify-self: end; }
-  .featureRow::after { bottom: -32px; }
-  .featureWindow { min-height: clamp(280px, 43vw, 360px); }
+  .stickyScroll { grid-template-columns: minmax(220px,.9fr) minmax(0,1.1fr); gap: 32px; }
+  .stickyScrollItem { min-height: clamp(280px,46vh,400px); }
+  .stickyScrollStage { top: 88px; min-height: 360px; }
+  .stickyScrollVisual { width: min(100%,470px); }
 }
 
 @media (max-width: 700px) {
-  .featureRow,
-  .featureRow.isReverse { grid-template-columns: 1fr; gap: 22px; }
-  .featureRowCopy,
-  .featureRowVisual,
-  .featureRow.isReverse .featureRowCopy,
-  .featureRow.isReverse .featureRowVisual {
-    grid-column: 1;
-    grid-row: auto;
-    justify-self: stretch;
+  .stickyScroll { grid-template-columns: 1fr; gap: 26px; }
+  .stickyScrollStage {
+    grid-row: 1;
+    top: 72px;
+    z-index: 2;
+    min-height: auto;
+    padding-bottom: 12px;
   }
-  .featureRowVisual { width: min(100%, 520px); }
+  .stickyScrollCopy { grid-row: 2; }
+  .stickyScrollVisual { width: min(100%,520px); margin-inline: auto; }
+  .stickyScrollItem { min-height: 44vh; }
+  .featurePreview { aspect-ratio: 1.48; }
 }
 
 @media (max-width: 600px) {
-  .featureSection { padding: 68px 0 76px; }
+  .featureSection { padding: 68px 0 78px; }
   .featureBackdrop { background-size: 34px 34px; }
-  .featureHeader { margin-bottom: 44px; }
-  .featureHeader h2 { font-size: clamp(36px, 11vw, 46px); }
+  .featureHeader { margin-bottom: 38px; }
+  .featureHeader h2 { font-size: clamp(36px,11vw,46px); }
   .featureEyebrow { font-size: 9px; }
-  .featureFlow { gap: 54px; }
-  .featureRow { gap: 18px; }
-  .featureRow::after { bottom: -27px; }
-  .featureMeta { margin-bottom: 12px; font-size: 9px; }
-  .featureRowCopy h3 { margin-bottom: 12px; font-size: 30px; }
-  .featureRowCopy p { font-size: 13px; }
-  .featureWindow {
-    min-height: 270px;
-    grid-template-rows: 38px 1fr 46px;
-    border-radius: 18px;
-  }
-  .featureViewport img { width: 84%; height: 84%; }
+  .stickyScrollItem h3 { font-size: 30px; }
+  .stickyScrollItem p { font-size: 13px; }
+  .stickyScrollStage { top: 66px; }
+  .featurePreview { grid-template-rows: 34px 1fr 40px; border-radius: 18px; }
+  .featurePreviewMedia img { width: 84%; height: 84%; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .featureRow,
-  .featureRowCopy,
-  .featureRowVisual,
-  .featureWindow,
-  .featureViewport img { transition: none; }
-  .featureRow { opacity: 1; }
-  .featureRowCopy,
-  .featureRowVisual { transform: none; }
+  .stickyScrollItem,
+  .stickyScrollVisual { transform: none !important; transition: none !important; }
 }
