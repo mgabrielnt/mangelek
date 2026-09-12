@@ -1,49 +1,56 @@
 .contactSection {
   position: relative;
-  padding: 96px 0 108px;
-  background: linear-gradient(180deg,#f1eee8 0%,#e9e6df 100%);
+  display: grid;
+  min-height: 100svh;
+  padding: 88px 0 42px;
+  align-items: center;
+  background:
+    radial-gradient(circle at 16% 18%,rgba(62,83,110,.08),transparent 30%),
+    radial-gradient(circle at 86% 82%,rgba(184,146,95,.11),transparent 28%),
+    linear-gradient(180deg,#f8f5ef 0%,#eee8de 100%);
 }
 .contactShell {
   display: grid;
-  grid-template-columns: minmax(0,1.08fr) minmax(360px,.92fr);
-  width: min(var(--page),1160px);
-  min-height: 570px;
+  grid-template-columns: minmax(0,1.08fr) minmax(400px,.92fr);
+  width: min(var(--page),1240px);
+  min-height: min(700px,calc(100svh - 130px));
   margin: 0 auto;
   overflow: hidden;
-  border: 1px solid rgba(24,28,34,.1);
-  border-radius: 28px;
+  border: 1px solid rgba(118,99,74,.16);
+  border-radius: 32px;
   background: #0b0e13;
-  box-shadow: 0 28px 72px rgba(31,35,42,.14);
+  box-shadow: 0 34px 90px rgba(31,29,25,.16),0 1px 0 rgba(255,255,255,.7) inset;
 }
 .contactVisual {
   position: relative;
   display: grid;
-  min-height: 570px;
+  min-height: 620px;
   overflow: hidden;
   place-items: center;
-  border-right: 1px solid rgba(255,255,255,.07);
+  border-right: 1px solid rgba(216,184,135,.1);
   background:
-    radial-gradient(circle at 50% 48%,rgba(109,139,181,.16),transparent 34%),
-    linear-gradient(145deg,#0d1117,#07090d 72%);
+    radial-gradient(circle at 52% 48%,rgba(102,133,174,.18),transparent 36%),
+    radial-gradient(circle at 62% 72%,rgba(190,151,96,.08),transparent 30%),
+    linear-gradient(145deg,#10151d 0%,#080b10 72%);
 }
 .contactVisual::before {
   position: absolute;
   inset: 0;
   content: "";
-  opacity: .18;
+  opacity: .16;
   background-image:
-    linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);
-  background-size: 42px 42px;
+    linear-gradient(rgba(255,255,255,.032) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.032) 1px,transparent 1px);
+  background-size: 44px 44px;
 }
-.githubGlobe { position: relative; z-index: 2; width: 100%; height: 100%; min-height: 570px; }
+.githubGlobe { position: relative; z-index: 2; width: 100%; height: 100%; min-height: 620px; }
 .githubGlobeCanvas { position: absolute; inset: 0; }
 .githubGlobeCanvas canvas { display: block; width: 100%; height: 100%; }
 .githubGlobeHalo {
   position: absolute;
-  inset: 16% 18%;
+  inset: 15% 17%;
   z-index: -1;
   border-radius: 50%;
-  background: rgba(112,143,187,.18);
-  filter: blur(52px);
+  background: rgba(105,137,181,.2);
+  filter: blur(56px);
 }
