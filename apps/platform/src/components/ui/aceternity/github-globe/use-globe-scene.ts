@@ -13,13 +13,22 @@ export function useGlobeScene(arcs: GlobeArc[]) {
     let disposed = false;
     let cleanup = () => {};
 
-    void createGlobeScene(host, arcs).then((stop) => {
-      if (disposed) stop();
-      else cleanup = stop;
-    });
+    const start = () => {
+      void createGlobeScene(host, arcs).then((stop) => {
+        if (disposed) stop();
+        else cleanup = stop;
+      });
+    };
+    const observer = new IntersectionObserver(([entry]) => {
+      if (!entry?.isIntersecting) return;
+      observer.disconnect();
+      start();
+    }, { rootMargin: "320px" });
 
+    observer.observe(host);
     return () => {
       disposed = true;
+      observer.disconnect();
       cleanup();
     };
   }, [arcs]);
