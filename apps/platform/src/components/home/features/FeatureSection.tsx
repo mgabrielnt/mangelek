@@ -17,7 +17,6 @@ export function FeatureSection() {
     <header className="featureHeader">
       <span className="featureEyebrow">Satu platform. Semua terhubung.</span>
       <h2>Bangun, kelola, dan tumbuhkan website bisnis Anda.</h2>
-      <p>Scroll untuk melihat bagaimana setiap bagian bekerja sebagai satu sistem.</p>
     </header>
     <StickyScrollReveal items={items} />
   </section>;
