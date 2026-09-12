@@ -1,4 +1,4 @@
-@import "./features/layout.css";
-@import "./features/steps.css";
-@import "./features/visual.css";
+@import "./features/section.css";
+@import "./features/row.css";
+@import "./features/window.css";
 @import "./features/responsive.css";
