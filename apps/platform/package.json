@@ -4,10 +4,13 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "clean:types": "node scripts/clean-generated-types.mjs",
+    "predev": "pnpm clean:types",
     "dev": "next dev --turbopack",
+    "prebuild": "pnpm clean:types",
     "build": "next build",
     "start": "next start",
-    "typecheck": "next typegen && tsc --noEmit"
+    "typecheck": "pnpm clean:types && next typegen && tsc --noEmit"
   },
   "dependencies": {
     "motion": "13.2.0",
