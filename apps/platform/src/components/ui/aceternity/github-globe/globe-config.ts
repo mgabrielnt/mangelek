@@ -12,6 +12,10 @@ export const HOME_POINT = [{
 }];
 
 export type CountryFeature = {
-  properties?: { name?: string };
+  properties?: {
+    NAME?: string;
+    ADMIN?: string;
+    name?: string;
+  };
   [key: string]: unknown;
 };
