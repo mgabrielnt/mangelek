@@ -1,0 +1,27 @@
+@media (max-width: 900px) {
+  .contactSection { padding: 88px 0 96px; }
+  .contactShell { grid-template-columns: 1fr; border-radius: 28px; }
+  .contactVisual { min-height: 600px; border-right: 0; border-bottom: 1px solid rgba(255,255,255,.08); }
+  .contactCopy { padding: 46px 46px 0; }
+  .contactGlobeWrap { height: 68%; }
+  .contactLocation { left: 46px; }
+  .contactPanel { padding: 46px; }
+}
+
+@media (max-width: 600px) {
+  .contactSection { padding: 72px 0 80px; }
+  .contactShell { border-radius: 22px; }
+  .contactVisual { min-height: 520px; }
+  .contactCopy { padding: 34px 28px 0; }
+  .contactCopy h2 { font-size: clamp(36px, 11vw, 48px); }
+  .contactCopy p { font-size: 14px; }
+  .contactGlobeWrap { right: -26%; bottom: -12%; left: -26%; height: 64%; }
+  .contactLocation { bottom: 24px; left: 28px; font-size: 9px; }
+  .contactPanel { padding: 34px 28px; }
+  .contactPanelIndex { margin-bottom: 26px; }
+  .contactPanel > p { margin-bottom: 28px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contactSubmit { transition: none; }
+}
