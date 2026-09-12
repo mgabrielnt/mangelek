@@ -1,27 +1,9 @@
 .contactSubmit {
-  display: flex;
-  grid-column: 1 / -1;
-  height: 54px;
-  margin-top: 4px;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 18px;
-  border: 1px solid rgba(255,255,255,.08);
-  border-radius: 14px;
-  color: #fffaf1;
-  background: linear-gradient(135deg,#17191d,#0d1015);
-  box-shadow: 0 14px 30px rgba(20,18,15,.16),inset 0 1px rgba(255,255,255,.08);
-  font-size: 12px;
-  font-weight: 760;
-  cursor: pointer;
-  transition: transform 180ms ease,box-shadow 180ms ease,background 180ms ease;
+  display: flex; grid-column: 1 / -1; align-items: center; justify-content: space-between;
+  min-height: 54px; padding: 0 20px; border: 1px solid #242c24; border-radius: 8px;
+  color: #f5f1e8; background: #242c24; font-size: 13px; cursor: pointer;
+  transition: transform 220ms var(--motion-ease), background-color 180ms ease;
 }
-.contactSubmit:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 18px 34px rgba(20,18,15,.2);
-}
-.contactSubmit:focus-visible {
-  outline: 3px solid rgba(177,137,81,.3);
-  outline-offset: 3px;
-}
-.contactSubmit span:last-child { color: #d8b77f; font-size: 18px; }
+.contactSubmit:hover { background: #384335; transform: translateY(-2px); }
+.contactSubmit span:last-child { color: #d4bb92; font-size: 20px; }
+.contactStatus { grid-column: 1 / -1; margin: -8px 0 0; min-height: 32px; font-size: 10px; line-height: 1.6; color: #66695c; }

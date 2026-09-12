@@ -1,60 +1,27 @@
-.showcase {
-  --card-w: 896;
-  --card-h: 519;
-  --card-gap: 20px;
-  --card-gutter: 96px;
-  --card-radius: 32px;
-  --image-fit: cover;
-  --image-position: center;
-  position: relative;
-  width: 100%;
+.templateRail {
+  --card-width: clamp(280px, 29vw, 390px);
+  position: relative; display: flex; gap: 20px; width: 100%; overflow-x: auto;
+  padding: 12px calc((100% - var(--card-width)) / 2) 24px;
+  scroll-snap-type: x mandatory; overscroll-behavior-x: contain; scrollbar-width: none;
 }
-.showcaseRail {
-  width: 100%;
-  overflow-x: auto;
-  overscroll-behavior-x: contain;
-  scrollbar-width: none;
+.templateRail::-webkit-scrollbar { display: none; }
+.templateCard { flex: 0 0 var(--card-width); min-width: 0; scroll-snap-align: center; }
+.templateOpen {
+  position: relative; display: flex; flex-direction: column; width: 100%;
+  aspect-ratio: .78; overflow: hidden; padding: 22px; border: 1px solid #dcd5c8;
+  border-radius: 22px; background: linear-gradient(140deg, #e9e1d4, #fbf8f1 58%, #e5dbc9);
+  color: #272924; text-align: left; cursor: pointer;
+  transform: scale(.97); transition: transform 450ms var(--motion-ease);
 }
-.showcaseRail::-webkit-scrollbar { display: none; }
-.showcaseTrack {
-  display: flex;
-  width: max-content;
-  padding: 18px max(444px, calc((100vw - 1280px) / 2)) 8px;
+.templateCard[data-active="true"] .templateOpen { transform: scale(1); border-color: #b6a17d; }
+.templateOpen::after { position: absolute; inset: 0; content: ''; pointer-events: none; border-radius: inherit; box-shadow: inset 0 1px 0 #fff8; }
+.templateCardTop { display: flex; justify-content: space-between; position: relative; z-index: 1; color: #6d6557; font-size: 9px; letter-spacing: .12em; }
+.templateArtwork { position: relative; flex: 1; margin: 10px -4px 8px; }
+.templateArtwork img { object-fit: contain; transition: transform 550ms var(--motion-ease); }
+.templateCardBottom { display: flex; align-items: center; justify-content: space-between; gap: 12px; position: relative; z-index: 1; }
+.templateCardBottom strong { font-size: clamp(18px, 1.8vw, 24px); font-weight: 500; letter-spacing: -.035em; }
+.templateOpenIcon { display: grid; place-items: center; width: 36px; height: 36px; border: 1px solid #b8ac98; border-radius: 50%; font-size: 18px; transition: transform 250ms var(--motion-ease); }
+@media (hover: hover) and (pointer: fine) {
+  .templateOpen:hover .templateArtwork img { transform: translateY(-5px) scale(1.035); }
+  .templateOpen:hover .templateOpenIcon { transform: rotate(45deg); }
 }
-.showcaseGroup {
-  display: flex;
-  gap: var(--card-gap);
-  padding-right: var(--card-gap);
-}
-.showcaseCard {
-  position: relative;
-  flex: 0 0 min(calc(var(--card-w) * 1px), calc(100vw - var(--card-gutter)));
-  width: min(calc(var(--card-w) * 1px), calc(100vw - var(--card-gutter)));
-  aspect-ratio: var(--card-w) / var(--card-h);
-  padding: 0;
-  overflow: hidden;
-  border: 0;
-  border-radius: var(--card-radius);
-  background: #ebe6de;
-  cursor: pointer;
-  text-align: left;
-  box-shadow: 0 16px 42px rgba(24,20,15,.09);
-  transition: transform 180ms ease, box-shadow 180ms ease;
-}
-.showcaseCard:hover { transform: translateY(-4px); box-shadow: 0 24px 56px rgba(24,20,15,.14); }
-.showcaseCard > img {
-  position: absolute;
-  inset: 0;
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: var(--image-fit);
-  object-position: var(--image-position);
-}
-.showcaseShade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10,9,8,.48), rgba(10,9,8,.08) 42%, transparent 72%); }
-.showcaseCopy { position: absolute; inset: 0 auto auto 0; z-index: 1; display: grid; gap: 10px; padding: clamp(28px, 3vw, 44px); color: #fff; }
-.showcaseCopy small { font-size: 13px; font-weight: 650; opacity: .84; }
-.showcaseCopy strong { max-width: 560px; font-size: clamp(30px, 3.2vw, 46px); line-height: 1.02; letter-spacing: -.04em; }
-.showcaseControls { display: flex; justify-content: flex-end; gap: 8px; width: var(--page); margin: 16px auto 0; }
-.showcaseControls button { display: grid; width: 44px; height: 44px; place-items: center; border: 0; border-radius: 50%; background: #f0ede8; color: #35322d; cursor: pointer; font-size: 22px; transition: 150ms ease; }
-.showcaseControls button:hover { background: #e5e0d9; transform: translateY(-1px); }

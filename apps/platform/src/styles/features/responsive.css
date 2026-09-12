@@ -1,41 +1,26 @@
-@media (max-width: 900px) {
-  .featureSection { padding: 82px 0 94px; }
-  .featureHeader { grid-template-columns: 1fr; gap: 14px; margin-bottom: 54px; }
-  .featureHeader h2 { max-width: 660px; font-size: clamp(38px,7.5vw,54px); }
-  .featureHeader p { max-width: 580px; margin: 0; font-size: 15px; }
-  .stickyScroll { grid-template-columns: minmax(220px,.9fr) minmax(0,1.1fr); gap: 32px; }
-  .stickyScrollItem { min-height: clamp(280px,46vh,400px); }
-  .stickyScrollVisual { width: min(100%,470px); }
+@media (max-width: 1100px) {
+  .featureShowcase { grid-template-columns: 210px minmax(0, 1fr); gap: 24px; }
+  .featureTransition { grid-template-columns: 1fr; min-height: 640px; gap: 24px; }
+  .featureStageCopy { padding: 8px; }
+  .featureStageCopy h3 { margin-block: 12px; }
+  .featureStageCopy p { max-width: none; }
+  .featurePreview { width: min(100%, 300px); margin-inline: auto; }
 }
-
 @media (max-width: 700px) {
-  .stickyScroll { grid-template-columns: 1fr; gap: 26px; }
-  .stickyScrollStage { grid-row: 1; min-height: 300px; }
-  .stickyScrollCopy { grid-row: 2; }
-  .stickyScrollVisual {
-    position: relative;
-    width: min(100%,520px);
-    margin-inline: auto;
-    transform: none !important;
-  }
-  .stickyScrollItem { min-height: 44vh; }
-  .featurePreview { aspect-ratio: 1.48; }
+  .featureShowcase { grid-template-columns: 1fr; margin-top: 30px; gap: 24px; }
+  .featureTabs { display: grid; grid-template-columns: 1fr 1fr; gap: 0 14px; }
+  .featureTabs button { min-height: 92px; padding: 12px 4px; gap: 10px; border-bottom: 1px solid #ffffff1a; }
+  .featureTabs button:nth-child(n+3) { border-top: 0; }
+  .featureTabs strong { font-size: 15px; }
+  .featureTabs small { font-size: 8px; }
+  .featureArrow { display: none; }
+  .featureStage { padding: 20px; border-radius: 20px; }
+  .featureTransition { min-height: 660px; align-content: start; }
+  .featurePreview { width: min(100%, 330px); }
+  .featureFootnote { margin-top: 30px; gap: 8px; }
 }
-
-@media (max-width: 600px) {
-  .featureSection { padding: 68px 0 78px; }
-  .featureBackdrop { background-size: 34px 34px; }
-  .featureHeader { margin-bottom: 38px; }
-  .featureHeader h2 { font-size: clamp(36px,11vw,46px); }
-  .featureEyebrow { font-size: 9px; }
-  .stickyScrollItem h3 { font-size: 30px; }
-  .stickyScrollItem p { font-size: 13px; }
-  .stickyScrollStage { min-height: 260px; }
-  .featurePreview { grid-template-rows: 34px 1fr 40px; border-radius: 18px; }
-  .featurePreviewMedia img { width: 84%; height: 84%; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .stickyScrollItem,
-  .stickyScrollVisual { transform: none !important; transition: none !important; }
+@media (max-width: 380px) {
+  .featureTransition { min-height: 610px; }
+  .featureStage { padding: 16px; }
+  .featureTabs strong { font-size: 14px; }
 }

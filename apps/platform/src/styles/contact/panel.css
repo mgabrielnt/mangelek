@@ -1,17 +1,5 @@
-.contactPanel {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: clamp(44px,5vw,70px);
-  color: #191714;
-  background:
-    radial-gradient(circle at 100% 0%,rgba(196,162,112,.14),transparent 28%),
-    linear-gradient(160deg,#fcfaf6 0%,#f3ede4 100%);
-}
-.contactPanel h2 {
-  margin: 0 0 34px;
-  max-width: 420px;
-  font-size: clamp(36px,3.6vw,54px);
-  line-height: .96;
-  letter-spacing: -.052em;
-}
+.contactPanel { padding: clamp(32px, 4vw, 56px); color: #252721; background: #f3efe6; }
+.contactPanel > div > .sectionLabel { color: #7b6c54; }
+.contactPanel h2 { margin: 24px 0 20px; font-size: clamp(36px, 3.8vw, 54px); font-weight: 500; line-height: 1.03; letter-spacing: -.055em; }
+.contactPanel h2 em { color: #88765a; }
+.contactLead { margin: 0 0 36px; color: #6c675c; font-size: 13px; line-height: 1.7; }

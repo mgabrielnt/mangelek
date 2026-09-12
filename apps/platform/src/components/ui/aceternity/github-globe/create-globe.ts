@@ -38,5 +38,6 @@ export async function createGlobe(arcs: GlobeArc[]) {
   material.emissiveIntensity = .42;
   material.shininess = 16;
   globe.rotation.set(.05, -1.78, 0);
+  globe.pauseAnimation();
   return globe;
 }

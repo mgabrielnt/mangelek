@@ -1,39 +1,9 @@
-@media (max-width: 900px) {
-  .showcase {
-    --card-gap: 14px;
-    --card-gutter: 40px;
-    --card-radius: 26px;
-  }
-  .showcaseTrack { padding-inline: 20px; }
-  .showcaseCopy { padding: 26px; }
-  .showcaseCopy strong { font-size: clamp(28px, 5vw, 38px); }
-  .showcaseControls { width: calc(100% - 40px); }
-}
-
-@media (max-width: 600px) {
-  .templates { padding: 54px 0 36px; }
-  .sectionIntro { text-align: left; }
-  .sectionIntro h2 { font-size: 36px; }
-  .categoryTabs { margin: 20px 12px 14px; }
-  .showcase {
-    --card-gap: 12px;
-    --card-gutter: 24px;
-    --card-radius: 20px;
-  }
-  .showcaseTrack { padding: 12px 12px 6px; }
-  .showcaseCopy { padding: 20px; gap: 6px; }
-  .showcaseCopy small { font-size: 11px; }
-  .showcaseCopy strong { max-width: 78%; font-size: clamp(22px, 7vw, 30px); }
-  .showcaseControls { width: calc(100% - 24px); margin-top: 12px; }
-  .showcaseControls button { width: 40px; height: 40px; }
-  .showcaseModal { padding: 12px; }
-  .showcaseDialog { max-height: calc(100vh - 24px); padding: 20px; border-radius: 22px; }
-  .showcaseDialog > h3 { font-size: 30px; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .showcaseCard,
-  .showcaseControls button,
-  .showcaseBackdrop,
-  .showcaseDialog { transition: none; animation: none; }
+@media (max-width: 700px) {
+  .templates { padding-bottom: 42px; }
+  .categoryTabs { width: calc(100% - 40px); gap: 6px; margin-block: 26px 18px; }
+  .categoryTabs button { padding-inline: 13px; font-size: 11px; }
+  .templateRail { --card-width: min(78vw, 360px); gap: 12px; }
+  .templateOpen { padding: 18px; border-radius: 18px; }
+  .templateControls { padding-top: 8px; }
+  .templateControls p { display: none; }
 }

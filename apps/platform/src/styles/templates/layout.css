@@ -1,47 +1,28 @@
-.templates { padding: 72px 0 44px; background: #fff; }
-.sectionIntro { width: var(--page); margin: 0 auto 22px; text-align: center; }
-.sectionIntro h2 {
-  margin-bottom: 10px;
-  font-size: clamp(32px, 3.6vw, 52px);
-  letter-spacing: -.045em;
-  line-height: .98;
-}
-.sectionIntro p { margin-bottom: 0; color: var(--muted); font-size: 15px; }
-.typingText { display: inline-grid; }
-.typingGhost, .typingValue { grid-area: 1 / 1; }
-.typingGhost { visibility: hidden; }
-.typingCursor {
-  display: inline-block;
-  width: 2px;
-  height: .88em;
-  margin-left: 4px;
-  background: currentColor;
-  vertical-align: -.05em;
-  animation: typingBlink .72s steps(1) infinite;
-}
-@keyframes typingBlink { 50% { opacity: 0; } }
+.templates { padding: clamp(64px, 7vw, 112px) 0 60px; background: var(--surface); }
+.templates .sectionLabel { color: #726249; }
+.templates .sectionIntro h2 { max-width: 890px; }
+.templates .sectionIntro h2 em { color: #807056; }
 .categoryTabs {
-  display: flex;
-  gap: 5px;
-  width: max-content;
-  max-width: calc(100vw - 24px);
-  margin: 26px auto 22px;
-  overflow-x: auto;
-  scrollbar-width: none;
+  display: flex; flex-wrap: wrap; gap: 8px; width: min(1240px, calc(100% - 80px));
+  margin: 36px auto 22px;
 }
-.categoryTabs::-webkit-scrollbar { display: none; }
 .categoryTabs button {
-  flex: 0 0 auto;
-  min-height: 42px;
-  padding: 0 15px;
-  border: 1px solid transparent;
-  border-radius: 999px;
-  background: transparent;
-  color: #656159;
-  cursor: pointer;
-  font-weight: 600;
-  transition: 160ms ease;
+  min-height: 44px; padding: 0 18px; border: 1px solid #dcd6cd;
+  border-radius: 999px; background: transparent; color: #5e594f;
+  font-size: 12px; cursor: pointer;
+  transition: color 180ms ease, background-color 180ms ease;
 }
-.categoryTabs button:hover { color: var(--ink); background: #f5f2ed; }
-.categoryTabs button.active { color: var(--ink); border-color: #e5dfd7; background: #f0ece6; }
-@media (prefers-reduced-motion: reduce) { .typingCursor { display: none; } }
+.categoryTabs button:hover { color: #171815; background: #e9e3d8; }
+.categoryTabs button[aria-pressed="true"] { color: #f9f5ec; background: #222622; border-color: #222622; }
+.templateControls { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding-top: 22px; }
+.templateControls > span { color: #756e61; font-size: 11px; letter-spacing: .12em; font-variant-numeric: tabular-nums; }
+.templateControls b { color: #262722; font-weight: 500; }
+.templateControls p { margin: 0; font-size: 11px; color: #70685c; }
+.templateControls > div { display: flex; gap: 8px; }
+.templateControls button {
+  display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%;
+  border: 1px solid #d7d0c4; background: transparent; font-size: 20px; cursor: pointer;
+  transition: background-color 180ms ease, transform 180ms var(--motion-ease);
+}
+.templateControls button:hover:enabled { background: #e6dfd3; transform: translateY(-2px); }
+.templateControls button:disabled { opacity: .3; cursor: default; }

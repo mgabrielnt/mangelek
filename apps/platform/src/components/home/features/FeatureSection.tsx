@@ -1,23 +1,20 @@
-"use client";
-
-import { StickyScrollReveal, type StickyScrollItem } from "@/components/ui/aceternity/sticky-scroll-reveal";
-import { businessFeatures } from "@/data/features";
-import { FeaturePreview } from "./components/FeaturePreview";
+import { Reveal } from "../shared/Reveal";
+import { SectionIntro } from "../shared/SectionIntro";
+import { FeatureShowcase } from "./components/FeatureShowcase";
 
 export function FeatureSection() {
-  const items: StickyScrollItem[] = businessFeatures.map((item, index) => ({
-    title: item.title,
-    description: item.text,
-    meta: `${String(index + 1).padStart(2, "0")} · ${item.label}`,
-    content: <FeaturePreview item={item} index={index} />,
-  }));
-
-  return <section className="featureSection" id="features">
-    <div className="featureBackdrop" aria-hidden />
-    <header className="featureHeader">
-      <span className="featureEyebrow">Satu platform. Semua terhubung.</span>
-      <h2>Bangun, kelola, dan tumbuhkan website bisnis Anda.</h2>
-    </header>
-    <StickyScrollReveal items={items} />
+  return <section className="featureSection marketingSection" id="features"
+    aria-labelledby="features-title">
+    <div className="featureBackdrop" aria-hidden="true" />
+    <Reveal>
+      <SectionIntro id="features-title" label="02 / SEMUA TERHUBUNG"
+        title={<>Satu ruang.<br /><em>Segala kemungkinan.</em></>}
+        description="Dari ide pertama hingga langkah berikutnya." />
+    </Reveal>
+    <FeatureShowcase />
+    <div className="featureFootnote sectionWidth">
+      <span>WEBSITE / KONTEN / DOMAIN / INSIGHT</span>
+      <a href="#contact">Bangun bersama Mangelek <span aria-hidden="true">↗</span></a>
+    </div>
   </section>;
 }

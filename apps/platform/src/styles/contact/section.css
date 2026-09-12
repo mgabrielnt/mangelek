@@ -1,56 +1,15 @@
-.contactSection {
-  position: relative;
-  display: grid;
-  min-height: 100svh;
-  padding: 88px 0 42px;
-  align-items: center;
-  background:
-    radial-gradient(circle at 16% 18%,rgba(62,83,110,.08),transparent 30%),
-    radial-gradient(circle at 86% 82%,rgba(184,146,95,.11),transparent 28%),
-    linear-gradient(180deg,#f8f5ef 0%,#eee8de 100%);
-}
-.contactShell {
-  display: grid;
-  grid-template-columns: minmax(0,1.08fr) minmax(400px,.92fr);
-  width: min(var(--page),1240px);
-  min-height: min(700px,calc(100svh - 130px));
-  margin: 0 auto;
-  overflow: hidden;
-  border: 1px solid rgba(118,99,74,.16);
-  border-radius: 32px;
-  background: #0b0e13;
-  box-shadow: 0 34px 90px rgba(31,29,25,.16),0 1px 0 rgba(255,255,255,.7) inset;
-}
-.contactVisual {
-  position: relative;
-  display: grid;
-  min-height: 620px;
-  overflow: hidden;
-  place-items: center;
-  border-right: 1px solid rgba(216,184,135,.1);
-  background:
-    radial-gradient(circle at 52% 48%,rgba(102,133,174,.18),transparent 36%),
-    radial-gradient(circle at 62% 72%,rgba(190,151,96,.08),transparent 30%),
-    linear-gradient(145deg,#10151d 0%,#080b10 72%);
-}
-.contactVisual::before {
-  position: absolute;
-  inset: 0;
-  content: "";
-  opacity: .16;
-  background-image:
-    linear-gradient(rgba(255,255,255,.032) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(255,255,255,.032) 1px,transparent 1px);
-  background-size: 44px 44px;
-}
-.githubGlobe { position: relative; z-index: 2; width: 100%; height: 100%; min-height: 620px; }
-.githubGlobeCanvas { position: absolute; inset: 0; }
-.githubGlobeCanvas canvas { display: block; width: 100%; height: 100%; }
-.githubGlobeHalo {
-  position: absolute;
-  inset: 15% 17%;
-  z-index: -1;
-  border-radius: 50%;
-  background: rgba(105,137,181,.2);
-  filter: blur(56px);
-}
+.contactSection { padding: 72px 0 100px; background: #000; }
+.contactShell { display: grid; grid-template-columns: 1fr 1fr; border: 1px solid #c7a77b30; border-radius: 24px; overflow: hidden; }
+.contactVisual { position: relative; isolation: isolate; overflow: hidden; min-width: 0; min-height: 670px; color: #f1ede3; background: radial-gradient(ellipse at 50% 55%, #273436, #111718 55%, #0c1112); }
+.contactVisualCopy { position: relative; z-index: 3; padding: 44px 40px 0; pointer-events: none; }
+.contactVisualCopy .sectionLabel { color: #b5baa8; }
+.contactVisualCopy p { font-size: clamp(38px, 4vw, 56px); line-height: 1.05; letter-spacing: -.045em; margin: 26px 0 0; }
+.contactVisualCopy em { color: #baa788; }
+.contactCoordinates { position: absolute; bottom: 30px; left: 40px; right: 40px; z-index: 3; display: flex; gap: 8px; align-items: center; font-size: 8px; letter-spacing: .13em; color: #b4bfae; }
+.contactCoordinates i { width: 5px; height: 5px; margin-left: auto; border-radius: 50%; background: #b7c0a5; }
+.githubGlobe { position: absolute; inset: 175px -15px 12px; }
+.githubGlobeCanvas { position: absolute; inset: 0; z-index: 2; }
+.githubGlobeCanvas canvas { display: block; width: 100%; height: 100%; touch-action: pan-y !important; }
+.githubGlobeHalo { position: absolute; inset: 17%; z-index: 0; border-radius: 50%; box-shadow: 0 0 90px #8fa8c71a; }
+.globeFallback { position: absolute; width: 74%; max-height: 94%; inset: 0; margin: auto; opacity: .8; }
+.githubGlobeCanvas[data-globe="ready"] ~ .globeFallback { visibility: hidden; }

@@ -1,0 +1,15 @@
+.featureStage { border: 1px solid #bfb79a33; border-radius: 24px; background: linear-gradient(135deg, #2b3431b3, #101516); padding: 24px; }
+.featureTransition { display: grid; grid-template-columns: minmax(160px, .8fr) minmax(0, 1.2fr); align-items: center; gap: 24px; min-height: 460px; animation: featureEnter 400ms var(--motion-ease); }
+.featureStageCopy { padding-left: 10px; }
+.featureStageCopy h3 { font-size: clamp(28px, 2.7vw, 40px); font-weight: 400; line-height: 1.08; letter-spacing: -.04em; margin: 20px 0 18px; }
+.featureStageCopy p { color: #aab2ab; font-size: 13px; line-height: 1.8; margin: 0; max-width: 240px; }
+.featurePreview { display: grid; grid-template-rows: 32px 1fr 36px; aspect-ratio: .72; margin: 0; min-width: 0; overflow: hidden; border: 1px solid #c7b99744; border-radius: 14px; background: #171d1b; box-shadow: 0 20px 45px #0003; }
+.featurePreviewBar { display: flex; align-items: center; gap: 4px; padding: 0 12px; border-bottom: 1px solid #ffffff12; }
+.featurePreviewBar span { width: 4px; height: 4px; border-radius: 50%; background: #9b9c89; }
+.featurePreviewBar small { margin-left: auto; color: #bbc1b9; font-size: 8px; letter-spacing: .08em; }
+.featurePreviewMedia { position: relative; overflow: hidden; background: #c8c3b8; }
+.featurePreviewMedia img { object-fit: cover; }
+.featurePreview figcaption { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 0 12px; color: #bcb7a4; }
+.featurePreview figcaption span { font-size: 8px; letter-spacing: .1em; }
+.featurePreview figcaption strong { font-size: 9px; font-weight: 400; }
+@keyframes featureEnter { from { opacity: .35; transform: translateY(10px); } to { opacity: 1; transform: none; } }

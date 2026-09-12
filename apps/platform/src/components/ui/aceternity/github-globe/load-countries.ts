@@ -4,7 +4,7 @@ type CountryCollection = { features?: CountryFeature[] };
 
 export async function loadCountries() {
   try {
-    const response = await fetch(COUNTRY_DATA_URL, { cache: "force-cache" });
+    const response = await fetch(COUNTRY_DATA_URL, { cache: "force-cache", signal: AbortSignal.timeout(8000) });
     if (!response.ok) return [];
     const data = await response.json() as CountryCollection;
     return Array.isArray(data.features) ? data.features : [];
