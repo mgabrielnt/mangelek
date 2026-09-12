@@ -1,8 +1,7 @@
 .featureStage {
   position: sticky;
   top: 104px;
-  height: min(72vh, 690px);
-  min-height: 520px;
+  height: clamp(440px, 72vh, 690px);
 }
 .featureGlow {
   position: absolute;
@@ -23,6 +22,7 @@
   border-radius: 30px;
   background: rgba(255, 255, 255, .78);
   box-shadow: 0 28px 80px rgba(71, 57, 38, .14), inset 0 1px rgba(255,255,255,.8);
+  -webkit-backdrop-filter: blur(18px) saturate(125%);
   backdrop-filter: blur(18px) saturate(125%);
 }
 .featureWindowBar {
