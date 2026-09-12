@@ -1,0 +1,21 @@
+@media (max-width: 900px) {
+  .whySection { padding: 88px 0 96px; }
+  .whyIntro { margin-bottom: 42px; }
+  .whyIntro h2 { font-size: clamp(40px, 8vw, 58px); }
+  .feyScene { min-height: 560px; border-radius: 28px; }
+  .feyDeck { transform: translateY(34px) scale(.9); }
+}
+
+@media (max-width: 620px) {
+  .whySection { padding: 72px 0 80px; }
+  .whyIntro { width: min(var(--page), 520px); margin-bottom: 34px; text-align: left; }
+  .whyIntro h2 { margin-inline: 0; font-size: clamp(38px, 12vw, 50px); }
+  .whyIntro p { font-size: 14px; }
+  .feyScene { min-height: 500px; border-radius: 22px; }
+  .feyHeadline { top: 23%; font-size: 25px; }
+  .feyDeck { width: 390px; transform: translate(14px, 88px) scale(.78); transform-origin: center bottom; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .feyCardInner img { transition: none; }
+}
