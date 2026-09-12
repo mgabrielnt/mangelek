@@ -1,7 +1,7 @@
-type Feature = { title: string; text: string; image: string };
+import type { BusinessFeature } from "@/data/features";
 
 type Props = {
-  item: Feature;
+  item: BusinessFeature;
   index: number;
   active: boolean;
   setNode: (index: number, node: HTMLElement | null) => void;
