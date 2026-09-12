@@ -1,0 +1,63 @@
+.featureGlow {
+  position: absolute;
+  inset: 8% 4% -10%;
+  border-radius: 44px;
+  background: radial-gradient(circle at 50% 38%, rgba(195,164,119,.28), transparent 64%);
+  filter: blur(42px);
+  opacity: .78;
+  pointer-events: none;
+}
+.featureWindow {
+  position: relative;
+  display: grid;
+  grid-template-rows: 46px 1fr 56px;
+  min-height: clamp(430px, 54vw, 640px);
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 30px;
+  background: rgba(252,250,247,.96);
+  box-shadow: 0 34px 90px rgba(0,0,0,.32), inset 0 1px rgba(255,255,255,.85);
+  transition: border-color 260ms ease, transform 420ms cubic-bezier(.2,.8,.2,1), box-shadow 420ms ease;
+}
+.featureWindow:hover {
+  border-color: rgba(195,164,119,.36);
+  transform: translateY(-5px);
+  box-shadow: 0 42px 110px rgba(0,0,0,.36), 0 0 0 1px rgba(195,164,119,.08);
+}
+.featureWindowBar {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 0 18px;
+  border-bottom: 1px solid rgba(53,45,36,.08);
+  background: rgba(255,255,255,.72);
+}
+.featureWindowBar > span { width: 7px; height: 7px; border-radius: 50%; background: #c8c0b5; }
+.featureWindowBar small { margin-left: auto; color: #867d72; font-size: 10px; letter-spacing: .13em; text-transform: uppercase; }
+.featureViewport {
+  display: grid;
+  min-height: 0;
+  place-items: center;
+  overflow: hidden;
+  background: linear-gradient(145deg, #e9e1d6 0%, #f8f5ef 54%, #e8dfd3 100%);
+}
+.featureViewport img {
+  display: block;
+  width: 88%;
+  height: 88%;
+  object-fit: contain;
+  transition: transform 720ms cubic-bezier(.16,1,.3,1);
+}
+.featureWindow:hover .featureViewport img { transform: scale(1.018); }
+.featureWindowLabel {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 20px;
+  border-top: 1px solid rgba(53,45,36,.08);
+  color: #171512;
+  background: rgba(255,255,255,.72);
+}
+.featureWindowLabel span { color: #9a815f; font-size: 10px; font-weight: 760; letter-spacing: .13em; }
+.featureWindowLabel strong { font-size: 13px; font-weight: 700; letter-spacing: -.01em; }
