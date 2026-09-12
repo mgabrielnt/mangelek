@@ -1,6 +1,6 @@
-type Feature = { title: string; text: string; image: string };
+import type { BusinessFeature } from "@/data/features";
 
-type Props = { items: Feature[]; active: number };
+type Props = { items: BusinessFeature[]; active: number };
 
 export function FeatureVisual({ items, active }: Props) {
   return (
