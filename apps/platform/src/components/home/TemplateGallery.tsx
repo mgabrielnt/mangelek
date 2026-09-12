@@ -16,7 +16,6 @@ export function TemplateGallery() {
   return (
     <section className="templates" id="templates">
       <div className="sectionIntro">
-        <p className="eyebrow">Templates</p>
         <h2>Temukan Website yang Cocok.</h2>
         <p>Mulai bisnis Anda dengan tema premium yang siap disesuaikan.</p>
       </div>
