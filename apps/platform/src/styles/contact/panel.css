@@ -1,0 +1,17 @@
+.contactPanel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(44px,5vw,70px);
+  color: #191714;
+  background:
+    radial-gradient(circle at 100% 0%,rgba(196,162,112,.14),transparent 28%),
+    linear-gradient(160deg,#fcfaf6 0%,#f3ede4 100%);
+}
+.contactPanel h2 {
+  margin: 0 0 34px;
+  max-width: 420px;
+  font-size: clamp(36px,3.6vw,54px);
+  line-height: .96;
+  letter-spacing: -.052em;
+}
