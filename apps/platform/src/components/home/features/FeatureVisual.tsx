@@ -18,7 +18,8 @@ export function FeatureVisual({ items, active }: Props) {
               className={`featureVisualImage${index === active ? " isActive" : ""}`}
               src={`/images/marketing/features/${item.image}`}
               alt={`Tampilan ${item.title}`}
-              loading={index === 0 ? "eager" : "lazy"}
+              aria-hidden={index !== active}
+              loading="lazy"
               decoding="async"
             />
           ))}
