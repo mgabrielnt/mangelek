@@ -5,21 +5,19 @@
   .featureHeader p { max-width: 580px; margin: 0; font-size: 15px; }
   .stickyScroll { grid-template-columns: minmax(220px,.9fr) minmax(0,1.1fr); gap: 32px; }
   .stickyScrollItem { min-height: clamp(280px,46vh,400px); }
-  .stickyScrollStage { top: 88px; min-height: 360px; }
   .stickyScrollVisual { width: min(100%,470px); }
 }
 
 @media (max-width: 700px) {
   .stickyScroll { grid-template-columns: 1fr; gap: 26px; }
-  .stickyScrollStage {
-    grid-row: 1;
-    top: 72px;
-    z-index: 2;
-    min-height: auto;
-    padding-bottom: 12px;
-  }
+  .stickyScrollStage { grid-row: 1; min-height: 300px; }
   .stickyScrollCopy { grid-row: 2; }
-  .stickyScrollVisual { width: min(100%,520px); margin-inline: auto; }
+  .stickyScrollVisual {
+    position: relative;
+    width: min(100%,520px);
+    margin-inline: auto;
+    transform: none !important;
+  }
   .stickyScrollItem { min-height: 44vh; }
   .featurePreview { aspect-ratio: 1.48; }
 }
@@ -32,7 +30,7 @@
   .featureEyebrow { font-size: 9px; }
   .stickyScrollItem h3 { font-size: 30px; }
   .stickyScrollItem p { font-size: 13px; }
-  .stickyScrollStage { top: 66px; }
+  .stickyScrollStage { min-height: 260px; }
   .featurePreview { grid-template-rows: 34px 1fr 40px; border-radius: 18px; }
   .featurePreviewMedia img { width: 84%; height: 84%; }
 }
