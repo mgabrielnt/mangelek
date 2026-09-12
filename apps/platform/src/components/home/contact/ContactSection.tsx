@@ -17,7 +17,7 @@ export function ContactSection() {
           </div>
           <div className="contactGlobeWrap">
             <GithubGlobe arcs={contactGlobeArcs} />
-            <span className="contactLocation">Pekanbaru · Indonesia · terhubung lebih jauh</span>
+            <span className="contactLocation">Indonesia · terhubung lebih jauh</span>
           </div>
         </div>
         <div className="contactPanel">
