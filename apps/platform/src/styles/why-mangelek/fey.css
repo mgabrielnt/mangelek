@@ -1,39 +1,39 @@
 .feyScene {
   position: relative;
-  min-height: 500px;
+  display: flex;
+  min-height: 100svh;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
   overflow: hidden;
-  border: 1px solid rgba(255,255,255,.08);
-  border-radius: 30px;
-  background:
-    radial-gradient(circle at 22% 18%, rgba(104,134,177,.2), transparent 28%),
-    radial-gradient(circle at 82% 78%, rgba(201,168,119,.12), transparent 26%),
-    linear-gradient(145deg, #11151b 0%, #080a0e 66%, #050608 100%);
-  box-shadow: 0 30px 78px rgba(23,28,35,.18), inset 0 1px rgba(255,255,255,.05);
+  background: #000;
 }
-.feyScene::before {
+.feyTitle {
   position: absolute;
-  inset: 0;
-  content: "";
-  opacity: .22;
-  background-image:
-    linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
-  background-size: 38px 38px;
-  -webkit-mask-image: radial-gradient(ellipse at 50% 44%, #000, transparent 72%);
-  mask-image: radial-gradient(ellipse at 50% 44%, #000, transparent 72%);
+  top: 50%; left: 50%; z-index: 50;
+  width: max-content; max-width: 90vw; margin: 0;
+  transform: translate(-50%, -50%);
+  color: #fff; font-size: clamp(22px,4vw,52px); font-weight: 800;
+  letter-spacing: -.045em; text-align: center; white-space: nowrap;
+  pointer-events: none;
 }
-.feyStatus { position: absolute; top: 34px; right: 36px; left: 36px; z-index: 12; }
-.feyStatus span { display: block; margin-bottom: 7px; color: #dfe6f0; font-size: 12px; font-weight: 720; letter-spacing: -.01em; }
-.feyStatus p { max-width: 390px; margin: 0; color: rgba(224,230,239,.52); font-size: 11px; line-height: 1.55; }
-.feyDeck { position: absolute; right: 50%; bottom: 18px; z-index: 4; width: 340px; height: 344px; transform: translateX(50%); }
-.feyBase, .feyCard { position: absolute; bottom: 0; width: 132px; height: 304px; border-radius: 20px 20px 10px 10px; }
-.feyBase { left: 0; display: grid; place-content: center; gap: 7px; color: #e2e8f0; background: linear-gradient(160deg,#18202a,#0b0e13); border: 1px solid rgba(255,255,255,.09); }
-.feyBase strong { font-size: 58px; line-height: .8; letter-spacing: -.09em; }
-.feyBase small { color: #8c98a8; font-size: 8px; letter-spacing: .18em; text-transform: uppercase; }
-.feyCard { padding: 0; overflow: visible; border: 0; background: none; cursor: pointer; }
-.feyCardInner { position: relative; width: 100%; height: 100%; overflow: hidden; border: 1px solid rgba(255,255,255,.1); border-radius: inherit; background: #11151a; box-shadow: -14px 0 26px rgba(0,0,0,.24); }
-.feyCardInner img { width: 100%; height: 100%; object-fit: cover; filter: saturate(.68) brightness(.58); transition: filter 280ms ease, transform 480ms cubic-bezier(.16,1,.3,1); }
-.feyCardInner::after { position: absolute; inset: 0; content: ""; background: linear-gradient(180deg, transparent 46%, rgba(5,7,10,.84) 100%); }
-.feyCardInner span { position: absolute; right: 11px; bottom: 13px; left: 11px; z-index: 2; color: #f4f7fb; font-size: 9px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; }
-.feyCard:hover .feyCardInner img,
-.feyCard.isActive .feyCardInner img { filter: saturate(.95) brightness(.88); transform: scale(1.025); }
+.feyTitleGlow {
+  color: transparent;
+  background: linear-gradient(90deg,#fff 0%,rgba(255,255,255,0) 30%,rgba(255,255,255,0) 60%,rgba(255,255,255,.2) 80%,#fff 100%);
+  -webkit-background-clip: text; background-clip: text;
+}
+.feyDeck {
+  position: relative; z-index: 10;
+  width: 384px; height: 480px;
+  -webkit-mask-image: linear-gradient(to bottom,#000 0%,#000 90%,transparent 100%);
+  mask-image: linear-gradient(to bottom,#000 0%,#000 90%,transparent 100%);
+}
+.feyBaseImg { position: absolute; inset-block: 0; left: 0; width: 160px; height: 480px; object-fit: contain; }
+.feyCard { position: absolute; bottom: -8px; width: 160px; height: 480px; padding: 0; border: 0; background: none; cursor: pointer; }
+.feyCardInner { position: relative; width: 100%; height: 100%; }
+.feyActive,.feyIdle { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; transition: opacity .5s ease; }
+.feyActive { opacity: 0; }
+.feyActive.isActive,.feyCard:hover .feyActive { opacity: 1; }
+.feyIdle { opacity: 1; }
+.feyIdle.isHidden,.feyCard:hover .feyIdle { opacity: 0; }
+.feyShadow { position: absolute; top: 32px; left: 8px; z-index: 50; width: 16px; height: 100%; background: #000; filter: blur(12px); }

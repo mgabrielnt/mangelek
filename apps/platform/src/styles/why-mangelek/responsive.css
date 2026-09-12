@@ -1,23 +1,13 @@
-@media (max-width: 900px) {
-  .whySection { padding: 86px 0 94px; }
-  .whyShell { grid-template-columns: 1fr; gap: 38px; }
-  .whyIntro { max-width: 680px; }
-  .whyIntro h2 { font-size: clamp(40px,7.5vw,56px); }
-  .feyScene { min-height: 470px; border-radius: 26px; }
+@media (max-width: 700px) {
+  .feyTitle { font-size: clamp(21px,7vw,34px); white-space: normal; }
+  .feyDeck { transform: scale(.82); transform-origin: center; }
 }
 
-@media (max-width: 620px) {
-  .whySection { padding: 70px 0 78px; }
-  .whyShell { gap: 28px; }
-  .whyIntro h2 { font-size: clamp(36px,11vw,48px); }
-  .whyIntro p { font-size: 14px; }
-  .whyPills { margin-top: 22px; }
-  .feyScene { min-height: 430px; border-radius: 20px; }
-  .feyStatus { top: 26px; right: 24px; left: 24px; }
-  .feyStatus p { max-width: 300px; }
-  .feyDeck { bottom: 4px; transform: translateX(50%) scale(.84); transform-origin: center bottom; }
+@media (max-width: 480px) {
+  .feyDeck { transform: scale(.7); }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .feyCardInner img { transition: none; }
+  .feyActive,
+  .feyIdle { transition: none; }
 }
