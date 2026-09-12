@@ -1,29 +1,24 @@
 "use client";
 
+import { StickyScrollReveal, type StickyScrollItem } from "@/components/ui/aceternity/sticky-scroll-reveal";
 import { businessFeatures } from "@/data/features";
-import { FeatureRow } from "./components/FeatureRow";
-import { useFeatureReveal } from "./hooks/use-feature-reveal";
+import { FeaturePreview } from "./components/FeaturePreview";
 
 export function FeatureSection() {
-  const { visible, setNode } = useFeatureReveal(businessFeatures.length);
+  const items: StickyScrollItem[] = businessFeatures.map((item, index) => ({
+    title: item.title,
+    description: item.text,
+    meta: `${String(index + 1).padStart(2, "0")} · ${item.label}`,
+    content: <FeaturePreview item={item} index={index} />,
+  }));
 
-  return (
-    <section className="featureSection" id="features">
-      <div className="featureBackdrop" aria-hidden />
-      <header className="featureHeader">
-        <span className="featureEyebrow">Satu platform. Semua terhubung.</span>
-        <h2>Bangun, kelola, dan tumbuhkan website bisnis Anda.</h2>
-        <p>
-          Setiap bagian bekerja sebagai satu sistem, dari editor dan konten
-          hingga domain dan insight bisnis.
-        </p>
-      </header>
-      <div className="featureFlow">
-        {businessFeatures.map((item, index) => (
-          <FeatureRow key={item.title} item={item} index={index}
-            visible={visible[index] ?? false} setNode={setNode} />
-        ))}
-      </div>
-    </section>
-  );
+  return <section className="featureSection" id="features">
+    <div className="featureBackdrop" aria-hidden />
+    <header className="featureHeader">
+      <span className="featureEyebrow">Satu platform. Semua terhubung.</span>
+      <h2>Bangun, kelola, dan tumbuhkan website bisnis Anda.</h2>
+      <p>Scroll untuk melihat bagaimana setiap bagian bekerja sebagai satu sistem.</p>
+    </header>
+    <StickyScrollReveal items={items} />
+  </section>;
 }
