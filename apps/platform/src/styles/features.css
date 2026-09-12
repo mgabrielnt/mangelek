@@ -1,4 +1,3 @@
 @import "./features/section.css";
-@import "./features/row.css";
-@import "./features/window.css";
+@import "./features/sticky.css";
 @import "./features/responsive.css";
