@@ -1,0 +1,57 @@
+.stickyScroll {
+  display: grid;
+  grid-template-columns: minmax(260px,.88fr) minmax(0,1.12fr);
+  gap: clamp(44px,6vw,88px);
+  width: var(--page);
+  margin: 0 auto;
+  align-items: start;
+}
+.stickyScrollCopy { min-width: 0; }
+.stickyScrollItem {
+  min-height: clamp(320px,52vh,470px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-top: 1px solid rgba(255,255,255,.08);
+}
+.stickyScrollItem:last-child { border-bottom: 1px solid rgba(255,255,255,.08); }
+.stickyScrollItem > span {
+  margin-bottom: 14px;
+  color: #a9b9ce;
+  font-size: 10px;
+  font-weight: 760;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+.stickyScrollItem h3 {
+  margin: 0 0 14px;
+  color: #fff;
+  font-size: clamp(30px,3vw,44px);
+  line-height: 1;
+  letter-spacing: -.045em;
+}
+.stickyScrollItem p { max-width: 390px; margin: 0; color: rgba(245,247,250,.58); font-size: 14px; line-height: 1.7; }
+.stickyScrollStage { position: sticky; top: 108px; min-height: 420px; display: grid; place-items: center; }
+.stickyScrollVisual { width: min(100%,520px); }
+.featurePreview {
+  display: grid;
+  grid-template-rows: 38px 1fr 44px;
+  width: 100%;
+  aspect-ratio: 1.38;
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid rgba(173,191,217,.16);
+  border-radius: 22px;
+  background: rgba(18,21,25,.92);
+  box-shadow: 0 28px 80px rgba(0,0,0,.34), 0 0 48px rgba(91,121,164,.08), inset 0 1px rgba(255,255,255,.06);
+  backdrop-filter: blur(18px) saturate(120%);
+}
+.featurePreviewBar { display: flex; align-items: center; gap: 6px; padding: 0 14px; border-bottom: 1px solid rgba(255,255,255,.07); }
+.featurePreviewBar span { width: 6px; height: 6px; border-radius: 50%; background: #666f7b; }
+.featurePreviewBar span:first-child { background: #b8c5d7; }
+.featurePreviewBar small { margin-left: auto; color: #8390a0; font-size: 9px; letter-spacing: .14em; text-transform: uppercase; }
+.featurePreviewMedia { display: grid; place-items: center; overflow: hidden; background: linear-gradient(145deg,#e5e8ec,#f7f7f5 52%,#dfe4e9); }
+.featurePreviewMedia img { width: 82%; height: 82%; object-fit: contain; filter: drop-shadow(0 16px 26px rgba(17,20,24,.14)); }
+.featurePreview figcaption { display: flex; align-items: center; gap: 10px; padding: 0 15px; color: #eef2f6; border-top: 1px solid rgba(255,255,255,.07); }
+.featurePreview figcaption span { color: #9dacbf; font-size: 9px; font-weight: 760; letter-spacing: .14em; }
+.featurePreview figcaption strong { font-size: 12px; font-weight: 650; }
