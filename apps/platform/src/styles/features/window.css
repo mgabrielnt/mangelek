@@ -1,63 +1,83 @@
 .featureGlow {
   position: absolute;
-  inset: 8% 4% -10%;
-  border-radius: 44px;
-  background: radial-gradient(circle at 50% 38%, rgba(195,164,119,.28), transparent 64%);
-  filter: blur(42px);
+  inset: 10% 5% -12%;
+  border-radius: 36px;
+  background:
+    radial-gradient(circle at 34% 32%, rgba(126,151,190,.2), transparent 48%),
+    radial-gradient(circle at 72% 64%, rgba(195,164,119,.16), transparent 52%);
+  filter: blur(34px);
   opacity: .78;
   pointer-events: none;
 }
 .featureWindow {
   position: relative;
   display: grid;
-  grid-template-rows: 46px 1fr 56px;
-  min-height: clamp(430px, 54vw, 640px);
+  grid-template-rows: 40px 1fr 48px;
+  min-height: clamp(300px, 34vw, 420px);
   margin: 0;
   overflow: hidden;
   border: 1px solid rgba(255,255,255,.12);
-  border-radius: 30px;
-  background: rgba(252,250,247,.96);
-  box-shadow: 0 34px 90px rgba(0,0,0,.32), inset 0 1px rgba(255,255,255,.85);
+  border-radius: 22px;
+  background: rgba(20,22,24,.88);
+  box-shadow:
+    0 24px 70px rgba(0,0,0,.34),
+    inset 0 1px rgba(255,255,255,.06),
+    0 0 0 1px rgba(135,155,184,.03);
+  -webkit-backdrop-filter: blur(18px) saturate(120%);
+  backdrop-filter: blur(18px) saturate(120%);
   transition: border-color 260ms ease, transform 420ms cubic-bezier(.2,.8,.2,1), box-shadow 420ms ease;
 }
+.featureWindow::before {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  border-radius: inherit;
+  content: "";
+  pointer-events: none;
+  background: linear-gradient(135deg, rgba(173,191,217,.12), transparent 24%, transparent 72%, rgba(195,164,119,.08));
+}
 .featureWindow:hover {
-  border-color: rgba(195,164,119,.36);
-  transform: translateY(-5px);
-  box-shadow: 0 42px 110px rgba(0,0,0,.36), 0 0 0 1px rgba(195,164,119,.08);
+  border-color: rgba(166,184,211,.24);
+  transform: translateY(-4px);
+  box-shadow: 0 30px 82px rgba(0,0,0,.4), 0 0 32px rgba(114,139,177,.06);
 }
 .featureWindowBar {
   display: flex;
   align-items: center;
-  gap: 7px;
-  padding: 0 18px;
-  border-bottom: 1px solid rgba(53,45,36,.08);
-  background: rgba(255,255,255,.72);
+  gap: 6px;
+  padding: 0 14px;
+  border-bottom: 1px solid rgba(255,255,255,.07);
+  background: rgba(20,22,24,.92);
 }
-.featureWindowBar > span { width: 7px; height: 7px; border-radius: 50%; background: #c8c0b5; }
-.featureWindowBar small { margin-left: auto; color: #867d72; font-size: 10px; letter-spacing: .13em; text-transform: uppercase; }
+.featureWindowBar > span { width: 6px; height: 6px; border-radius: 50%; background: #71767d; }
+.featureWindowBar > span:first-child { background: #a7b1c0; }
+.featureWindowBar small { margin-left: auto; color: #8f98a5; font-size: 9px; letter-spacing: .14em; text-transform: uppercase; }
 .featureViewport {
   display: grid;
   min-height: 0;
   place-items: center;
   overflow: hidden;
-  background: linear-gradient(145deg, #e9e1d6 0%, #f8f5ef 54%, #e8dfd3 100%);
+  background:
+    radial-gradient(circle at 50% 0%, rgba(255,255,255,.85), transparent 56%),
+    linear-gradient(145deg, #e7e8ea 0%, #f7f7f6 54%, #dfe2e6 100%);
 }
 .featureViewport img {
   display: block;
-  width: 88%;
-  height: 88%;
+  width: 82%;
+  height: 82%;
   object-fit: contain;
-  transition: transform 720ms cubic-bezier(.16,1,.3,1);
+  filter: drop-shadow(0 16px 28px rgba(17,20,24,.14));
+  transition: transform 680ms cubic-bezier(.16,1,.3,1);
 }
-.featureWindow:hover .featureViewport img { transform: scale(1.018); }
+.featureWindow:hover .featureViewport img { transform: scale(1.012); }
 .featureWindowLabel {
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 0 20px;
-  border-top: 1px solid rgba(53,45,36,.08);
-  color: #171512;
-  background: rgba(255,255,255,.72);
+  gap: 10px;
+  padding: 0 16px;
+  border-top: 1px solid rgba(255,255,255,.07);
+  color: #eef1f4;
+  background: rgba(20,22,24,.94);
 }
-.featureWindowLabel span { color: #9a815f; font-size: 10px; font-weight: 760; letter-spacing: .13em; }
-.featureWindowLabel strong { font-size: 13px; font-weight: 700; letter-spacing: -.01em; }
+.featureWindowLabel span { color: #9eabbc; font-size: 9px; font-weight: 760; letter-spacing: .14em; }
+.featureWindowLabel strong { font-size: 12px; font-weight: 650; letter-spacing: -.01em; }
