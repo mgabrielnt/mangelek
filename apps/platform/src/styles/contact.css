@@ -1,3 +1,5 @@
 @import "./contact/section.css";
+@import "./contact/panel.css";
 @import "./contact/form.css";
+@import "./contact/actions.css";
 @import "./contact/responsive.css";
