@@ -4,7 +4,7 @@
   gap: clamp(44px,6vw,88px);
   width: var(--page);
   margin: 0 auto;
-  align-items: start;
+  align-items: stretch;
 }
 .stickyScrollCopy { min-width: 0; }
 .stickyScrollItem {
@@ -31,8 +31,8 @@
   letter-spacing: -.045em;
 }
 .stickyScrollItem p { max-width: 390px; margin: 0; color: rgba(245,247,250,.58); font-size: 14px; line-height: 1.7; }
-.stickyScrollStage { position: sticky; top: 108px; min-height: 420px; display: grid; place-items: center; }
-.stickyScrollVisual { width: min(100%,520px); }
+.stickyScrollStage { position: relative; min-height: 100%; }
+.stickyScrollVisual { position: absolute; top: 0; right: 0; width: min(100%,520px); will-change: transform; }
 .featurePreview {
   display: grid;
   grid-template-rows: 38px 1fr 44px;
