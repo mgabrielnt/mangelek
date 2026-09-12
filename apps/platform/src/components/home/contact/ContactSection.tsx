@@ -7,23 +7,10 @@ export function ContactSection() {
     <section className="contactSection" id="contact">
       <div className="contactShell">
         <div className="contactVisual">
-          <div className="contactCopy">
-            <span className="contactEyebrow">Mulai dari Indonesia</span>
-            <h2>Bangun kehadiran digital yang siap berkembang.</h2>
-            <p>
-              Ceritakan kebutuhan bisnis Anda. Mangelek membantu menyederhanakan
-              proses dari pilihan desain hingga website siap digunakan.
-            </p>
-          </div>
-          <div className="contactGlobeWrap">
-            <GithubGlobe arcs={contactGlobeArcs} />
-            <span className="contactLocation">Indonesia · terhubung lebih jauh</span>
-          </div>
+          <GithubGlobe arcs={contactGlobeArcs} />
         </div>
         <div className="contactPanel">
-          <span className="contactPanelIndex">05 / CONTACT</span>
-          <h3>Mulai percakapan.</h3>
-          <p>Empat informasi singkat sudah cukup untuk memahami kebutuhan awal Anda.</p>
+          <h3>Mulai proyek Anda.</h3>
           <ContactForm />
         </div>
       </div>
