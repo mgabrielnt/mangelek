@@ -7,8 +7,7 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "clean:dev-types": "node -e \"require('fs').rmSync('.next/dev',{recursive:true,force:true})\"",
-    "typecheck": "pnpm clean:dev-types && tsc --noEmit"
+    "typecheck": "next typegen && tsc --noEmit"
   },
   "dependencies": {
     "motion": "13.2.0",
