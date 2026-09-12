@@ -1,0 +1,8 @@
+.heroCopy { position: relative; z-index: 7; display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: end; gap: 12px 32px; width: min(1240px, calc(100% - 80px)); margin: 0 auto 20px; color: #253027; }
+.heroCopy .sectionLabel { grid-column: 1 / -1; color: #4b503d; font-size: 9px; letter-spacing: .18em; }
+.heroCopy h1 { margin: 0; font-size: clamp(32px, 3.5vw, 50px); font-weight: 500; line-height: 1.04; letter-spacing: -.055em; text-wrap: balance; }
+.heroCopy h1 em { font-family: Georgia, 'Times New Roman', serif; font-weight: 400; }
+.heroCta { display: inline-flex; align-items: center; justify-content: space-between; gap: 32px; min-height: 44px; padding: 8px 0; border-bottom: 1px solid #4b503d80; font-size: 12px; }
+.heroCta span { font-size: 18px; transition: transform 180ms ease; }
+.heroCta:hover span { transform: translate(3px, -3px); }
+.heroQuickLinks { display: none; }

@@ -3,3 +3,5 @@ packages:
   - 'packages/*'
 minimumReleaseAgeExclude:
   - '@types/three@0.186.0'
+allowBuilds:
+  esbuild: false

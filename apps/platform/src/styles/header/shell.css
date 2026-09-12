@@ -1,0 +1,21 @@
+.siteHeader {
+  position: fixed; inset: 0 0 auto; z-index: 100;
+  padding: max(12px, env(safe-area-inset-top)) max(20px, env(safe-area-inset-right)) 0 max(20px, env(safe-area-inset-left));
+  pointer-events: none;
+}
+.navShell {
+  position: relative; width: min(1240px, 100%); min-height: 64px; margin-inline: auto;
+  padding: 8px 10px 8px 18px; display: flex; align-items: center; gap: 24px;
+  pointer-events: auto; color: #252a23; background: #f4eee3dc;
+  border: 1px solid #ffffff8c; border-radius: 20px;
+  box-shadow: 0 6px 24px #171a1110, inset 0 1px #fff8;
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+}
+.navBrand { display: inline-flex; align-items: center; gap: 9px; min-height: 44px; flex-shrink: 0; }
+.navBrand > span:last-child { font-size: 20px; font-weight: 600; letter-spacing: -.065em; }
+.navBrandMark { display: grid; place-items: center; width: 29px; height: 29px; border: 1px solid #b89e7299; border-radius: 9px; color: #7f6032; font: 600 21px/1 Georgia, serif; }
+.desktopNavigation { margin-inline: auto; }
+.navList, .navProductList, .navSupportList { margin: 0; padding: 0; list-style: none; }
+.navList { display: flex; align-items: center; gap: 8px; }
+.navActions { display: flex; align-items: center; gap: 12px; }
+.mobileToggle, .mobileNavigation { display: none; }

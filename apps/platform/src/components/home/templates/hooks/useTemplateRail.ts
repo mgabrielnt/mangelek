@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { useReducedMotion } from "motion/react";
 import useEmblaCarousel from "embla-carousel-react";
+import { useTemplateAnchor } from "./useTemplateAnchor";
 import { useCarouselWheel } from "./useCarouselWheel";
 
 export function useTemplateRail(initial: number) {
@@ -20,6 +21,7 @@ export function useTemplateRail(initial: number) {
     return () => { api.off("select", sync).off("reInit", sync); };
   }, [api]);
   useCarouselWheel(api, !!reduced);
+  useTemplateAnchor(api);
   const select = (index: number) => api?.scrollTo(index, !!reduced);
   const move = (direction: number) => {
     if (direction < 0) api?.scrollPrev(!!reduced);

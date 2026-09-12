@@ -12,7 +12,6 @@
   .contactCoordinates { bottom: 24px; }
   .contactPanel { padding: 36px 28px; }
   .contactForm { gap: 20px 16px; }
-  .contactField input, .contactField textarea { font-size: 16px; }
 }
 @media (max-width: 400px) {
   .contactForm { grid-template-columns: 1fr; }

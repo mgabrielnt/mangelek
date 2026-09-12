@@ -14,7 +14,7 @@ export function TemplateCard({ item, index, total, active, progress }: Props) {
   const distance = index % 2 ? 24 : 40;
   const imageY = useTransform(progress, [0, .5, 1], [distance, 0, -distance / 2]);
   const labelY = useTransform(progress, [0, .5, 1], [10, 0, -6]);
-  return <article className="templateCard" data-active={active} role="group"
+  return <article id={`template-${item.id}`} className="templateCard" data-active={active} role="group"
     aria-roledescription="slide" aria-label={`${item.label}, ${index + 1} dari ${total}`}>
     <button className="templateOpen" type="button"
       onClick={() => dialog.current?.showModal()} aria-label={`Lihat ${item.title}`}>

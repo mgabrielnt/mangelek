@@ -1,0 +1,14 @@
+.heroMenu { position: absolute; inset: 0; z-index: 2; }
+.heroMenuItem { position: absolute; display: block; transform-origin: 50% 100%; }
+.heroMenuItem:nth-child(1) { left: 30.47%; top: 20.10%; width: 9.82%; }
+.heroMenuItem:nth-child(2) { left: 39.88%; top: 20.38%; width: 9.82%; }
+.heroMenuItem:nth-child(3) { left: 49.92%; top: 22.01%; width: 8.40%; }
+.heroMenuItem:nth-child(4) { left: 59.98%; top: 20.38%; width: 9.82%; }
+.heroMenuItem:nth-child(5) { left: 70.16%; top: 20.39%; width: 9.82%; }
+.heroMenuItem img { display: block; width: 100%; height: auto; transition: transform 180ms ease; }
+.heroMenuItem a { position: absolute; inset: 0; border-radius: 4px; }
+.heroMenuItem:focus-within img { transform: translateY(-2%) scale(1.025); }
+.heroMenuItem a:focus-visible { outline: 3px solid #fff4cc; outline-offset: 3px; }
+@media (hover: hover) and (pointer: fine) {
+  .heroMenuItem:hover img { transform: translateY(-2%) scale(1.025); }
+}

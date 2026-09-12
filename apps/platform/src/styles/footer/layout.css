@@ -1,0 +1,17 @@
+.siteFooter { padding: 76px 0 24px; color: #2d392d; background: #e8e1d3; overflow: clip; }
+.footerCallout { display: flex; align-items: center; justify-content: space-between; gap: 40px; padding-bottom: 56px; border-bottom: 1px solid #9b9b814d; }
+.footerCallout .sectionLabel { color: #6c6b55; font-size: 9px; }
+.footerCallout h2 { margin: 22px 0 0; font-size: clamp(38px, 4.5vw, 64px); font-weight: 400; line-height: 1.07; letter-spacing: -.055em; }
+.footerCallout h2 em { color: #72775b; }
+.footerStart { display: flex; flex-shrink: 0; align-items: center; gap: 24px; min-height: 76px; font-size: 12px; }
+.footerStart > span:last-child { display: grid; place-items: center; width: 76px; height: 76px; border: 1px solid #92977d; border-radius: 50%; font-size: 32px; transition: color 200ms ease, background-color 200ms ease, transform 200ms ease; }
+.footerStart:hover > span:last-child { color: #fff9e8; background: #344031; transform: rotate(45deg); }
+.footerMiddle { display: flex; justify-content: space-between; gap: 60px; padding-block: 44px 28px; }
+.footerBrand { display: inline-flex; align-items: baseline; min-height: 44px; font-size: 30px; font-weight: 600; letter-spacing: -.065em; }
+.footerBrand > span { color: #967743; }
+.footerIdentity p { margin: 12px 0 26px; color: #646b58; font-size: 12px; }
+.footerOrigin { color: #686d58; font-size: 8px; letter-spacing: .12em; }
+.footerWordmark { font-size: clamp(60px, 16vw, 220px); font-weight: 500; letter-spacing: -.085em; line-height: 1.04; color: #555e3e20; user-select: none; }
+.footerBottom { display: flex; justify-content: space-between; align-items: center; gap: 20px; border-top: 1px solid #9b9b814d; padding-top: 12px; color: #58614c; font-size: 10px; }
+.footerBottom a { display: inline-flex; align-items: center; gap: 20px; min-height: 44px; }
+.footerBottom a > span { font-size: 18px; }

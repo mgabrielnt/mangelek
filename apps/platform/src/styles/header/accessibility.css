@@ -1,0 +1,11 @@
+.siteHeader :focus-visible { outline: 2px solid #806137; outline-offset: 3px; }
+.skipLink { position: fixed; top: 12px; left: 20px; z-index: 2; padding: 14px 18px; border-radius: 10px; background: #243127; color: white; transform: translateY(-180%); pointer-events: auto; }
+.skipLink:focus { transform: none; }
+@supports not (backdrop-filter: blur(1px)) { .navShell { background: #f4eee3; } }
+@media (prefers-reduced-motion: reduce) {
+  .siteHeader *, .siteHeader *::before, .siteHeader *::after { animation: none !important; transition: none !important; }
+}
+@media (forced-colors: active) {
+  .navShell, .navDropdownPanel, .mobileNavigation { background: Canvas; border-color: ButtonText; }
+  .navCta { border: 1px solid ButtonText; }
+}

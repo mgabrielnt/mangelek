@@ -10,7 +10,8 @@
     "prebuild": "pnpm clean:types",
     "build": "next build",
     "start": "next start",
-    "typecheck": "pnpm clean:types && next typegen && tsc --noEmit"
+    "typecheck": "pnpm clean:types && next typegen && tsc --noEmit",
+    "test": "node --import ./tests/register.mjs --test tests/*.test.tsx"
   },
   "dependencies": {
     "embla-carousel-react": "8.6.0",
@@ -26,6 +27,8 @@
     "@types/react": "19.2.7",
     "@types/react-dom": "19.2.7",
     "@types/three": "0.185.4",
+    "jsdom": "30.0.1",
+    "tsx": "4.23.13",
     "typescript": "7.0.2"
   }
 }

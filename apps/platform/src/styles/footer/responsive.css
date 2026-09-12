@@ -1,0 +1,18 @@
+@media (max-width: 760px) {
+  .siteFooter { padding-top: 48px; }
+  .footerCallout { align-items: flex-start; gap: 24px; padding-bottom: 34px; }
+  .footerCallout h2 { font-size: clamp(32px, 5.6vw, 42px); }
+  .footerStart { min-height: 52px; margin-top: 30px; }
+  .footerStart > span:first-child { display: none; }
+  .footerStart > span:last-child { width: 52px; height: 52px; font-size: 25px; }
+  .footerMiddle { flex-direction: column; gap: 36px; padding-top: 30px; }
+  .footerIdentity p { margin-bottom: 16px; }
+  .footerNavigation { gap: 24px; }
+  .footerWordmark { font-size: 15.7vw; margin-bottom: 16px; }
+}
+@media (max-width: 380px) {
+  .footerCallout { flex-wrap: wrap; }
+  .footerStart { margin-top: 0; gap: 16px; }
+  .footerStart > span:first-child { display: inline; }
+  .footerBottom { flex-wrap: wrap; gap: 4px 18px; }
+}
