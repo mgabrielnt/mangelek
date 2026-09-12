@@ -1,0 +1,44 @@
+@media (max-width: 900px) {
+  .featureSection { padding: 84px 0 92px; }
+  .featureHeader { grid-template-columns: 1fr; gap: 16px; margin-bottom: 44px; }
+  .featureHeader h2 { max-width: 680px; font-size: clamp(40px, 8vw, 58px); }
+  .featureHeader p { max-width: 620px; margin: 0; font-size: 16px; }
+  .featureStory { grid-template-columns: 1fr; gap: 0; }
+  .featureStage { display: none; }
+  .featureStep {
+    grid-template-columns: 36px minmax(0, 1fr);
+    min-height: auto;
+    padding: 38px 0 42px;
+    opacity: 1;
+    transform: none;
+  }
+  .featureProgress { display: none; }
+  .featureMobileVisual {
+    display: block;
+    grid-column: 1 / -1;
+    margin-top: 26px;
+    overflow: hidden;
+    border: 1px solid rgba(53,45,36,.1);
+    border-radius: 22px;
+    background: linear-gradient(145deg, #eee8de, #f8f5ef);
+  }
+  .featureMobileVisual img { display: block; width: 100%; aspect-ratio: 1.24; object-fit: contain; padding: 20px; }
+}
+
+@media (max-width: 600px) {
+  .featureSection { padding: 70px 0 76px; }
+  .featureBackdrop { background-size: 32px 32px; }
+  .featureHeader { margin-bottom: 28px; }
+  .featureHeader h2 { font-size: 42px; }
+  .featureEyebrow { font-size: 10px; }
+  .featureStepCopy h3 { font-size: 30px; }
+  .featureStepCopy p { font-size: 14px; }
+  .featureMobileVisual { border-radius: 18px; }
+  .featureMobileVisual img { padding: 14px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .featureStep,
+  .featureProgress,
+  .featureVisualImage { transition: none; }
+}
