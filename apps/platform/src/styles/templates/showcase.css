@@ -7,7 +7,6 @@
 }
 .templateCard[data-active="true"] .templateOpen { transform: scale(1); border-color: #b6a17d; }
 .templateOpen::after { position: absolute; inset: 0; content: ''; pointer-events: none; border-radius: inherit; box-shadow: inset 0 1px 0 #fff8; }
-.templateCardTop { display: flex; justify-content: space-between; position: relative; z-index: 1; color: #6d6557; font-size: 9px; letter-spacing: .12em; }
 .templateArtwork { position: relative; flex: 1; margin: 10px -4px 8px; }
 .templateArtwork img { object-fit: contain; transition: transform 550ms var(--motion-ease); }
 .templateCardBottom { display: flex; align-items: center; justify-content: space-between; gap: 12px; position: relative; z-index: 1; }

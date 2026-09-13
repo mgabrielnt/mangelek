@@ -5,5 +5,4 @@
   .templateViewport { --card-width: min(78vw, 360px); --card-gap: 12px; }
   .templateOpen { padding: 18px; border-radius: 18px; }
   .templateControls { padding-top: 8px; }
-  .templateControls p { display: none; }
 }

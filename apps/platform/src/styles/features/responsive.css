@@ -17,7 +17,6 @@
   .featureStage { padding: 20px; border-radius: 20px; }
   .featureTransition { min-height: 660px; align-content: start; }
   .featurePreview { width: min(100%, 330px); }
-  .featureFootnote { margin-top: 30px; gap: 8px; }
 }
 @media (max-width: 380px) {
   .featureTransition { min-height: 610px; }

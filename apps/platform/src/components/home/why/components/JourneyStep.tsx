@@ -19,7 +19,6 @@ export function JourneyStep({ item, index }: Props) {
     </div>
     <div className="timelineCopy">
       <motion.div style={{ y: reduced ? 0 : textY }}>
-        <span className="sectionLabel">0{index + 1} / {item.label}</span>
         <h3>{item.title}</h3><p>{item.description}</p>
         <a className="marketingLink" href={item.href}>{item.action}<span aria-hidden="true">↗</span></a>
       </motion.div>

@@ -16,7 +16,6 @@ export function FeyFinale() {
       <motion.div className="feyFinaleScene" style={{ scale: reduced ? 1 : scale }}>
         <FeyCards />
       </motion.div>
-      <a href="#contact" className="feyFinaleNext">Giliran cerita Anda <span aria-hidden="true">↓</span></a>
     </div>
   </div>;
 }

@@ -9,7 +9,7 @@ export function WhyMangelekSection() {
   return <section className="whySection marketingSection" id="why-mangelek"
     aria-labelledby="journey-title">
     <ScrollScene distance={36}>
-      <SectionIntro id="journey-title" label="03 / DARI IDE, MENJADI NYATA"
+      <SectionIntro id="journey-title"
         title={<>Setiap langkah,<br /><em>semakin menjadi Anda.</em></>} />
     </ScrollScene>
     <ScrollTimeline>

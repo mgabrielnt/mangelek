@@ -19,7 +19,7 @@ export function TemplateGallery() {
   return <section ref={root} className="templates marketingSection" id="templates"
     aria-labelledby="templates-title">
     <motion.div style={{ y: reduced ? 0 : textY }}>
-      <SectionIntro id="templates-title" label="01 / TEMUKAN KARAKTER"
+      <SectionIntro id="templates-title"
         title={<>Website yang terasa <em>seperti Anda.</em></>}
         description="Enam pilihan. Kemungkinan tanpa batas." />
     </motion.div>
@@ -45,11 +45,5 @@ export function TemplateGallery() {
     </div>
     <TemplateControls active={active} total={templateCategories.length}
       label={templateCategories[active]?.label ?? ""} move={move} />
-    <a className="templateContinue sectionWidth" href="#features">
-      <span>Pilihan Anda. Awal ceritanya.</span><span aria-hidden="true">↓</span>
-      <span className="templateContinueLine" aria-hidden="true">
-        <motion.i style={{ scaleX: reduced ? 1 : scrollYProgress }} />
-      </span>
-    </a>
   </section>;
 }

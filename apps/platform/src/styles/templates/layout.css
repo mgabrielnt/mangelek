@@ -1,5 +1,4 @@
 .templates { padding: clamp(64px, 7vw, 112px) 0 60px; background: var(--surface); }
-.templates .sectionLabel { color: #726249; }
 .templates .sectionIntro h2 { max-width: 890px; }
 .templates .sectionIntro h2 em { color: #807056; }
 .categoryTabs {
@@ -14,10 +13,7 @@
 }
 .categoryTabs button:hover { color: #171815; background: #e9e3d8; }
 .categoryTabs button[aria-pressed="true"] { color: #f9f5ec; background: #222622; border-color: #222622; }
-.templateControls { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding-top: 22px; }
-.templateControls > span { color: #756e61; font-size: 11px; letter-spacing: .12em; font-variant-numeric: tabular-nums; }
-.templateControls b { color: #262722; font-weight: 500; }
-.templateControls p { margin: 0; font-size: 11px; color: #70685c; }
+.templateControls { display: flex; align-items: center; justify-content: flex-end; gap: 20px; padding-top: 22px; }
 .templateControls > div { display: flex; gap: 8px; }
 .templateControls button {
   display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%;

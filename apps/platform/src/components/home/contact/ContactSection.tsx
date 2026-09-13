@@ -14,7 +14,7 @@ export function ContactSection() {
         <span className="contactCoordinates">6.21° S / 106.85° E <i /> INDONESIA</span>
       </div>
       <div className="contactPanel">
-        <ScrollScene><span className="sectionLabel">04 / GILIRAN CERITA ANDA</span>
+        <ScrollScene>
           <h2 id="contact-title">Mulai sesuatu<br /><em>yang berarti.</em></h2>
           <p className="contactLead">Ceritakan bisnis Anda. Kita mulai dari sana.</p></ScrollScene>
         <ContactForm />

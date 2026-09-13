@@ -18,8 +18,6 @@ export function TemplateCard({ item, index, total, active, progress }: Props) {
     aria-roledescription="slide" aria-label={`${item.label}, ${index + 1} dari ${total}`}>
     <button className="templateOpen" type="button"
       onClick={() => dialog.current?.showModal()} aria-label={`Lihat ${item.title}`}>
-      <span className="templateCardTop"><span>{String(index + 1).padStart(2, "0")}</span>
-        <span>KOLEKSI MANGELEK</span></span>
       <motion.span className="templateArtwork" style={{ y: reduced ? 0 : imageY }}>
         <Image src={`/images/marketing/categories/${item.image}`} alt=""
           fill sizes="(max-width: 700px) 80vw, 390px" draggable={false} />
