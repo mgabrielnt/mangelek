@@ -16,7 +16,7 @@ export function DesktopNavigation({ active, setActive }: Props) {
           </a>
         </li>)}</ul>
       </NavDropdown>
-      <li><a className="navLink" href="#why-mangelek" onFocus={() => setActive(null)}>Cara kerja</a></li>
+      <li><a className="navLink" href="/blogs" onFocus={() => setActive(null)}>Blogs</a></li>
       <NavDropdown id="support" label="Support" active={active} setActive={setActive}>
         <ul className="navSupportList">{supportLinks.map((item) => <li key={item.title}>
           <a className="navSupport" href={item.href}>

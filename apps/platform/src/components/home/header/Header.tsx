@@ -18,7 +18,7 @@ export function Header() {
       </a>
       <DesktopNavigation active={nav.active} setActive={nav.setActive} />
       <div className="navActions">
-        <a className="navSecondary" href="#templates">Lihat template</a>
+        <a className="navSecondary" href="/login">Log in</a>
         <a className="navCta" href="#contact">Mulai <span aria-hidden="true">↗</span></a>
       </div>
       <button ref={nav.toggle} type="button" className="mobileToggle"

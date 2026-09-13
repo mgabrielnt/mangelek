@@ -15,3 +15,11 @@ export const mainLinks = [
   { title: "Cara kerja", href: "#why-mangelek" },
   { title: "Kontak", href: "#contact" },
 ] as const;
+
+export const headerLinks = [
+  mainLinks[0],
+  mainLinks[1],
+  { title: "Blogs", href: "/blogs" },
+  mainLinks[3],
+  { title: "Log in", href: "/login" },
+] as const;
