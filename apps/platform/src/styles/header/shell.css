@@ -12,8 +12,7 @@
   backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
 }
 .navBrand { display: inline-flex; align-items: center; gap: 9px; min-height: 44px; flex-shrink: 0; }
-.navBrand > span:last-child { font-size: 20px; font-weight: 600; letter-spacing: -.065em; }
-.navBrandMark { display: grid; place-items: center; width: 29px; height: 29px; border: 1px solid #b89e7299; border-radius: 9px; color: #7f6032; font: 600 21px/1 Georgia, serif; }
+.navBrandMark { display: grid; place-items: center; flex-shrink: 0; width: 1.8125rem; height: 1.8125rem; border: 1px solid #b89e7299; border-radius: 9px; color: #7f6032; }
 .desktopNavigation { margin-inline: auto; }
 .navList, .navProductList, .navSupportList { margin: 0; padding: 0; list-style: none; }
 .navList { display: flex; align-items: center; gap: 8px; }

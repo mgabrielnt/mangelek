@@ -2,4 +2,5 @@
 @import "./header/controls.css";
 @import "./header/dropdown.css";
 @import "./header/mobile.css";
+@import "./header/typography.css";
 @import "./header/accessibility.css";

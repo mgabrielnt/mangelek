@@ -1,0 +1,57 @@
+.siteHeader {
+  --nav-label-size: .875rem;
+  --nav-detail-size: .75rem;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: normal;
+}
+.navBrand > span:last-child {
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -.04em;
+}
+.navBrandMark { font: 600 1.3125rem/1 Georgia, serif; letter-spacing: -.04em; }
+.navLink, .navSecondary, .navCta, .skipLink {
+  font-family: inherit;
+  font-size: var(--nav-label-size);
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: 0;
+}
+.navCta { font-weight: 600; }
+.navCta > span, .navProductArrow { font-size: 1.0625rem; line-height: 1; }
+.navPanelLabel {
+  font-size: .625rem;
+  font-weight: 600;
+  line-height: 1.6;
+  letter-spacing: .1em;
+}
+.navProduct strong, .navSupport strong {
+  font-size: var(--nav-label-size);
+  font-weight: 600;
+  line-height: 1.4;
+}
+.navProduct small, .navSupport small {
+  font-size: var(--nav-detail-size);
+  font-weight: 400;
+  line-height: 1.5;
+}
+.navProductIcon, .mobileNavigation small {
+  font-size: .6875rem;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: .02em;
+  font-variant-numeric: tabular-nums;
+}
+.mobileNavigation li > a {
+  font-size: 1.25rem;
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: -.015em;
+}
+@media (max-width: 380px) {
+  .navBrand > span:last-child { font-size: 1.125rem; }
+}

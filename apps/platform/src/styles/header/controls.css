@@ -1,12 +1,11 @@
 .navLink, .navSecondary {
   display: inline-flex; align-items: center; justify-content: center; gap: 9px;
   min-height: 44px; padding: 10px 14px; border: 0; border-radius: 12px;
-  background: transparent; color: #414437; font: inherit; font-size: 12px;
+  background: transparent; color: #414437;
   cursor: pointer; transition: background-color 160ms ease, color 160ms ease;
 }
 .navLink:hover, .navLink[aria-expanded="true"], .navSecondary:hover { background: #ded5c566; color: #171c16; }
-.navCta { display: inline-flex; min-height: 44px; align-items: center; justify-content: center; gap: 24px; padding: 10px 18px; border-radius: 13px; background: #273027; color: #fff8e9; font-size: 12px; transition: background-color 160ms ease; }
+.navCta { display: inline-flex; min-height: 44px; align-items: center; justify-content: center; gap: 24px; padding: 10px 18px; border-radius: 13px; background: #273027; color: #fff8e9; transition: background-color 160ms ease; }
 .navCta:hover { background: #3c4737; }
-.navCta > span { font-size: 17px; }
 .navChevron { width: 6px; height: 6px; border-right: 1px solid currentColor; border-bottom: 1px solid currentColor; transform: translateY(-2px) rotate(45deg); transition: transform 160ms ease; }
 [aria-expanded="true"] > .navChevron { transform: translateY(1px) rotate(225deg); }
