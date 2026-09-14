@@ -48,4 +48,5 @@
   text-wrap: balance;
 }
 .timelineCopy p { max-width: 280px; color: #969e93; font-size: 13px; line-height: 1.8; }
-.timelineCopy .marketingLink { color: #c9b28a; margin-top: 18px; border-color: #bc9e674f; font-size: 11px; }
+.journeyAction { padding-block: 0 64px; }
+.journeyAction .marketingLink { color: #c9b28a; border-color: #bc9e674f; }

@@ -19,8 +19,8 @@ export function JourneyStep({ item, index }: Props) {
     </div>
     <div className="timelineCopy">
       <motion.div style={{ y: reduced ? 0 : textY }}>
+        <span className="sectionLabel" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
         <h3>{item.title}</h3><p>{item.description}</p>
-        <a className="marketingLink" href={item.href}>{item.action}<span aria-hidden="true">↗</span></a>
       </motion.div>
     </div>
     <JourneyVisual item={item} index={index} progress={scrollYProgress} />

@@ -15,6 +15,11 @@ export function WhyMangelekSection() {
     <ScrollTimeline>
       {journey.map((item, index) => <JourneyStep key={item.label} item={item} index={index} />)}
     </ScrollTimeline>
+    <div className="journeyAction sectionWidth">
+      <a className="marketingLink" href="#templates">
+        Pilih Tema Anda<span aria-hidden="true">↗</span>
+      </a>
+    </div>
     <FeyFinale />
   </section>;
 }
