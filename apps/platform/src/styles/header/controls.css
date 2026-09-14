@@ -9,3 +9,5 @@
 .navCta:hover { background: #3c4737; }
 .navChevron { width: 6px; height: 6px; border-right: 1px solid currentColor; border-bottom: 1px solid currentColor; transform: translateY(-2px) rotate(45deg); transition: transform 160ms ease; }
 [aria-expanded="true"] > .navChevron { transform: translateY(1px) rotate(225deg); }
+
+.navLink[aria-current="page"], .mobileNavigation a[aria-current="page"] { color: #72542e; background: #e8dcc6; border-radius: 8px; }

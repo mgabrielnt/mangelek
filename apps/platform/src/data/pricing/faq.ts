@@ -1,0 +1,16 @@
+export const pricingFaqs = [
+  { question: "Apa yang termasuk dalam paket utama?",
+    answer: "Rancangan paket Website + CMS mencakup tema, editor, pengelolaan konten dan media, hosting, koneksi domain sendiri, formulir, leads, serta analitik kunjungan. Rincian penawaran final akan tersedia sebelum langganan dibuka." },
+  { question: "Apakah CMS, formulir, dan analitik dikenakan biaya tambahan?",
+    answer: "Ketiganya masuk dalam rancangan paket utama. Anda tidak perlu memilih paket berbeda hanya untuk menggunakan pengelolaan konten, formulir kontak, atau analitik kunjungan." },
+  { question: "Apakah tersedia pembayaran bulanan dan tahunan?",
+    answer: "Pilihan periode dan harga belum diumumkan. Saat tersedia, halaman ini akan menampilkan total tagihan untuk periode yang Anda pilih, termasuk ketentuan pembayarannya." },
+  { question: "Apakah nama domain sudah termasuk?",
+    answer: "Koneksi domain sendiri termasuk dalam rancangan paket. Pembelian serta perpanjangan nama domain dibayar terpisah kepada penyedia domain. Biayanya bergantung pada ekstensi dan penyedia yang Anda pilih." },
+  { question: "Berapa batas penyimpanan dan penggunaan?",
+    answer: "Kuota penyimpanan media dan batas penggunaan masih disiapkan. Rincian akan diumumkan sebelum langganan dibuka agar Anda dapat menilai kecocokannya dengan kebutuhan bisnis." },
+  { question: "Apakah saya wajib membeli add-on?",
+    answer: "Tidak. Add-on bersifat opsional. Penyimpanan tambahan dan asisten AI masih direncanakan, sehingga belum dapat dibeli saat ini." },
+  { question: "Apakah saya sudah bisa berlangganan sekarang?",
+    answer: "Langganan belum dibuka. Anda dapat mulai dengan menjelajahi tema atau mendiskusikan kebutuhan website. Harga, pajak, kuota, perpanjangan, dan ketentuan pembatalan akan dijelaskan sebelum pembayaran tersedia." },
+] as const;

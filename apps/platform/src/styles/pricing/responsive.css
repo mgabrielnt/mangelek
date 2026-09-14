@@ -1,0 +1,52 @@
+@media (max-width: 1000px) {
+  .pricingPlanIntro, .pricingPlanPurchase { padding: 32px; }
+  .pricingHighlights { grid-template-columns: 1fr; gap: 13px; }
+  .pricingFeatures { grid-template-columns: repeat(2, 1fr); gap: 36px; }
+  .pricingFeature p { min-height: auto; }
+  .pricingUsage { flex-wrap: wrap; }
+  .pricingUsage > a { margin-left: 68px; }
+  .pricingAddon { padding: 22px; }
+  .pricingAddonTop { align-items: start; flex-direction: column; }
+  .pricingFaqLayout { gap: 44px; }
+}
+@media (max-width: 700px) {
+  .pricingWidth { width: calc(100% - 40px); }
+  .pricingHero { padding: 128px 0 108px; }
+  .pricingHero h1 { font-size: clamp(42px, 8.8vw, 62px); }
+  .pricingHero p { font-size: 14px; }
+  .pricingMobileBreak { display: initial; }
+  .pricingPlan { grid-template-columns: 1fr; border-radius: 20px; }
+  .pricingPlanIntro, .pricingPlanPurchase { padding: 28px; }
+  .pricingPlanIntro h2 { font-size: 34px; }
+  .pricingHighlights { grid-template-columns: 1fr 1fr; }
+  .pricingHighlights li { font-size: 11px; }
+  .pricingPending p { font-size: 34px; }
+  .pricingSection { padding-block: 64px; }
+  .pricingSectionHeading { align-items: start; flex-direction: column; gap: 20px; margin-bottom: 32px; }
+  .pricingSectionHeading h2 { font-size: 34px; }
+  .pricingSectionHeading p { max-width: 430px; }
+  .pricingFeatures { gap: 32px 22px; }
+  .pricingFeature h3 { font-size: 15px; }
+  .pricingUsage { padding: 24px; gap: 16px; }
+  .pricingUsage > div { flex-basis: calc(100% - 60px); }
+  .pricingUsage > a { margin-left: 60px; }
+  .pricingUsage h2 { font-size: 18px; line-height: 1.35; }
+  .pricingAddons { grid-template-columns: 1fr; gap: 14px; }
+  .pricingAddonTop { flex-direction: row; align-items: center; }
+  .pricingAddon { padding: 26px; }
+  .pricingFaqSection { padding-block: 60px; }
+  .pricingFaqLayout { grid-template-columns: 1fr; gap: 32px; }
+  .pricingFaqIntro h2 { font-size: 42px; }
+  .pricingFaqIntro p { max-width: none; }
+}
+@media (max-width: 380px) {
+  .pricingPlanIntro, .pricingPlanPurchase { padding: 24px; }
+  .pricingHighlights, .pricingFeatures { grid-template-columns: 1fr; }
+  .pricingHighlights li { font-size: 13px; }
+  .pricingUsage > a { margin-left: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pricingPage *, .pricingPage *::before, .pricingPage *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+  .pricingAddon:hover { transform: none; }
+  html:has(.pricingPage) { scroll-behavior: auto; }
+}

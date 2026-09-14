@@ -5,13 +5,13 @@ export function Footer() {
     <div className="footerCallout sectionWidth">
       <div><span className="sectionLabel">SATU LANGKAH LEBIH DEKAT</span>
         <h2>Giliran bisnis Anda<br /><em>jadi cerita besar.</em></h2></div>
-      <a href="#contact" className="footerStart" aria-label="Mulai diskusikan website Anda">
+      <a href="/#contact" className="footerStart" aria-label="Mulai diskusikan website Anda">
         <span>Mari mulai</span><span aria-hidden="true">↗</span>
       </a>
     </div>
     <div className="footerMiddle sectionWidth">
       <div className="footerIdentity">
-        <a href="#top" className="footerBrand" aria-label="Mangelek — beranda">mangelek<span aria-hidden="true">.</span></a>
+        <a href="/" className="footerBrand" aria-label="Mangelek — beranda">mangelek<span aria-hidden="true">.</span></a>
         <p>Ruang baru untuk bisnis Anda.</p>
         <span className="footerOrigin">DARI INDONESIA. UNTUK DUNIA.</span>
       </div>

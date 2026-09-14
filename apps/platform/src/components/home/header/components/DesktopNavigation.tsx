@@ -1,9 +1,9 @@
 import { productLinks, supportLinks } from "@/data/navigation";
 import { NavDropdown } from "./NavDropdown";
 
-type Props = { active: string | null; setActive: (id: string | null) => void };
+type Props = { active: string | null; setActive: (id: string | null) => void; activePage?: "pricing" | undefined };
 
-export function DesktopNavigation({ active, setActive }: Props) {
+export function DesktopNavigation({ active, setActive, activePage }: Props) {
   return <nav className="desktopNavigation" aria-label="Navigasi utama">
     <ul className="navList">
       <NavDropdown id="products" label="Products" active={active} setActive={setActive}>
@@ -16,6 +16,8 @@ export function DesktopNavigation({ active, setActive }: Props) {
           </a>
         </li>)}</ul>
       </NavDropdown>
+      <li><a className="navLink" href="/pricing" aria-current={activePage === "pricing" ? "page" : undefined}
+        onFocus={() => setActive(null)}>Pricing</a></li>
       <li><a className="navLink" href="/blogs" onFocus={() => setActive(null)}>Blogs</a></li>
       <NavDropdown id="support" label="Support" active={active} setActive={setActive}>
         <ul className="navSupportList">{supportLinks.map((item) => <li key={item.title}>

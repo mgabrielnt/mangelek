@@ -1,0 +1,14 @@
+.pricingFaqSection { background: #f0ece4; padding-block: 86px; border-block: 1px solid #e1dace; }
+.pricingFaqLayout { display: grid; grid-template-columns: .8fr 1.4fr; gap: 88px; }
+.pricingFaqIntro h2 { font-size: clamp(36px, 4vw, 54px); line-height: 1.1; margin: 22px 0; }
+.pricingFaqIntro p { max-width: 245px; color: #68645e; font-size: 14px; line-height: 1.8; }
+.pricingQuestions details { border-bottom: 1px solid #d5cec1; }
+.pricingQuestions details:first-child { border-top: 1px solid #d5cec1; }
+.pricingQuestions summary { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 24px 0; cursor: pointer; list-style: none; font-size: 14px; font-weight: 600; line-height: 1.65; }
+.pricingQuestions summary::-webkit-details-marker { display: none; }
+.pricingQuestions summary:hover { color: #806039; }
+.pricingQuestions details p { max-width: 540px; margin: 0; padding: 0 30px 24px 0; color: #68645e; font-size: 13px; line-height: 1.9; }
+.pricingFaqToggle { position: relative; width: 20px; height: 20px; flex-shrink: 0; }
+.pricingFaqToggle::before, .pricingFaqToggle::after { content: ""; position: absolute; top: 9px; left: 4px; width: 12px; height: 1px; background: currentColor; }
+.pricingFaqToggle::after { transform: rotate(90deg); transition: transform .2s ease; }
+.pricingQuestions details[open] .pricingFaqToggle::after { transform: rotate(0); }
