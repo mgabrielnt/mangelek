@@ -7,9 +7,8 @@ export function BillingSelector({ options }: { options: readonly BillingOption[]
   const [cycle, setCycle] = useState(options[0]?.cycle);
   const selected = options.find((option) => option.cycle === cycle) ?? options[0];
   if (!selected) return <div className="pricingAmount pricingPending">
-    <span className="pricingStatus"><span />Langganan segera hadir</span>
-    <p>Awal yang tepat.<br /><em>Untuk bisnis Anda.</em></p>
-    <small>Harga dan pilihan periode akan diumumkan sebelum langganan dibuka.</small>
+    <p>Harga belum diumumkan</p>
+    <small>Langganan belum dibuka.</small>
   </div>;
   const display = getBillingDisplay(selected);
   return <div className="pricingAmount">

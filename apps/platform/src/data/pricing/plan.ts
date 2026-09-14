@@ -6,7 +6,7 @@ export type BillingOption = { cycle: BillingCycle; amount: number };
 export const billingOptions: readonly BillingOption[] = [];
 export const plan = {
   name: "Website + CMS",
-  description: "Satu ruang untuk membangun, mengelola, dan mengembangkan kehadiran bisnis Anda.",
+  description: "Untuk membuat dan mengelola website bisnis dari satu dashboard.",
   startHref: "/#templates",
 } as const;
 

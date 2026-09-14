@@ -11,7 +11,7 @@ test("No approved prices exposes neither fictional amounts nor billing choices",
   const root = createRoot(container);
   try {
     await act(() => root.render(<BillingSelector options={[]} />));
-    assert.match(container.textContent!, /Langganan segera hadir/);
+    assert.match(container.textContent!, /Harga belum diumumkan/);
     assert.equal(container.querySelector("input"), null);
     assert.doesNotMatch(container.textContent!, /Rp|diskon|gratis/i);
   } finally { await act(() => root.unmount()); }

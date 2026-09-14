@@ -1,26 +1,23 @@
 import { billingOptions, plan } from "@/data/pricing/plan";
 import { BillingSelector } from "./BillingSelector";
-import { PricingIcon } from "./PricingIcon";
-
-const highlights = ["Website dan hosting", "Dashboard CMS", "Formulir dan leads", "Analitik kunjungan"];
+import { IncludedFeatures } from "./IncludedFeatures";
+import { PricingAddons } from "./PricingAddons";
 
 export function PlanCard() {
-  return <section id="paket" className="pricingWidth pricingPlanSection" aria-labelledby="plan-title">
-    <div className="pricingPlan">
-      <div className="pricingPlanIntro">
-        <span className="pricingEyebrow">PAKET UTAMA</span>
-        <h2 id="plan-title">{plan.name}</h2>
-        <p>{plan.description}</p>
-        <ul className="pricingHighlights">{highlights.map((item) =>
-          <li key={item}><PricingIcon name="check" />{item}</li>)}</ul>
-        <a className="pricingTextLink" href="#fitur-paket">Lihat seluruh fitur <span aria-hidden="true">↗</span></a>
-      </div>
+  return <section id="paket" className="pricingPlan" aria-labelledby="plan-title">
+    <div className="pricingPlanMain">
       <div className="pricingPlanPurchase">
+        <span className="pricingLabel">PAKET UTAMA</span>
+        <h2 id="plan-title">{plan.name}</h2>
+        <p className="pricingDescription">{plan.description}</p>
         <BillingSelector options={billingOptions} />
-        <a className="pricingButton" href={plan.startHref}>Mulai Sekarang <span aria-hidden="true">↗</span></a>
-        <p className="pricingStartNote">Mulai dengan menjelajahi tema website.</p>
+        <a className="pricingButton" href={plan.startHref}>
+          Mulai Sekarang <span aria-hidden="true">→</span>
+        </a>
+        <p className="pricingStartNote">Mulai dengan memilih tema website.</p>
       </div>
+      <IncludedFeatures />
     </div>
-    <p className="pricingPlanFootnote">Satu paket untuk kebutuhan utama. Tambahan hanya saat Anda membutuhkannya.</p>
+    <PricingAddons />
   </section>;
 }

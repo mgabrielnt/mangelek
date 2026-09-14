@@ -1,26 +1,22 @@
 import type { Metadata } from "next";
 import { Header } from "@/components/home/header/Header";
-import { Footer } from "@/components/home/footer/Footer";
 import { PricingHero } from "@/components/pricing/PricingHero";
 import { PlanCard } from "@/components/pricing/PlanCard";
-import { IncludedFeatures } from "@/components/pricing/IncludedFeatures";
-import { UsageLimits } from "@/components/pricing/UsageLimits";
-import { PricingAddons } from "@/components/pricing/PricingAddons";
 import { PricingFaq } from "@/components/pricing/PricingFaq";
+import { PricingFooter } from "@/components/pricing/PricingFooter";
 import "@/styles/pricing.css";
 
 export const metadata: Metadata = {
   title: "Pricing — Website + CMS | Mangelek",
-  description: "Kenali paket Website + CMS Mangelek, fitur utama, pilihan tambahan, dan informasi langganan untuk website bisnis Anda.",
+  description: "Paket Website + CMS Mangelek: fitur, kapasitas penggunaan, biaya domain, dan informasi langganan website bisnis.",
 };
 
 export default function PricingPage() {
   return <div id="top" className="pricingPage">
     <Header activePage="pricing" />
-    <main id="main-content" tabIndex={-1}>
-      <PricingHero /><PlanCard /><IncludedFeatures />
-      <UsageLimits /><PricingAddons /><PricingFaq />
+    <main id="main-content" className="pricingContent" tabIndex={-1} aria-labelledby="pricing-title">
+      <PricingHero /><PlanCard /><PricingFaq />
     </main>
-    <Footer />
+    <PricingFooter />
   </div>;
 }

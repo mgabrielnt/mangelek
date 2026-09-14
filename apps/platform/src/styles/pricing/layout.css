@@ -1,26 +1,20 @@
-.pricingPage { --pricing-gold: #806039; --pricing-green: #34463b; background: #faf9f6; }
-.pricingWidth { width: min(1120px, calc(100% - 64px)); margin-inline: auto; }
-.pricingPage :is(h1, h2) { font-weight: 500; letter-spacing: -.055em; }
-.pricingPage :is(h1, h2, .pricingPending p) em { font-family: Georgia, serif; font-weight: 400; }
-.pricingPage :is(section[id]) { scroll-margin-top: 112px; }
-.pricingHero { position: relative; padding: 156px 0 130px; text-align: center; overflow: hidden; }
-.pricingHalo { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse at 50% 15%, #e8d7b980, transparent 65%); }
-.pricingHeroContent { position: relative; animation: pricing-enter .65s ease-out both; }
-.pricingEyebrow { display: block; color: var(--pricing-gold); font-size: 11px; font-weight: 700; letter-spacing: .18em; }
-.pricingHero h1 { margin: 24px 0; font-size: clamp(48px, 5.6vw, 80px); line-height: 1.05; }
-.pricingHero h1 em { color: var(--pricing-green); }
-.pricingHero p { color: #615e57; font-size: 17px; line-height: 1.75; margin-bottom: 22px; }
-.pricingMobileBreak { display: none; }
-.pricingTextLink { display: inline-flex; align-items: center; gap: 16px; min-height: 44px; font-size: 13px; font-weight: 600; }
-.pricingTextLink span, .pricingButton span { transition: transform .2s ease; }
-.pricingTextLink:hover span, .pricingButton:hover span { transform: translate(2px, -2px); }
-.pricingTextLink:hover { color: var(--pricing-gold); }
-.pricingSection { padding-block: 100px; }
-.pricingSectionHeading { display: flex; align-items: end; justify-content: space-between; gap: 48px; margin-bottom: 44px; }
-.pricingSectionHeading h2 { margin: 0; font-size: clamp(32px, 3.2vw, 45px); line-height: 1.15; }
-.pricingSectionHeading p { max-width: 330px; margin: 0; color: #68645e; font-size: 14px; line-height: 1.8; }
-.pricingButton { display: flex; align-items: center; justify-content: space-between; gap: 24px; min-height: 54px; padding: 16px 22px; background: #dcc7a4; color: #20271f; border: 1px solid #dcc7a4; border-radius: 12px; font-size: 14px; font-weight: 600; transition: background .2s ease; }
-.pricingButton:hover { background: #ead9be; }
+.pricingPage {
+  --pricing-muted: #65635e;
+  --pricing-line: #e3e0d9;
+  min-height: 100svh;
+  color: #20231f;
+  background: #fcfbf8;
+}
+.pricingContent, .pricingFooter { width: min(1040px, calc(100% - 48px)); margin-inline: auto; }
+.pricingContent { padding-top: 118px; }
+.pricingHero { margin-bottom: 30px; text-align: center; }
+.pricingHero h1 { margin: 0 0 12px; font-size: 40px; line-height: 1.15; font-weight: 600; letter-spacing: -.045em; }
+.pricingHero p { margin: 0; color: var(--pricing-muted); font-size: 15px; line-height: 1.6; }
+.pricingLabel { color: #75694f; font-size: 10px; font-weight: 600; letter-spacing: .09em; }
+.pricingButton { display: flex; align-items: center; justify-content: center; gap: 20px; min-height: 46px; padding: 12px 18px; border: 1px solid #2c382c; border-radius: 7px; color: #fff; background: #2c382c; font-size: 14px; font-weight: 600; transition: background-color 150ms; }
+.pricingButton:hover { background: #414d3e; }
+.pricingFooter { display: flex; align-items: center; gap: 24px; margin-top: 36px; padding-block: 16px; border-top: 1px solid var(--pricing-line); color: var(--pricing-muted); font-size: 12px; }
+.pricingFooterBrand { margin-right: auto; color: #30362c; font-size: 18px; font-weight: 600; letter-spacing: -.05em; }
+.pricingFooter a { display: inline-flex; align-items: center; min-height: 44px; }
+.pricingFooter a:hover { color: #796342; }
 .pricingSrOnly { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
-.pricingPage .siteFooter { background: #eee8de; }
-@keyframes pricing-enter { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
