@@ -1,18 +1,9 @@
-.pricingIncluded { min-width: 0; padding: 30px; }
-.pricingIncluded h3 { margin: 0 0 22px; font-size: 14px; font-weight: 600; }
-.pricingFeatures { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-.pricingFeatures h4, .pricingUsage h4 { margin: 0 0 14px; font-size: 11px; font-weight: 500; color: var(--pricing-muted); }
-.pricingFeatures ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
-.pricingFeatures li { display: flex; align-items: start; gap: 8px; font-size: 12px; line-height: 1.6; }
-.pricingFeatures svg { width: 15px; height: 19px; flex-shrink: 0; color: #526548; }
-.pricingUsage { margin-top: 26px; padding-top: 18px; border-top: 1px solid var(--pricing-line); }
-.pricingUsage h4 { margin-bottom: 7px; color: #30352d; font-weight: 600; }
-.pricingUsage p { margin: 0; color: var(--pricing-muted); font-size: 12px; line-height: 1.7; }
+.pricingIncluded { min-width: 0; padding: 40px; align-self: center; }
+.pricingIncluded h3 { margin: 0 0 24px; color: var(--pricing-muted); font-size: 12px; font-weight: 500; }
+.pricingFeatures { list-style: none; margin: 0; padding: 0; display: grid; gap: 19px; }
+.pricingFeatures li { display: flex; align-items: center; gap: 12px; font-size: 14px; line-height: 1.5; }
+.pricingFeatures svg { width: 17px; height: 17px; flex-shrink: 0; color: #52525b; }
+.pricingUsage { margin-top: 24px; padding-top: 18px; border-top: 1px solid var(--pricing-line); }
+.pricingUsage h4 { margin: 0 0 10px; font-size: 12px; }
 .pricingUsage dl { display: flex; flex-wrap: wrap; gap: 12px 24px; margin: 0; font-size: 12px; }
 .pricingUsage dd { margin: 5px 0 0; font-weight: 600; }
-.pricingAddons { display: flex; align-items: baseline; gap: 28px; padding: 18px 30px; border-top: 1px solid var(--pricing-line); }
-.pricingAddons h3 { flex-shrink: 0; margin: 0; font-size: 12px; font-weight: 600; }
-.pricingAddons dl { margin: 0; }
-.pricingAddons dl > div { display: flex; gap: 12px; font-size: 12px; line-height: 1.7; }
-.pricingAddons dt { flex-shrink: 0; font-weight: 500; }
-.pricingAddons dd { margin: 0; color: var(--pricing-muted); }

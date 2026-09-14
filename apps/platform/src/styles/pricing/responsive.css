@@ -1,37 +1,19 @@
-@media (max-width: 1000px) {
-  .pricingPlanMain { grid-template-columns: 300px minmax(0, 1fr); }
-  .pricingPlanPurchase, .pricingIncluded { padding: 24px; }
-  .pricingFeatures { gap: 16px; }
-  .pricingFaq { grid-template-columns: 270px minmax(0, 1fr); }
-  .pricingAddons { padding: 18px 24px; gap: 20px; }
-}
 @media (max-width: 760px) {
-  .pricingContent, .pricingFooter { width: calc(100% - 40px); }
-  .pricingContent { padding-top: 110px; }
-  .pricingHero { margin-bottom: 24px; }
-  .pricingHero h1 { font-size: 34px; }
-  .pricingHero p { font-size: 14px; }
+  .pricingContent, .pricingFooter, .pricingNav { width: calc(100% - 40px); }
+  .pricingNav { min-height: 76px; }
+  .pricingNav nav { gap: 20px; }
+  .pricingContent { padding-top: 48px; }
+  .pricingHero { margin-bottom: 30px; }
+  .pricingPlanPurchase, .pricingIncluded { padding: 28px; }
   .pricingPlanMain { grid-template-columns: 1fr; }
-  .pricingPlanPurchase { border-right: 0; border-bottom: 1px solid var(--pricing-line); border-radius: 12px 12px 0 0; }
-  .pricingDescription { max-width: 390px; }
-  .pricingPlanPurchase .pricingButton { max-width: 360px; }
-  .pricingStartNote { max-width: 360px; }
-  .pricingFeatures li { font-size: 13px; }
-  .pricingAddons { display: block; }
-  .pricingAddons h3 { margin-bottom: 12px; }
-  .pricingAddons dl > div { display: block; }
-  .pricingAddons dt { margin-bottom: 4px; }
-  .pricingFaq { grid-template-columns: 1fr; gap: 18px; margin-top: 28px; }
-  .pricingFaqIntro p br { display: none; }
-  .pricingFaqIntro a { margin-left: 6px; }
-  .pricingQuestions summary { font-size: 13px; }
-  .pricingFooter { gap: 16px; margin-top: 24px; }
+  .pricingFaq { grid-template-columns: 1fr; gap: 20px; margin-top: 44px; }
+  .pricingFooter { margin-top: 36px; }
 }
-@media (max-width: 430px) {
-  .pricingFeatures { grid-template-columns: 1fr; gap: 22px; }
-  .pricingFeatures ul { gap: 10px; }
-  .pricingPlanPurchase, .pricingIncluded { padding: 22px; }
-  .pricingFooter { flex-wrap: wrap; }
+@media (max-width: 380px) {
+  .pricingNav nav { gap: 14px; }
+  .pricingNav nav a { font-size: 12px; }
+  .pricingWordmark { font-size: 23px; }
+  .pricingFooter { flex-wrap: wrap; gap: 12px; }
   .pricingFooter > span { order: 3; width: 100%; }
 }
 @media (prefers-reduced-motion: reduce) {

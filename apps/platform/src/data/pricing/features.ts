@@ -1,10 +1,9 @@
 export const pricingFeatures = [
   { title: "Website & konten", items: [
-    "Pilihan tema website", "Editor logo, warna, dan halaman",
-    "Dashboard CMS", "Pengelolaan foto dan media",
+    "Tema & editor website", "CMS & pustaka media",
   ] },
   { title: "Hosting & pelanggan", items: [
-    "Hosting dan publikasi website", "Koneksi domain sendiri",
+    "Hosting website", "Koneksi domain sendiri",
     "Formulir kontak dan leads", "Analitik kunjungan",
   ] },
 ] as const;

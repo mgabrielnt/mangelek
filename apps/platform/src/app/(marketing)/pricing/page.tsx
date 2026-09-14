@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Header } from "@/components/home/header/Header";
+import { PricingNavigation } from "@/components/pricing/PricingNavigation";
 import { PricingHero } from "@/components/pricing/PricingHero";
 import { PlanCard } from "@/components/pricing/PlanCard";
 import { PricingFaq } from "@/components/pricing/PricingFaq";
@@ -13,9 +13,10 @@ export const metadata: Metadata = {
 
 export default function PricingPage() {
   return <div id="top" className="pricingPage">
-    <Header activePage="pricing" />
+    <PricingNavigation />
     <main id="main-content" className="pricingContent" tabIndex={-1} aria-labelledby="pricing-title">
-      <PricingHero /><PlanCard /><PricingFaq />
+      <section aria-labelledby="pricing-title"><PricingHero /><PlanCard /></section>
+      <PricingFaq />
     </main>
     <PricingFooter />
   </div>;
