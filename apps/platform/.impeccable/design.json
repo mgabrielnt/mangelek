@@ -1,0 +1,215 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-19T15:50:21.5997176Z",
+  "title": "Design System: Mangelek Scoped Surfaces",
+  "extensions": {
+    "scope": "Pricing specifications remain scoped to /pricing. Authentication metadata applies only to /login, /signup, /forgot-password, /reset-password, and /account; Home retains its own authority. Blogs and Templates extensions apply only to /blogs, /blogs/[slug], /templates, and /templates/[slug].",
+    "shadows": [],
+    "motion": [
+      {
+        "name": "state-feedback",
+        "value": "160ms cubic-bezier(.23, 1, .32, 1)",
+        "purpose": "Action press transform and FAQ icon transform/opacity."
+      },
+      {
+        "name": "press-scale",
+        "value": "scale(.98)",
+        "purpose": "Pointer press feedback, removed for focus-visible and reduced motion."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "none",
+        "purpose": "Disable pricing transitions, animations, smooth scrolling, and press scale."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "compact-desktop",
+        "value": "820px"
+      },
+      {
+        "name": "stacked-mobile",
+        "value": "680px"
+      },
+      {
+        "name": "narrow-mobile",
+        "value": "380px"
+      }
+    ],
+    "focus": {
+      "outline": "2px solid #2463a0",
+      "offset": "5px",
+      "billingOffset": "3px"
+    },
+    "validation": {
+      "verdict": "ship",
+      "passed": [
+        "production build",
+        "post-font TypeScript check",
+        "static route generation",
+        "13 tests",
+        "browser local font family check",
+        "skip-link focus check"
+      ],
+      "visualReview": "Reported desktop and mobile screenshot review found no material findings.",
+      "limitation": "Physical phone QA was not performed."
+    },
+    "fontAssets": {
+      "family": "Manrope",
+      "files": [
+        {
+          "path": "public/fonts/manrope-regular.ttf",
+          "weight": 400
+        },
+        {
+          "path": "public/fonts/manrope-semibold.ttf",
+          "weight": 600
+        }
+      ],
+      "display": "swap",
+      "note": "Other CSS requested weights do not imply additional font assets."
+    },
+    "authentication": {
+      "routes": [
+        "/login",
+        "/signup",
+        "/forgot-password",
+        "/reset-password",
+        "/account"
+      ],
+      "sources": [
+        "src/styles/auth/*.css",
+        "src/components/auth",
+        "AUTH-DESIGN.md"
+      ],
+      "layout": "1320px shell; 400px form; 1100px compact spacing; 900px form-only layout; 420px narrow layout.",
+      "focus": "2px solid #2463a0; 4px offset, 2px on inputs.",
+      "motion": "160ms cubic-bezier(.23, 1, .32, 1) press scale(.98); 200ms opacity/6px form entry; keyboard focus and reduced-motion overrides.",
+      "interaction": "50px actions and fields; 44px password reveal; autocomplete, first-invalid-field focus, associated errors, pending controls, and semantic focused status.",
+      "assets": "Unchanged public/images/marketing/features/website-editor.webp illustration and existing locally hosted Manrope.",
+      "validation": "Placeholder contrast corrected to --auth-muted (5.64:1 on white). Pricing-only detector advisories resolved by scoped auth documentation. 17 tests, production build, and TypeScript passed; no outstanding material finish fixes.",
+      "integrationBoundary": "UI and Supabase SDK integration implemented; live Supabase/Google configuration and provider testing deferred. See docs/runbooks/auth-setup.md."
+    },
+    "library": {
+      "routes": [
+        "/blogs",
+        "/blogs/[slug]",
+        "/templates",
+        "/templates/[slug]"
+      ],
+      "sources": [
+        "src/styles/blogs.css",
+        "src/styles/template-library.css",
+        "BLOG-DESIGN.md",
+        "TEMPLATES-DESIGN.md"
+      ],
+      "layout": "1160px container; 40px gutters, 20px at 600px; 900px compact and 600px mobile layouts; 68ch prose; two-column concepts become one on mobile.",
+      "focus": "2px solid #52633c; 5px offset, 3px search offset.",
+      "motion": "Fine-pointer arrow translateX(4px), 180ms cubic-bezier(.16,1,.3,1); reduced motion disables transitions.",
+      "interaction": "Native linked cards, pressed-state category buttons, labeled 16px search, polite atomic result count, useful reset; URL q and kategori state; concept detail contact prefill.",
+      "imageTreatment": "Blog covers use cover; concept listing and detail images use contain to preserve complete artwork.",
+      "assets": {
+        "blogs": [
+          "website-editor.webp",
+          "cms-dashboard.webp",
+          "domain-management.webp",
+          "business-dashboard.webp"
+        ],
+        "templates": [
+          "service.webp",
+          "restaurant.webp",
+          "company.webp",
+          "beauty-wellness.webp",
+          "property.webp",
+          "education.webp"
+        ],
+        "provenance": "Existing repository assets in public/images/marketing/features and categories; no new raster sourcing or modification."
+      },
+      "validation": {
+        "documenterChecked": [
+          "source CSS, routes, components and typed data",
+          "templates-mobile.png",
+          "article-desktop.png"
+        ],
+        "reportedChecks": [
+          "final production build",
+          "TypeScript",
+          "18 tests",
+          "Restaurant Premium contact prefill",
+          "both libraries at 320px: scrollWidth 305 <= innerWidth 320"
+        ],
+        "verdict": "ship",
+        "review": "Independent reviewer confirmed crop finding resolved in updated template captures.",
+        "evidence": "Repository-root .impeccable/review/library: eight desktop/mobile screenshots for listing and detail surfaces.",
+        "limitation": "No physical-device QA."
+      }
+    }
+  },
+  "components": [
+    {
+      "name": "Primary action",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Pricing theme exploration link.",
+      "html": "<a class=\"ds-primary\" href=\"/#templates\">Jelajahi Tema</a>",
+      "css": ".ds-primary{font-family:Manrope,Arial,Helvetica,sans-serif;display:flex;justify-content:center;align-items:center;min-height:48px;padding:12px 18px;border-radius:8px;background:#20242a;color:#fff;font-size:14px;font-weight:650;text-decoration:none;transition:transform 160ms cubic-bezier(.23,1,.32,1)}.ds-primary:focus-visible{outline:2px solid #2463a0;outline-offset:5px}.ds-primary:active{transform:scale(.98)}.ds-primary:focus-visible{transition:none;transform:none}@media(hover:hover) and (pointer:fine){.ds-primary:hover{background:#39434d}}@media(prefers-reduced-motion:reduce){.ds-primary{transition:none}.ds-primary:active{transform:none}}"
+    },
+    {
+      "name": "Secondary action",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Pricing contact link.",
+      "html": "<a class=\"ds-secondary\" href=\"/#contact\">Hubungi kami</a>",
+      "css": ".ds-secondary{font-family:Manrope,Arial,Helvetica,sans-serif;display:flex;justify-content:center;align-items:center;min-height:48px;padding:12px 18px;border:1px solid #dce1e6;border-radius:8px;background:#fff;color:#20242a;font-size:14px;font-weight:650;text-decoration:none;transition:transform 160ms cubic-bezier(.23,1,.32,1)}.ds-secondary:focus-visible{outline:2px solid #2463a0;outline-offset:5px}.ds-secondary:active{transform:scale(.98)}.ds-secondary:focus-visible{transition:none;transform:none}@media(hover:hover) and (pointer:fine){.ds-secondary:hover{background:#eef1f4}}@media(prefers-reduced-motion:reduce){.ds-secondary{transition:none}.ds-secondary:active{transform:none}}"
+    },
+    {
+      "name": "Launch status",
+      "kind": "chip",
+      "refersTo": "status",
+      "description": "Noninteractive launch status.",
+      "html": "<span class=\"ds-status\">Segera hadir</span>",
+      "css": ".ds-status{font-family:Manrope,Arial,Helvetica,sans-serif;display:inline-flex;align-items:center;gap:7px;padding:6px 10px;border-radius:30px;background:#eef1f4;color:#20242a;font-size:12px;font-weight:550;line-height:1.5}.ds-status:before{content:\"\";width:5px;height:5px;border-radius:50%;background:#667582}"
+    },
+    {
+      "name": "Summary surface",
+      "kind": "card",
+      "refersTo": "summary",
+      "description": "Quiet inset pricing summary with current pending price.",
+      "html": "<aside class=\"ds-summary\"><h3>Ringkasan paket</h3><p>Rp200.000 / bulan</p></aside>",
+      "css": ".ds-summary{font-family:Manrope,Arial,Helvetica,sans-serif;padding:24px;background:#f7f8fa;color:#20242a;border-radius:12px}.ds-summary h3{margin:0 0 24px;font-size:16px;font-weight:650}.ds-summary p{margin:0;max-width:12em;font-size:26px;font-weight:600;letter-spacing:-.03em;line-height:1.3;text-wrap:balance}@media(max-width:820px){.ds-summary{padding:20px}}@media(max-width:680px){.ds-summary p{max-width:none;font-size:25px}}@media(max-width:380px){.ds-summary{padding:16px}}"
+    },
+    {
+      "name": "Pricing navigation",
+      "kind": "nav",
+      "description": "Visible current-route navigation.",
+      "html": "<nav class=\"ds-nav\" aria-label=\"Navigasi utama\"><a href=\"/#templates\">Tema</a><a href=\"/pricing\" aria-current=\"page\">Pricing</a><a href=\"/#contact\">Kontak</a></nav>",
+      "css": ".ds-nav{font-family:Manrope,Arial,Helvetica,sans-serif;display:flex;gap:30px;align-items:center;flex-wrap:wrap}.ds-nav a{display:inline-flex;align-items:center;min-height:44px;color:#606872;font-size:14px;text-decoration:none}.ds-nav a[aria-current]{color:#20242a;text-decoration:underline;text-underline-offset:8px;text-decoration-thickness:2px}.ds-nav a:focus-visible{outline:2px solid #2463a0;outline-offset:5px}@media(hover:hover) and (pointer:fine){.ds-nav a:hover{color:#20242a;text-decoration:underline;text-underline-offset:6px}}@media(max-width:680px){.ds-nav{gap:20px}}@media(max-width:380px){.ds-nav{gap:16px}.ds-nav a{font-size:12px}}"
+    }
+  ],
+  "narrative": {
+    "northStar": "Minimal premium pricing",
+    "overview": "This document records the implemented /pricing surface only. It does not replace Home's visual system or authorize applying these tokens to unrelated routes. The supplied React Bits Pricing 14 reference and minimal premium direction inform the restrained package specification and subscription summary.\n\nWhite space, quiet borders, compact feature rows, and a dark primary action establish hierarchy. Indonesian copy and the Mangelek wordmark anchor the page. Source authority is src/styles/pricing/*.css, src/components/pricing, and the pricing route; the page brief remains in PRICING-DESIGN.md.\n\nSeparately scoped authentication, Blogs, and Templates extensions preserve this incumbent system and Home authority; their extensions record their own source and interaction contracts.",
+    "keyCharacteristics": [
+      "A neutral, light surface with restrained functional color.",
+      "A single package container and a softly tinted summary.",
+      "Responsive ordering, visible keyboard focus, and native disclosures."
+    ],
+    "rules": [
+      {
+        "name": "The Scope Rule",
+        "body": "Apply this palette inside /pricing; preserve other routes' existing visual authority.",
+        "section": "colors"
+      }
+    ],
+    "dos": [
+      "Do scope this visual system to /pricing.",
+      "Do preserve local typography, neutral surfaces, native controls, visible focus, and reduced-motion behavior.",
+      "Do retain summary-first mobile ordering and wrapping navigation."
+    ],
+    "donts": [
+      "Don't apply this page's composition or palette as a global Home redesign.",
+      "Don't introduce decorative elevation, animated monetary values, or unverified pricing claims.",
+      "Don't describe screenshot review as physical phone QA."
+    ]
+  }
+}

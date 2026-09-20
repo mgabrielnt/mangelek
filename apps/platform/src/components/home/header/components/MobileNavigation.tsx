@@ -9,6 +9,6 @@ export function MobileNavigation({ open, activePage }: { open: boolean; activePa
         <span><small aria-hidden="true">0{index + 1}</small>{item.title}</span>
         <span aria-hidden="true">↗</span></a>
     </li>)}</ul>
-    <a href="/#contact" className="navCta">Mulai cerita Anda <span aria-hidden="true">↗</span></a>
+    <a href="/signup" className="navCta">Mulai cerita Anda <span aria-hidden="true">↗</span></a>
   </nav>;
 }

@@ -1,21 +1,35 @@
-.pricingPage { --pricing-muted: #6b6b70; --pricing-line: #e5e5e7; min-height: 100svh; color: #18181b; background: #fff; font-family: Arial, Helvetica, sans-serif; }
+.pricingPage { --pricing-ink: #20242a; --pricing-muted: #606872; --pricing-line: #dce1e6; --pricing-surface: #f7f8fa; --pricing-ease: cubic-bezier(.23, 1, .32, 1); min-height: 100svh; color: var(--pricing-ink); background: #fff; font-family: var(--font-pricing), Arial, Helvetica, sans-serif; color-scheme: light; padding-inline: env(safe-area-inset-left, 0px) env(safe-area-inset-right, 0px); }
+.pricingPage ::selection { color: #fff; background: #344b61; }
 .pricingPage a { text-decoration: none; }
-.pricingPage :focus-visible { outline: 2px solid #6366f1; outline-offset: 5px; }
-.pricingContent, .pricingFooter, .pricingNav { width: min(1000px, calc(100% - 64px)); margin-inline: auto; }
-.pricingNav { display: flex; align-items: center; justify-content: space-between; min-height: 88px; border-bottom: 1px solid var(--pricing-line); }
-.pricingWordmark { color: #18181b; font-size: 27px; font-weight: 700; letter-spacing: -.065em; }
+.pricingPage :focus-visible { outline: 2px solid #2463a0; outline-offset: 5px; }
+.pricingPage :is(a, summary, input) { touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
+.pricingContent, .pricingFooter, .pricingNav { width: min(1080px, calc(100% - 64px)); margin-inline: auto; }
+.pricingNav { display: flex; align-items: center; justify-content: space-between; gap: 24px; min-height: 88px; border-bottom: 1px solid var(--pricing-line); }
+.pricingWordmark { display: inline-flex; align-items: center; min-height: 44px; font-size: 27px; font-weight: 750; letter-spacing: -.04em; }
 .pricingNav nav { display: flex; gap: 30px; align-items: center; }
-.pricingNav nav a { display: inline-flex; align-items: center; gap: 12px; min-height: 44px; color: var(--pricing-muted); font-size: 13px; }
-.pricingNav nav a[aria-current], .pricingNav nav a:hover { color: #18181b; }
-.pricingSkip { position: absolute; top: -100px; background: white; padding: 12px; }
-.pricingSkip:focus { top: 12px; }
-.pricingContent { padding-top: 68px; }
-.pricingHero { margin-bottom: 40px; text-align: center; }
-.pricingHero h1 { margin: 0 0 16px; font-size: clamp(32px, 4vw, 48px); line-height: 1.12; font-weight: 600; letter-spacing: -.055em; }
-.pricingHero p { margin: 0; color: var(--pricing-muted); font-size: 15px; line-height: 1.6; }
-.pricingButton { display: flex; align-items: center; justify-content: space-between; gap: 20px; min-height: 48px; padding: 12px 18px; border: 1px solid #fff; border-radius: 8px; color: #18181b; background: #fff; font-size: 14px; font-weight: 600; transition: background-color 160ms, transform 160ms; }
-.pricingButton:hover { background: #e8e8eb; transform: translateY(-2px); }
-.pricingFooter { display: flex; align-items: center; gap: 24px; margin-top: 56px; padding-block: 20px; border-top: 1px solid var(--pricing-line); color: var(--pricing-muted); font-size: 12px; }
-.pricingFooterBrand { margin-right: auto; color: #18181b; font-size: 19px; font-weight: 600; letter-spacing: -.05em; }
+.pricingNav nav a { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; color: var(--pricing-muted); font-size: 14px; }
+.pricingNav nav a[aria-current] { color: var(--pricing-ink); text-decoration: underline; text-underline-offset: 8px; text-decoration-thickness: 2px; }
+.pricingSkip { position: absolute; top: 12px; left: 16px; z-index: 10; transform: translateY(-160%); background: #fff; padding: 12px; border: 1px solid var(--pricing-line); border-radius: 6px; }
+.pricingSkip:focus { transform: none; }
+.pricingContent { padding-top: 48px; overflow: visible; }
+.pricingHero { margin-bottom: 32px; max-width: 760px; }
+.pricingHero h1 { margin: 0 0 16px; font-size: clamp(34px, 4.6vw, 56px); line-height: 1.12; font-weight: 600; letter-spacing: -.04em; text-wrap: balance; }
+.pricingHero p { margin: 0; color: var(--pricing-muted); font-size: 17px; line-height: 1.7; text-wrap: pretty; }
+.pricingButton, .pricingSecondaryButton { display: flex; align-items: center; justify-content: center; gap: 12px; min-height: 48px; padding: 12px 18px; border-radius: 8px; font-size: 14px; font-weight: 650; text-align: center; user-select: none; transition: transform 160ms var(--pricing-ease); }
+.pricingButton { color: #fff; background: var(--pricing-ink); }
+.pricingButton svg { width: 18px; height: 18px; }
+.pricingSecondaryButton { margin-top: 8px; background: #fff; border: 1px solid var(--pricing-line); }
+.pricingPage :is(.pricingButton, .pricingSecondaryButton):active { transform: scale(.98); }
+.pricingFooter { display: flex; align-items: center; flex-wrap: wrap; gap: 24px; margin-top: 64px; padding-block: 20px calc(20px + env(safe-area-inset-bottom, 0px)); border-top: 1px solid var(--pricing-line); color: var(--pricing-muted); font-size: 12px; }
+.pricingFooterBrand { margin-right: auto; color: var(--pricing-ink); font-size: 21px; font-weight: 650; letter-spacing: -.04em; }
 .pricingFooter a { display: inline-flex; align-items: center; min-height: 44px; }
 .pricingSrOnly { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
+.pricingPage :is(h2, h3, h4) { text-wrap: balance; }
+.pricingPage [id] { scroll-margin-top: 24px; }
+@media (hover: hover) and (pointer: fine) {
+  .pricingNav nav a:hover, .pricingFooter a:hover { color: var(--pricing-ink); text-decoration: underline; text-underline-offset: 6px; }
+  .pricingButton:hover { background: #39434d; }
+  .pricingSecondaryButton:hover { background: #eef1f4; }
+}
+
+.pricingNav nav svg { width: 15px; height: 15px; }

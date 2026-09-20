@@ -1,9 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useId, useState } from "react";
 import { getBillingDisplay, type BillingOption } from "@/data/pricing/plan";
 
 export function BillingSelector({ options }: { options: readonly BillingOption[] }) {
+  const billingId = useId();
   const [cycle, setCycle] = useState(options[0]?.cycle);
   const selected = options.find((option) => option.cycle === cycle) ?? options[0];
   if (!selected) return <div className="pricingAmount pricingPending">
@@ -14,7 +15,7 @@ export function BillingSelector({ options }: { options: readonly BillingOption[]
     {options.length > 1 && <fieldset className="pricingBilling">
       <legend className="pricingSrOnly">Periode pembayaran</legend>
       {options.map((option) => <label key={option.cycle}>
-        <input type="radio" name="billing-cycle" value={option.cycle}
+        <input type="radio" name={billingId} value={option.cycle}
           checked={selected.cycle === option.cycle}
           onChange={() => setCycle(option.cycle)} />
         <span>{option.cycle === "monthly" ? "Bulanan" : "Tahunan"}</span>

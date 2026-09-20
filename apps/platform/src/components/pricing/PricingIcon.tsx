@@ -1,4 +1,5 @@
 const paths = {
+  arrow: "M5 12h14 M13 6l6 6-6 6",
   layout: "M3 4h18v16H3z M3 9h18 M9 9v11",
   edit: "M13 5H4v16h16v-9 M10 14l1-4 8-8 3 3-8 8z",
   chart: "M4 3v17h17 M8 15v-4 M13 15V7 M18 15V4",

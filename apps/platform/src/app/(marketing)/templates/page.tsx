@@ -1,0 +1,5 @@
+import type { Metadata } from "next";
+import { Suspense } from "react";
+import { TemplateLibrary } from "@/components/templates/TemplateLibrary";
+export const metadata:Metadata={title:"Templates — Temukan Wajah Bisnis Anda | Mangelek",description:"Jelajahi konsep website Mangelek untuk jasa, restoran, perusahaan, properti, pendidikan, dan kecantikan."};
+export default function TemplatesPage(){return <main id="blog-main" className="blogMain" tabIndex={-1}><header className="blogHero"><h1>Karakter bisnis Anda.<br/>Awal desainnya di sini.</h1><p>Jelajahi konsep website untuk berbagai usaha. Temukan arah visual yang terasa milik Anda.</p></header><Suspense fallback={<p role="status" className="blogLoading">Menyiapkan koleksi…</p>}><TemplateLibrary/></Suspense><section className="templateLibraryEnd"><h2>Satu paket untuk langkah berikutnya.</h2><p>Website dan CMS mulai dari Rp200.000 per bulan. Diskusikan konsep pilihan Anda bersama kami.</p><a href="/pricing">Lihat paket dan fitur <span aria-hidden="true">→</span></a></section></main>;}

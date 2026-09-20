@@ -19,7 +19,7 @@ export function Header({ activePage }: { activePage?: "pricing" | undefined } = 
       <DesktopNavigation active={nav.active} setActive={nav.setActive} activePage={activePage} />
       <div className="navActions">
         <a className="navSecondary" href="/login">Log in</a>
-        <a className="navCta" href="/#contact">Mulai <span aria-hidden="true">↗</span></a>
+        <a className="navCta" href="/signup">Mulai <span aria-hidden="true">↗</span></a>
       </div>
       <button ref={nav.toggle} type="button" className="mobileToggle"
         aria-controls="mobile-navigation" aria-expanded={nav.mobileOpen}

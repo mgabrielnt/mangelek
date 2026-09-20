@@ -1,0 +1,36 @@
+.authPage { --auth-ink: #20242a; --auth-muted: #606872; --auth-line: #dce1e6; --auth-focus: #2463a0; --auth-ease: cubic-bezier(.23, 1, .32, 1); background: #fff; color: var(--auth-ink); font-family: var(--font-auth), Arial, sans-serif; min-height: 100svh; padding: 0 max(24px, env(safe-area-inset-right, 0px)) 0 max(24px, env(safe-area-inset-left, 0px)); color-scheme: light; }
+.authPage ::selection { background: #344b61; color: #fff; }
+.authPage :focus-visible { outline: 2px solid var(--auth-focus); outline-offset: 4px; }
+.authPage :is(a, button, input) { touch-action: manipulation; }
+.authPage :is(button, a) { -webkit-tap-highlight-color: transparent; }
+.authPage button { cursor: pointer; }
+.authPage button:disabled { cursor: wait; }
+.authHeader, .authFooter, .authLayout { width: min(1320px, 100%); margin-inline: auto; }
+.authHeader { display: flex; align-items: center; justify-content: space-between; gap: 20px; min-height: 88px; }
+.authBrand { display: inline-flex; align-items: center; min-height: 44px; font-size: 28px; font-weight: 600; letter-spacing: -.04em; }
+.authHome { display: inline-flex; gap: 10px; align-items: center; min-height: 44px; font-size: 13px; color: var(--auth-muted); }
+.authHome svg { width: 16px; height: 16px; }
+.authSkip { position: absolute; z-index: 10; inset: 12px auto auto 24px; transform: translateY(-160%); background: white; padding: 12px; border: 1px solid var(--auth-line); border-radius: 8px; }
+.authSkip:focus { transform: none; }
+.authLayout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); min-height: min(740px, calc(100svh - 160px)); gap: clamp(40px, 6vw, 100px); overflow: visible; }
+.authStory { position: relative; display: flex; flex-direction: column; justify-content: space-between; min-height: 680px; overflow: hidden; isolation: isolate; border-radius: 16px; background: #e6e2d9; }
+.authStoryCopy { position: relative; z-index: 1; padding: 40px 40px 24px; background: #e6e2d9; }
+.authStoryCopy::after { content: ""; position: absolute; inset: 100% 0 auto; height: 48px; background: linear-gradient(#e6e2d9, #e6e2d900); pointer-events: none; }
+.authStory h2 { margin: 0 0 16px; font-size: clamp(30px, 3.2vw, 44px); font-weight: 600; letter-spacing: -.04em; line-height: 1.15; text-wrap: balance; color: #272d26; }
+.authStory p { margin: 0; font-size: 14px; line-height: 1.7; color: #4e5349; }
+.authArtwork { position: absolute; inset: 120px 0 0; z-index: -1; }
+.authArtwork img { object-fit: cover; object-position: center 45%; }
+.authStoryFooter { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 32px 40px 24px; background: linear-gradient(transparent, #d3cec2 80%); color: #34382f; font-size: 12px; }
+.authStoryFooter > span:last-child { font-size: 28px; font-weight: 600; letter-spacing: -.04em; }
+.authFormSide { display: flex; align-items: center; justify-content: center; padding: 32px 28px 32px 0; min-width: 0; }
+.authFormWrap { width: 100%; max-width: 400px; }
+.authIntro { margin-bottom: 28px; }
+.authIntro h1 { margin: 0 0 12px; font-size: clamp(28px, 2.8vw, 36px); line-height: 1.2; letter-spacing: -.04em; font-weight: 600; text-wrap: balance; }
+.authIntro p { margin: 0; color: var(--auth-muted); font-size: 14px; line-height: 1.75; text-wrap: pretty; }
+.authFooter { min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 20px; color: var(--auth-muted); font-size: 12px; padding-bottom: env(safe-area-inset-bottom, 0px); }
+.authFooter a { display: inline-flex; align-items: center; min-height: 44px; }
+@media (hover: hover) and (pointer: fine) { .authHome:hover, .authFooter a:hover { color: var(--auth-ink); text-decoration: underline; } }
+@media (prefers-reduced-motion: no-preference) {
+  .authFormWrap { transition: opacity 200ms var(--auth-ease), transform 200ms var(--auth-ease); }
+  @starting-style { .authFormWrap { opacity: 0; transform: translateY(6px); } }
+}

@@ -1,10 +1,16 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useEffect, useState, type FormEvent } from "react";
+import { templateCategories } from "@/data/templates";
 
 export function ContactForm() {
   const [status, setStatus] = useState("");
   const [draft, setDraft] = useState("");
+  const [message, setMessage] = useState("");
+  useEffect(() => {
+    const selected = templateCategories.find(item => item.id === new URLSearchParams(window.location.search).get("template"));
+    if (selected) setMessage(`Saya tertarik dengan konsep ${selected.title}. Saya ingin mendiskusikan website untuk bisnis saya.`);
+  }, []);
   async function prepare(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const fields = new FormData(event.currentTarget);
@@ -32,7 +38,7 @@ export function ContactForm() {
       <input id="contact-whatsapp" name="whatsapp" type="tel" inputMode="tel"
         autoComplete="tel" placeholder="+62" maxLength={30} /></div>
     <div className="contactField contactFieldWide"><label htmlFor="contact-message">Kebutuhan Anda</label>
-      <textarea id="contact-message" name="message" rows={3} maxLength={2000}
+      <textarea id="contact-message" name="message" rows={3} maxLength={2000} value={message} onChange={event => setMessage(event.target.value)}
         placeholder="Website seperti apa yang Anda bayangkan?" required /></div>
     <button className="contactSubmit" type="submit">
       <span>Salin permintaan</span><span aria-hidden="true">↗</span></button>

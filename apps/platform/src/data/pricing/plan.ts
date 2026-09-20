@@ -3,11 +3,13 @@ export type BillingOption = { cycle: BillingCycle; amount: number };
 
 // Publish only approved totals in IDR. A yearly amount is the full annual bill.
 // Empty options keep the page in pre-launch mode without invented prices.
-export const billingOptions: readonly BillingOption[] = [];
+export const billingOptions: readonly BillingOption[] = [
+  { cycle: "monthly", amount: 200000 },
+];
 export const plan = {
   name: "Website + CMS",
   description: "Untuk membuat dan mengelola website bisnis dari satu dashboard.",
-  startHref: "/#templates",
+  startHref: "/templates",
 } as const;
 
 export const formatRupiah = (amount: number) =>

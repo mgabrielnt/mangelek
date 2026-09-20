@@ -1,5 +1,5 @@
 export const productLinks = [
-  { title: "Template website", href: "/#templates", description: "Temukan karakter bisnis Anda.", icon: "01" },
+  { title: "Template website", href: "/templates", description: "Temukan karakter bisnis Anda.", icon: "01" },
   { title: "Website & CMS", href: "/#features", description: "Bangun dan kelola dalam satu ruang.", icon: "02" },
   { title: "Domain & insight", href: "/#features", description: "Terhubung. Terarah. Terukur.", icon: "03" },
 ] as const;
@@ -10,7 +10,7 @@ export const supportLinks = [
 ] as const;
 
 export const mainLinks = [
-  { title: "Template", href: "/#templates" },
+  { title: "Template", href: "/templates" },
   { title: "Platform", href: "/#features" },
   { title: "Cara kerja", href: "/#why-mangelek" },
   { title: "Pricing", href: "/pricing" },

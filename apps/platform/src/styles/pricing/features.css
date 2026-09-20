@@ -1,8 +1,14 @@
-.pricingIncluded { min-width: 0; padding: 40px; align-self: center; }
-.pricingIncluded h3 { margin: 0 0 24px; color: var(--pricing-muted); font-size: 12px; font-weight: 500; }
-.pricingFeatures { list-style: none; margin: 0; padding: 0; display: grid; gap: 19px; }
-.pricingFeatures li { display: flex; align-items: center; gap: 12px; font-size: 14px; line-height: 1.5; }
-.pricingFeatures svg { width: 17px; height: 17px; flex-shrink: 0; color: #52525b; }
+.pricingIncluded h3, .pricingAddons h3 { margin: 0 0 24px; font-size: 16px; font-weight: 650; }
+.pricingFeatureGroup + .pricingFeatureGroup { margin-top: 24px; }
+.pricingFeatureGroup h4 { margin: 0 0 12px; font-size: 12px; font-weight: 500; color: var(--pricing-muted); }
+.pricingFeatures { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+.pricingFeatures li { display: flex; align-items: flex-start; gap: 12px; font-size: 14px; line-height: 1.6; }
+.pricingFeatures svg { width: 17px; height: 17px; margin-top: 3px; flex-shrink: 0; color: #435e50; }
+.pricingAddons { margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--pricing-line); }
+.pricingAddons h3 { margin-bottom: 14px; }
+.pricingAddons dl { margin: 0; }
+.pricingAddons dt { font-size: 14px; font-weight: 550; }
+.pricingAddons dd { margin: 6px 0 0; max-width: 52ch; color: var(--pricing-muted); font-size: 13px; line-height: 1.7; }
 .pricingUsage { margin-top: 24px; padding-top: 18px; border-top: 1px solid var(--pricing-line); }
 .pricingUsage h4 { margin: 0 0 10px; font-size: 12px; }
 .pricingUsage dl { display: flex; flex-wrap: wrap; gap: 12px 24px; margin: 0; font-size: 12px; }

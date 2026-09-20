@@ -1,17 +1,28 @@
-.pricingPlan { border: 1px solid var(--pricing-line); border-radius: 16px; overflow: hidden; background: #fafafa; box-shadow: 0 8px 32px #18181b06; }
-.pricingPlanMain { display: grid; grid-template-columns: 1fr 1.12fr; }
-.pricingPlanPurchase { --pricing-muted: #b1b1b8; padding: 36px; background: #18181b; color: #fff; }
-.pricingLabel { display: inline-flex; align-items: center; gap: 8px; padding: 6px 10px; border: 1px solid #414146; border-radius: 30px; font-size: 11px; color: #dedee2; }
-.pricingLabel::before { content: ""; width: 5px; height: 5px; border-radius: 50%; background: currentColor; }
-.pricingPlanPurchase h2 { margin: 24px 0; font-size: 30px; line-height: 1.2; font-weight: 500; letter-spacing: -.045em; }
-.pricingAmount { margin-bottom: 32px; }
-.pricingPending p { margin: 0; color: #b1b1b8; font-size: 15px; line-height: 1.5; }
-.pricingPending small, .pricingBillNote { color: var(--pricing-muted); font-size: 12px; line-height: 1.6; }
-.pricingBilling { display: inline-flex; gap: 3px; padding: 3px; margin: 0 0 16px; border: 1px solid #52525b; border-radius: 8px; }
-.pricingBilling label { position: relative; cursor: pointer; }
-.pricingBilling input { position: absolute; opacity: 0; width: 100%; height: 100%; margin: 0; }
-.pricingBilling label span { display: block; padding: 10px 18px; border-radius: 5px; font-size: 12px; }
-.pricingBilling input:checked + span { background: #fff; color: #18181b; }
-.pricingBilling input:focus-visible + span { outline: 2px solid #a5b4fc; outline-offset: 3px; }
-.pricingNumber { margin: 0 0 8px; font-size: clamp(28px, 3vw, 38px); font-weight: 600; letter-spacing: -.045em; line-height: 1.2; overflow-wrap: anywhere; }
+.pricingPlan { border: 1px solid var(--pricing-line); border-radius: 16px; padding: 32px; background: #fff; scroll-margin-top: 24px; }
+.pricingPlanHeading { display: flex; justify-content: space-between; align-items: flex-start; gap: 24px; padding-bottom: 28px; border-bottom: 1px solid var(--pricing-line); }
+.pricingPlanIdentity { display: flex; align-items: flex-start; gap: 16px; min-width: 0; }
+.pricingPlanIcon { display: grid; place-items: center; flex: 0 0 44px; height: 44px; border: 1px solid var(--pricing-line); border-radius: 10px; }
+.pricingPlanHeading h2 { margin: 0 0 8px; font-size: 24px; line-height: 1.3; font-weight: 650; letter-spacing: -.03em; }
+.pricingPlanHeading p { margin: 0; max-width: 52ch; font-size: 14px; line-height: 1.7; color: var(--pricing-muted); }
+.pricingLabel { display: inline-flex; align-items: center; gap: 7px; flex-shrink: 0; padding: 6px 10px; border-radius: 30px; background: #eef1f4; font-size: 12px; font-weight: 550; line-height: 1.5; }
+.pricingLabel::before { content: ""; width: 5px; height: 5px; border-radius: 50%; background: #667582; }
+.pricingPlanMain { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 360px); gap: 40px; padding-top: 28px; align-items: start; }
+.pricingPlanDetails { grid-column: 1; grid-row: 1; min-width: 0; }
+.pricingPlanPurchase { grid-column: 2; grid-row: 1; min-width: 0; padding: 24px; background: var(--pricing-surface); border-radius: 12px; }
+.pricingPlanPurchase h3 { margin: 0 0 24px; font-size: 16px; font-weight: 650; }
+.pricingSummary { display: grid; gap: 14px; margin: 0 0 24px; padding-bottom: 24px; border-bottom: 1px solid var(--pricing-line); font-size: 12px; line-height: 1.6; }
+.pricingSummary > div { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; }
+.pricingSummary dt { color: var(--pricing-muted); }
+.pricingSummary dd { margin: 0; text-align: right; flex-shrink: 0; }
+.pricingAmount { margin-bottom: 24px; }
+.pricingPending p { max-width: 12em; margin: 0; font-size: 26px; font-weight: 600; letter-spacing: -.03em; line-height: 1.3; text-wrap: balance; }
+.pricingPurchaseNote { margin: 16px 0 0; color: var(--pricing-muted); font-size: 12px; line-height: 1.7; text-align: center; }
+.pricingBillNote { color: var(--pricing-muted); font-size: 12px; line-height: 1.6; }
+.pricingBilling { display: flex; gap: 4px; padding: 4px; margin: 0 0 20px; border: 1px solid var(--pricing-line); border-radius: 8px; min-width: 0; }
+.pricingBilling label { position: relative; cursor: pointer; flex: 1; }
+.pricingBilling input { position: absolute; inset: 0; opacity: 0; width: 100%; height: 100%; margin: 0; cursor: pointer; }
+.pricingBilling label span { display: flex; justify-content: center; align-items: center; min-height: 44px; padding: 10px; border-radius: 5px; font-size: 13px; }
+.pricingBilling input:checked + span { background: var(--pricing-ink); color: #fff; }
+.pricingBilling input:focus-visible + span { outline: 2px solid #2463a0; outline-offset: 3px; }
+.pricingNumber { margin: 0 0 8px; font-size: clamp(26px, 3vw, 36px); font-weight: 600; letter-spacing: -.03em; line-height: 1.25; overflow-wrap: anywhere; font-variant-numeric: tabular-nums; }
 .pricingNumber small { display: block; margin-top: 5px; color: var(--pricing-muted); font-size: 13px; font-weight: 400; letter-spacing: 0; }

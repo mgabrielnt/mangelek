@@ -1,0 +1,29 @@
+@media (max-width: 1100px) {
+  .authLayout { gap: 40px; }
+  .authStoryCopy { padding: 32px; }
+  .authStoryFooter { padding-inline: 32px; }
+  .authFormSide { padding-right: 8px; }
+}
+@media (max-width: 900px) {
+  .authPage { padding-inline: max(24px, env(safe-area-inset-left, 0px)) max(24px, env(safe-area-inset-right, 0px)); }
+  .authHeader { min-height: 80px; }
+  .authLayout { display: flex; justify-content: center; min-height: calc(100svh - 160px); }
+  .authStory { display: none; }
+  .authFormSide { width: 100%; padding: 32px 0 40px; }
+  .authIntro h1 { font-size: 32px; }
+  .authModeNav { margin-bottom: 28px; }
+}
+@media (max-width: 420px) {
+  .authPage { padding-inline: max(20px, env(safe-area-inset-left, 0px)) max(20px, env(safe-area-inset-right, 0px)); }
+  .authHome { font-size: 0; gap: 0; width: 44px; justify-content: center; }
+  .authHome svg { width: 20px; height: 20px; }
+  .authBrand { font-size: 26px; }
+  .authIntro h1 { font-size: 29px; }
+  .authFormSide { padding-top: 16px; }
+  .authGoogle, .authPrimary { padding-inline: 12px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .authPage *, .authPage *::before, .authPage *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+  .authPage :is(.authPrimary, .authGoogle):active:not(:disabled) { transform: none; }
+  html:has(.authPage) { scroll-behavior: auto; }
+}
