@@ -1,3 +1,4 @@
+import { BlogIcon } from "@/components/blogs/BlogIcon";
 import { headerLinks } from "@/data/navigation";
 
 export function MobileNavigation({ open, activePage }: { open: boolean; activePage?: "pricing" | undefined }) {
@@ -7,8 +8,8 @@ export function MobileNavigation({ open, activePage }: { open: boolean; activePa
     <ul>{headerLinks.map((item, index) => <li key={item.href}>
       <a href={item.href} aria-current={activePage === "pricing" && item.href === "/pricing" ? "page" : undefined}>
         <span><small aria-hidden="true">0{index + 1}</small>{item.title}</span>
-        <span aria-hidden="true">↗</span></a>
+        <BlogIcon name="external"/></a>
     </li>)}</ul>
-    <a href="/signup" className="navCta">Mulai cerita Anda <span aria-hidden="true">↗</span></a>
+    <a href="/templates" className="navCta">Mulai sekarang <BlogIcon name="external"/></a>
   </nav>;
 }

@@ -1,10 +1,31 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-09-19T15:50:21.5997176Z",
+  "generatedAt": "2026-09-21T00:00:00+07:00",
   "title": "Design System: Mangelek Scoped Surfaces",
   "extensions": {
-    "scope": "Pricing specifications remain scoped to /pricing. Authentication metadata applies only to /login, /signup, /forgot-password, /reset-password, and /account; Home retains its own authority. Blogs and Templates extensions apply only to /blogs, /blogs/[slug], /templates, and /templates/[slug].",
-    "shadows": [],
+    "scope": "Pricing specifications remain scoped to /pricing. Authentication metadata applies only to /login, /signup, /forgot-password, /reset-password, and /account; Home retains its own authority. Blogs and Templates extensions apply only to /blogs, /blogs/[slug], /templates, and /templates/[slug]. Preview, commerce, and Home navigation additions are separately scoped; Home body remains unchanged. Exactly service and restaurant have live demos; four other details retain concept-only behavior. Website Editor additions apply only to /editor and its embedded preview; drafts are device-local, without cloud publication or authenticated tenant isolation.",
+    "shadows": [
+      {
+        "name": "preview-browser",
+        "value": "0 18px 45px #18261912",
+        "purpose": "Browser canvas only."
+      },
+      {
+        "name": "nav-mega",
+        "value": "0 25px 40px #20242a12",
+        "purpose": "Desktop Home menu."
+      },
+      {
+        "name": "nav-mobile",
+        "value": "0 20px 30px #20242a12",
+        "purpose": "Mobile Home menu."
+      },
+      {
+        "name": "editor-canvas",
+        "value": "0 5px 24px #20242a12",
+        "purpose": "Separate the rendered website from flat editor tools."
+      }
+    ],
     "motion": [
       {
         "name": "state-feedback",
@@ -34,6 +55,22 @@
       {
         "name": "narrow-mobile",
         "value": "380px"
+      },
+      {
+        "name": "preview-compact",
+        "value": "1000px"
+      },
+      {
+        "name": "commerce-nav-compact",
+        "value": "960px"
+      },
+      {
+        "name": "preview-commerce-stack",
+        "value": "760px"
+      },
+      {
+        "name": "demo-stack",
+        "value": "600px"
       }
     ],
     "focus": {
@@ -143,6 +180,368 @@
         "evidence": "Repository-root .impeccable/review/library: eight desktop/mobile screenshots for listing and detail surfaces.",
         "limitation": "No physical-device QA."
       }
+    },
+    "colorMeta": {
+      "preview-workspace": {
+        "role": "neutral",
+        "displayName": "Preview Workspace",
+        "canonical": "#f1f2f0"
+      },
+      "preview-line": {
+        "role": "neutral",
+        "displayName": "Preview Line",
+        "canonical": "#d9dcda"
+      },
+      "preview-device": {
+        "role": "neutral",
+        "displayName": "Preview Device",
+        "canonical": "#e5e7e3"
+      },
+      "preview-device-ink": {
+        "role": "neutral",
+        "displayName": "Preview Device Ink",
+        "canonical": "#555d57"
+      },
+      "preview-browser-muted": {
+        "role": "neutral",
+        "displayName": "Preview Browser Muted",
+        "canonical": "#616861"
+      },
+      "preview-browser-dot": {
+        "role": "neutral",
+        "displayName": "Preview Browser Dot",
+        "canonical": "#c7cbc7"
+      },
+      "preview-swatch-line": {
+        "role": "neutral",
+        "displayName": "Preview Swatch Line",
+        "canonical": "#20242a16"
+      },
+      "commerce-soft": {
+        "role": "neutral",
+        "displayName": "Commerce Soft",
+        "canonical": "#f4f6f1"
+      },
+      "commerce-hover": {
+        "role": "neutral",
+        "displayName": "Commerce Hover",
+        "canonical": "#354236"
+      },
+      "commerce-error": {
+        "role": "neutral",
+        "displayName": "Commerce Error",
+        "canonical": "#a32626"
+      },
+      "commerce-notice": {
+        "role": "neutral",
+        "displayName": "Commerce Notice",
+        "canonical": "#f5f1e7"
+      },
+      "commerce-notice-ink": {
+        "role": "neutral",
+        "displayName": "Commerce Notice Ink",
+        "canonical": "#695129"
+      },
+      "commerce-error-fill": {
+        "role": "neutral",
+        "displayName": "Commerce Error Fill",
+        "canonical": "#fff0ef"
+      },
+      "commerce-error-ink": {
+        "role": "neutral",
+        "displayName": "Commerce Error Ink",
+        "canonical": "#922b28"
+      },
+      "commerce-summary-line": {
+        "role": "neutral",
+        "displayName": "Commerce Summary Line",
+        "canonical": "#d7ddce"
+      },
+      "nav-line": {
+        "role": "neutral",
+        "displayName": "Nav Line",
+        "canonical": "#e2e5e1"
+      },
+      "demo-forest-background": {
+        "role": "demo",
+        "displayName": "Demo Forest Background",
+        "canonical": "#f4f3eb"
+      },
+      "demo-forest-ink": {
+        "role": "demo",
+        "displayName": "Demo Forest Ink",
+        "canonical": "#243d30"
+      },
+      "demo-forest-accent": {
+        "role": "demo",
+        "displayName": "Demo Forest Accent",
+        "canonical": "#dce6bc"
+      },
+      "demo-forest-surface": {
+        "role": "demo",
+        "displayName": "Demo Forest Surface",
+        "canonical": "#e7e9db"
+      },
+      "demo-sand-background": {
+        "role": "demo",
+        "displayName": "Demo Sand Background",
+        "canonical": "#faf4e9"
+      },
+      "demo-sand-ink": {
+        "role": "demo",
+        "displayName": "Demo Sand Ink",
+        "canonical": "#4e3629"
+      },
+      "demo-sand-accent": {
+        "role": "demo",
+        "displayName": "Demo Sand Accent",
+        "canonical": "#eed3ad"
+      },
+      "demo-sand-surface": {
+        "role": "demo",
+        "displayName": "Demo Sand Surface",
+        "canonical": "#eee2cf"
+      },
+      "demo-ocean-background": {
+        "role": "demo",
+        "displayName": "Demo Ocean Background",
+        "canonical": "#f0f6f8"
+      },
+      "demo-ocean-ink": {
+        "role": "demo",
+        "displayName": "Demo Ocean Ink",
+        "canonical": "#163e54"
+      },
+      "demo-ocean-accent": {
+        "role": "demo",
+        "displayName": "Demo Ocean Accent",
+        "canonical": "#bddce5"
+      },
+      "demo-ocean-surface": {
+        "role": "demo",
+        "displayName": "Demo Ocean Surface",
+        "canonical": "#dce9ef"
+      },
+      "demo-rose-background": {
+        "role": "demo",
+        "displayName": "Demo Rose Background",
+        "canonical": "#fbf1f1"
+      },
+      "demo-rose-ink": {
+        "role": "demo",
+        "displayName": "Demo Rose Ink",
+        "canonical": "#5a2636"
+      },
+      "demo-rose-accent": {
+        "role": "demo",
+        "displayName": "Demo Rose Accent",
+        "canonical": "#edc8d0"
+      },
+      "demo-rose-surface": {
+        "role": "demo",
+        "displayName": "Demo Rose Surface",
+        "canonical": "#efdee2"
+      },
+      "demo-mono-background": {
+        "role": "demo",
+        "displayName": "Demo Mono Background",
+        "canonical": "#ffffff"
+      },
+      "demo-mono-ink": {
+        "role": "demo",
+        "displayName": "Demo Mono Ink",
+        "canonical": "#252525"
+      },
+      "demo-mono-accent": {
+        "role": "demo",
+        "displayName": "Demo Mono Accent",
+        "canonical": "#e0e0da"
+      },
+      "demo-mono-surface": {
+        "role": "demo",
+        "displayName": "Demo Mono Surface",
+        "canonical": "#f1f1ed"
+      },
+      "demo-olive-background": {
+        "role": "demo",
+        "displayName": "Demo Olive Background",
+        "canonical": "#f6f5e9"
+      },
+      "demo-olive-ink": {
+        "role": "demo",
+        "displayName": "Demo Olive Ink",
+        "canonical": "#3d4322"
+      },
+      "demo-olive-accent": {
+        "role": "demo",
+        "displayName": "Demo Olive Accent",
+        "canonical": "#dee3a1"
+      },
+      "demo-olive-surface": {
+        "role": "demo",
+        "displayName": "Demo Olive Surface",
+        "canonical": "#e9e9d6"
+      }
+    },
+    "typographyMeta": {
+      "nav-label": {
+        "displayName": "Nav Label",
+        "purpose": "Mangelek Nav aliases local Manrope, only for Home navigation."
+      },
+      "preview-title": {
+        "displayName": "Preview Title",
+        "purpose": "Customizer inspector title."
+      },
+      "demo-body": {
+        "displayName": "Demo Body",
+        "purpose": "Demo Sans aliases local Manrope; body for every font pack."
+      },
+      "demo-editorial-heading": {
+        "displayName": "Demo Editorial Heading",
+        "purpose": "Demo Serif aliases local DM Serif Display."
+      },
+      "demo-modern-heading": {
+        "displayName": "Demo Modern Heading",
+        "purpose": "Demo Sans aliases local Manrope."
+      },
+      "demo-expressive-heading": {
+        "displayName": "Demo Expressive Heading",
+        "purpose": "Demo Display aliases local Bricolage Grotesque."
+      },
+      "checkout-heading": {
+        "displayName": "Checkout Heading",
+        "purpose": "Local Manrope commerce heading."
+      },
+      "editor-body": {
+        "displayName": "Editor body",
+        "purpose": "Editor Manrope aliases existing local Manrope regular/semibold assets; editor tools only."
+      }
+    },
+    "commerce": {
+      "routes": [
+        "/templates/service",
+        "/templates/restaurant",
+        "/preview/service",
+        "/preview/restaurant",
+        "/checkout",
+        "/checkout/status",
+        "/subscription"
+      ],
+      "sources": [
+        "src/styles/template-customizer.css",
+        "src/styles/template-demo.css",
+        "src/styles/checkout.css",
+        "src/styles/header/*.css",
+        "src/data/template-designs.ts",
+        "PREVIEW-CHECKOUT-DESIGN.md"
+      ],
+      "liveDemoCount": 2,
+      "conceptDetailCount": 4,
+      "paletteCount": 6,
+      "fontPackCount": 3,
+      "fontAliases": {
+        "Demo Sans": "Manrope",
+        "Demo Serif": "DM Serif Display",
+        "Demo Display": "Bricolage Grotesque",
+        "Mangelek Nav": "Manrope"
+      },
+      "layout": "1800px customizer, 350px inspector (300px at 1000px), stacks at 760px; browser 1180px or 390px phone mode; demos stack at 600px. Checkout 1080px, 370px summary/80px gap, 320px/35px at 960px, summary first at 760px. Home navigation full width, 88px desktop/76px at 960px.",
+      "interaction": "Six palettes, three fonts and native desktop/phone buttons. URL preserves design through checkout/auth; same-origin iframe messages preserve scroll. Native period radios, validation focus and actionable errors. Home Escape/outside close and keyboard menus.",
+      "focus": "Commerce/navigation: 2px solid #52633c, 4px offset. Demo: currentColor, 5px offset. Customizer inherits library focus.",
+      "motion": "150ms cubic-bezier(.23,1,.32,1) press scale(.98); focus-visible and reduced-motion remove transforms. Navigation panel entry 180ms opacity/5px; focus-within removes entry.",
+      "billing": {
+        "monthlyIDR": 200000,
+        "yearlyIDR": 2400000,
+        "annualDiscount": false,
+        "automaticRenewal": false,
+        "domain": "Separate",
+        "provider": "Midtrans; disabled without environment configuration",
+        "integration": "Supabase migration and live provider/database verification not executed; no real payment verified. Manual provisioning and renewal. See docs/runbooks/billing-setup.md."
+      },
+      "validation": {
+        "verdict": "ship",
+        "review": "Final verdict pass resolved the single icon-consistency finding with shared BlogIcon SVGs; reviewer accepted all seven captures. This was not a fresh review of the entire UI.",
+        "passed": [
+          "final production build",
+          "24 tests"
+        ],
+        "evidence": "Repository-root .impeccable/review/commerce; seven final screenshots, verdict.md and verification.md",
+        "detector": "Only new-system color/font/size/radius differences from prior documentation.",
+        "limitations": [
+          "No physical-phone QA",
+          "No live provider/database integration verification",
+          "Subscription/status source-reviewed"
+        ]
+      }
+    },
+    "homeSubscriptionCorrection": {
+      "date": "2026-09-21",
+      "contract": "HOME-SUBSCRIPTION-FIXES.md",
+      "header": "Transparent at top; floating glass after 48px, 1360px maximum, 16px radius, blur20px, 88% white; solid expanded menus and accessibility fallbacks.",
+      "motion": "200ms opacity/scale, reduced motion supported; 220ms pointer leave grace.",
+      "rail": "100% viewport width; existing carousel preserved.",
+      "subscription": "1160px container, 180px sidebar, 48px gap; nav horizontal at1000px, summary stacks at600px. Verified-user orders only.",
+      "validation": {
+        "verdict": "ship",
+        "tests": 28,
+        "build": "passed",
+        "typecheck": "passed",
+        "screenshots": 8,
+        "limitations": [
+          "Authenticated states source/unit-tested only",
+          "No live payment/provider verification",
+          "No physical-device QA"
+        ]
+      }
+    },
+    "editor": {
+      "routes": [
+        "/editor",
+        "/editor/preview"
+      ],
+      "sources": [
+        "src/styles/editor.css",
+        "src/styles/editor-canvas.css",
+        "src/components/editor",
+        "EDITOR-DESIGN.md",
+        "../../docs/runbooks/website-editor.md"
+      ],
+      "fontAliases": {
+        "Editor Manrope": "Manrope"
+      },
+      "layout": "230px / flexible / 290px grid; 205px/265px sidebars at 1250px; shared 280px pane at 1000px; 440px canvas above active panel at 700px. Desktop preview minimum 960px scaled to fit; phone maximum 390px.",
+      "focus": "2px solid #52633c, 3px offset; selected canvas section 2px inset outline.",
+      "motion": "150ms cubic-bezier(.23,1,.32,1) press scale(.98); focus-visible and reduced motion cancel transforms/transitions.",
+      "interaction": "Native selected-state controls, contextual fields, keyboard reordering, undo/redo, explicit save, import confirmation, JSON backup, actionable validation/storage errors.",
+      "persistence": "Device-local browser storage keyed by template; no account/tenant isolation, cloud persistence, or publication.",
+      "capacity": {
+        "sections": 20,
+        "minimumVisibleSections": 1,
+        "imageBytes": 1500000,
+        "documentUTF8Bytes": 4500000,
+        "serializer": "Shared compact JSON for capacity check, save, and export; reject oversized changes before mutation."
+      },
+      "architecture": {
+        "platform": "Browser interaction, local storage, preview messaging",
+        "contracts": "Versioned document and validation",
+        "themes": "Catalog and initial content",
+        "site-renderer": "Shared editing/read-only React renderer",
+        "missing": "Original ERD/role model, site provisioning, cloud draft/media persistence, publication and verified hostname routing."
+      },
+      "validation": {
+        "verdict": "pending",
+        "testsPassed": 36,
+        "acceptedCaptures": 4,
+        "finding": "Aggregate capacity corrected before change; shared compact save/export serialization.",
+        "build": "Awaiting final confirmation",
+        "evidence": "Repository-root .impeccable/review/editor",
+        "limitations": [
+          "No physical-device QA",
+          "No live database/provider or production media verification",
+          "No authenticated tenant or publication acceptance"
+        ]
+      },
+      "notCanonized": "9px specimen metadata/footer and one-off responsive wordmark sizes remain local implementation details, not reusable typography roles."
     }
   },
   "components": [
@@ -184,11 +583,19 @@
       "description": "Visible current-route navigation.",
       "html": "<nav class=\"ds-nav\" aria-label=\"Navigasi utama\"><a href=\"/#templates\">Tema</a><a href=\"/pricing\" aria-current=\"page\">Pricing</a><a href=\"/#contact\">Kontak</a></nav>",
       "css": ".ds-nav{font-family:Manrope,Arial,Helvetica,sans-serif;display:flex;gap:30px;align-items:center;flex-wrap:wrap}.ds-nav a{display:inline-flex;align-items:center;min-height:44px;color:#606872;font-size:14px;text-decoration:none}.ds-nav a[aria-current]{color:#20242a;text-decoration:underline;text-underline-offset:8px;text-decoration-thickness:2px}.ds-nav a:focus-visible{outline:2px solid #2463a0;outline-offset:5px}@media(hover:hover) and (pointer:fine){.ds-nav a:hover{color:#20242a;text-decoration:underline;text-underline-offset:6px}}@media(max-width:680px){.ds-nav{gap:20px}}@media(max-width:380px){.ds-nav{gap:16px}.ds-nav a{font-size:12px}}"
+    },
+    {
+      "name": "Editor selected section",
+      "kind": "custom",
+      "refersTo": "editor-section-selected",
+      "description": "Native outline selection for contextual editing.",
+      "html": "<button class=\"ds-editor-section\" aria-pressed=\"true\"><strong>Pembuka</strong><small>Bagian terpilih</small></button>",
+      "css": ".ds-editor-section{width:100%;min-height:62px;padding:13px 10px;border:0;border-radius:8px;background:#edf0e7;color:#354128;text-align:left;font-family:Manrope,sans-serif;cursor:pointer}.ds-editor-section strong{display:block;font-size:12px;font-weight:600}.ds-editor-section small{display:block;margin-top:3px;font-size:10px;color:#606872}.ds-editor-section:focus-visible{outline:2px solid #52633c;outline-offset:3px}@media(hover:hover) and (pointer:fine){.ds-editor-section[aria-pressed=false]:hover{background:#f1f3ed}}"
     }
   ],
   "narrative": {
     "northStar": "Minimal premium pricing",
-    "overview": "This document records the implemented /pricing surface only. It does not replace Home's visual system or authorize applying these tokens to unrelated routes. The supplied React Bits Pricing 14 reference and minimal premium direction inform the restrained package specification and subscription summary.\n\nWhite space, quiet borders, compact feature rows, and a dark primary action establish hierarchy. Indonesian copy and the Mangelek wordmark anchor the page. Source authority is src/styles/pricing/*.css, src/components/pricing, and the pricing route; the page brief remains in PRICING-DESIGN.md.\n\nSeparately scoped authentication, Blogs, and Templates extensions preserve this incumbent system and Home authority; their extensions record their own source and interaction contracts.",
+    "overview": "This document records the implemented /pricing surface only. It does not replace Home's visual system or authorize applying these tokens to unrelated routes. The supplied React Bits Pricing 14 reference and minimal premium direction inform the restrained package specification and subscription summary.\n\nWhite space, quiet borders, compact feature rows, and a dark primary action establish hierarchy. Indonesian copy and the Mangelek wordmark anchor the page. Source authority is src/styles/pricing/*.css, src/components/pricing, and the pricing route; the page brief remains in PRICING-DESIGN.md.\n\nSeparately scoped authentication, Blogs, and Templates extensions preserve this incumbent system and Home authority; their extensions record their own source and interaction contracts. The separately authorized preview/commerce flow and Home navigation replacement retain Home body, pricing, authentication, and blog visual authority.",
     "keyCharacteristics": [
       "A neutral, light surface with restrained functional color.",
       "A single package container and a softly tinted summary.",
@@ -199,17 +606,25 @@
         "name": "The Scope Rule",
         "body": "Apply this palette inside /pricing; preserve other routes' existing visual authority.",
         "section": "colors"
+      },
+      {
+        "name": "The Editor Boundary Rule",
+        "body": "Keep the rendered website expressive and the editing tools quiet; local save and publication status must remain explicit.",
+        "section": "components"
       }
     ],
     "dos": [
       "Do scope this visual system to /pricing.",
       "Do preserve local typography, neutral surfaces, native controls, visible focus, and reduced-motion behavior.",
-      "Do retain summary-first mobile ordering and wrapping navigation."
+      "Do retain summary-first mobile ordering and wrapping navigation.",
+      "Do scope editor tools and their aliases to the local editor workspace.",
+      "Do keep explicit save, backup/restore, selection, keyboard reordering, and validation feedback available."
     ],
     "donts": [
       "Don't apply this page's composition or palette as a global Home redesign.",
-      "Don't introduce decorative elevation, animated monetary values, or unverified pricing claims.",
-      "Don't describe screenshot review as physical phone QA."
+      "Don't introduce decorative elevation to pricing, animated monetary values, or unverified pricing claims.",
+      "Don't describe screenshot review as physical phone QA.",
+      "Don't describe browser-local drafts as account-isolated, cloud-saved, or published websites."
     ]
   }
 }

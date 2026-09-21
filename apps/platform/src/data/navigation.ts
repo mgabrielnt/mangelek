@@ -23,5 +23,6 @@ export const headerLinks = [
   { title: "Blogs", href: "/blogs" },
   mainLinks[3],
   mainLinks[4],
+  { title: "Langganan saya", href: "/subscription" },
   { title: "Log in", href: "/login" },
 ] as const;

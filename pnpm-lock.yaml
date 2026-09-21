@@ -172,6 +172,15 @@ importers:
 
   apps/platform:
     dependencies:
+      '@saas/contracts':
+        specifier: workspace:*
+        version: link:../../packages/contracts
+      '@saas/site-renderer':
+        specifier: workspace:*
+        version: link:../../packages/site-renderer
+      '@saas/themes':
+        specifier: workspace:*
+        version: link:../../packages/themes
       '@supabase/ssr':
         specifier: 0.12.7
         version: 0.12.7(@supabase/supabase-js@2.116.0)
@@ -236,9 +245,27 @@ importers:
 
   packages/observability: {}
 
-  packages/site-renderer: {}
+  packages/site-renderer:
+    dependencies:
+      '@saas/contracts':
+        specifier: workspace:*
+        version: link:../contracts
+      '@saas/themes':
+        specifier: workspace:*
+        version: link:../themes
+      react:
+        specifier: ^19.2.7
+        version: 19.2.7
+    devDependencies:
+      '@types/react':
+        specifier: 19.2.7
+        version: 19.2.7
 
-  packages/themes: {}
+  packages/themes:
+    dependencies:
+      '@saas/contracts':
+        specifier: workspace:*
+        version: link:../contracts
 
   packages/ui: {}
 

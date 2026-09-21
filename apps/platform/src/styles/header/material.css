@@ -1,0 +1,51 @@
+.siteHeader[data-home="true"] .navShell {
+  background: transparent;
+  border: 0;
+  isolation: isolate;
+}
+.siteHeader[data-home="true"] .navShell::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  border-radius: inherit;
+  background: rgba(255,255,255,.88);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+  backdrop-filter: blur(20px) saturate(140%);
+  box-shadow: 0 10px 32px #20242a14;
+  opacity: 0;
+  transform: scale(.985);
+  transition: opacity 200ms cubic-bezier(.23,1,.32,1), transform 200ms cubic-bezier(.23,1,.32,1);
+}
+.siteHeader[data-home="true"][data-scrolled="true"] .navShell {
+  width: min(1360px, calc(100% - 48px));
+  margin-inline: auto;
+  min-height: 76px;
+  padding: 10px 24px;
+  border-radius: 16px;
+  transform: translateY(12px);
+}
+.siteHeader[data-home="true"][data-scrolled="true"] .navShell::before { opacity: 1; transform: none; }
+.siteHeader[data-open="true"] .navShell { background: #fff; }
+.siteHeader[data-home="true"][data-open="true"] .navShell::before { opacity: 0; }
+.siteHeader[data-scrolled="true"][data-open="true"] .navShell { border-radius: 16px 16px 0 0; }
+.siteHeader[data-scrolled="true"] .navDropdownPanel { border-radius: 0 0 16px 16px; max-height: calc(100dvh - 112px); }
+.siteHeader[data-scrolled="true"] .navMegaGrid { gap: 36px; }
+@media(max-width:960px) {
+  .siteHeader[data-home="true"][data-scrolled="true"] .navShell { width: calc(100% - 24px); padding: 10px 16px; min-height: 68px; transform: translateY(8px); }
+  .siteHeader[data-scrolled="true"] .mobileNavigation { border-radius: 0 0 16px 16px; max-height: calc(100dvh - 92px - env(safe-area-inset-bottom)); }
+}
+@media(max-width:380px) {
+  .siteHeader[data-home="true"][data-scrolled="true"] .navShell { padding-inline: 12px; }
+  .siteHeader[data-home="true"][data-scrolled="true"] .navBrand>span:last-child { font-size: 22px; }
+}
+@media(max-width:600px) {
+  .siteHeader[data-home="true"][data-scrolled="true"] .navShell { gap:8px; padding-inline:12px; }
+  .siteHeader[data-home="true"][data-scrolled="true"] .navActions .navCta { white-space:nowrap; font-size:12px; padding-inline:12px; }
+}
+@supports not (backdrop-filter: blur(20px)) { .siteHeader[data-home="true"] .navShell::before { background: #fff; } }
+@media(prefers-reduced-transparency:reduce), (prefers-contrast:more) {
+  .siteHeader[data-home="true"] .navShell::before { background: #fff; backdrop-filter: none; -webkit-backdrop-filter: none; }
+}
+@media(forced-colors:active) { .siteHeader[data-home="true"] .navShell { background: Canvas; border: 1px solid CanvasText; } }

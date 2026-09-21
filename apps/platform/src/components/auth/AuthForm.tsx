@@ -14,7 +14,7 @@ const copy = {
   reset: { title: "Kata sandi baru.", description: "Pilih kata sandi yang unik untuk akun Mangelek Anda.", action: "Simpan kata sandi", busy: "Menyimpan…" },
 };
 
-export function AuthForm({ mode, initialError = "" }: { mode: AuthMode; initialError?: string }) {
+export function AuthForm({ mode, initialError = "", next = "/account" }: { mode: AuthMode; initialError?: string; next?: string }) {
   const [errors, setErrors] = useState<AuthErrors>({});
   const [error, setError] = useState(initialError);
   const [message, setMessage] = useState("");
@@ -42,7 +42,7 @@ export function AuthForm({ mode, initialError = "" }: { mode: AuthMode; initialE
     const first = Object.keys(nextErrors)[0];
     if (first) { (form.elements.namedItem(first) as HTMLInputElement)?.focus(); return; }
     busy.current = true; setPending("email");
-    const result = await submitAuth(mode, values);
+    const result = await submitAuth(mode, values, next);
     if (result.destination) { window.location.assign(result.destination); return; }
     if (result.error) setError(result.error);
     if (result.message) { form.reset(); setMessage(result.message); }
@@ -52,20 +52,20 @@ export function AuthForm({ mode, initialError = "" }: { mode: AuthMode; initialE
   async function google() {
     if (busy.current) return;
     busy.current = true; setPending("google"); setError("");
-    const result = await signInWithGoogle();
+    const result = await signInWithGoogle(next);
     if (result.error) { setError(result.error); busy.current = false; setPending(null); }
   }
 
   return <div className="authFormWrap">
     {full && <nav className="authModeNav" aria-label="Akses akun">
-      <Link href="/login" aria-current={mode === "login" ? "page" : undefined}>Masuk</Link>
-      <Link href="/signup" aria-current={mode === "signup" ? "page" : undefined}>Daftar</Link>
+      <Link href={`/login?next=${encodeURIComponent(next)}`} aria-current={mode === "login" ? "page" : undefined}>Masuk</Link>
+      <Link href={`/signup?next=${encodeURIComponent(next)}`} aria-current={mode === "signup" ? "page" : undefined}>Daftar</Link>
     </nav>}
     <div className="authIntro"><h1 id="auth-title">{message ? "Periksa email Anda." : details.title}</h1><p>{message ? "Satu langkah lagi untuk melanjutkan." : details.description}</p></div>
     <div ref={status} tabIndex={-1} className={`authStatus ${error ? "isError" : message ? "isSuccess" : ""}`} role={error ? "alert" : "status"} aria-live={error ? "assertive" : "polite"}>
       {(error || message) && <><AuthIcon name={error ? "lock" : "check"} /><p>{error || message}</p></>}
     </div>
-    {message ? <div className="authConfirmation"><Link className="authPrimary" href="/login">Kembali ke halaman masuk</Link><button className="authTextButton" type="button" onClick={() => setMessage("")}>Gunakan email lain</button></div> : <>
+    {message ? <div className="authConfirmation"><Link className="authPrimary" href={`/login?next=${encodeURIComponent(next)}`}>Kembali ke halaman masuk</Link><button className="authTextButton" type="button" onClick={() => setMessage("")}>Gunakan email lain</button></div> : <>
       {full && <><button className="authGoogle" type="button" onClick={google} disabled={Boolean(pending)}><GoogleIcon />{pending === "google" ? "Menghubungkan ke Google…" : "Lanjutkan dengan Google"}</button><div className="authDivider"><span>atau dengan email</span></div></>}
       <form onSubmit={onSubmit} noValidate aria-busy={Boolean(pending)}>
         {mode === "signup" && <div className="authField"><label htmlFor="name">Nama lengkap</label><input id="name" name="name" autoComplete="name" maxLength={100} required disabled={Boolean(pending)} aria-invalid={Boolean(errors.name)} aria-describedby={errors.name ? "name-error" : undefined} placeholder="Nama Anda" />{errors.name && <p className="authFieldError" id="name-error">{errors.name}</p>}</div>}
@@ -74,7 +74,7 @@ export function AuthForm({ mode, initialError = "" }: { mode: AuthMode; initialE
         {mode === "login" && <div className="authRecovery"><Link href="/forgot-password">Lupa kata sandi?</Link></div>}
         <button className="authPrimary" type="submit" disabled={Boolean(pending)}>{pending === "email" ? details.busy : details.action}<AuthIcon name="arrow" /></button>
       </form>
-      <p className="authSwitch">{mode === "login" ? <>Belum punya akun? <Link href="/signup">Daftar sekarang</Link></> : mode === "signup" ? <>Sudah punya akun? <Link href="/login">Masuk</Link></> : <Link href="/login">Kembali ke halaman masuk</Link>}</p>
+      <p className="authSwitch">{mode === "login" ? <>Belum punya akun? <Link href={`/signup?next=${encodeURIComponent(next)}`}>Daftar sekarang</Link></> : mode === "signup" ? <>Sudah punya akun? <Link href={`/login?next=${encodeURIComponent(next)}`}>Masuk</Link></> : <Link href={`/login?next=${encodeURIComponent(next)}`}>Kembali ke halaman masuk</Link>}</p>
     </>}
     {mode === "signup" && <p className="authFinePrint">Membuat akun tidak memulai langganan berbayar.<br /><Link href="/pricing">Lihat paket dan harga</Link></p>}
   </div>;

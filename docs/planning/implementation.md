@@ -26,3 +26,16 @@ Status: baseline struktur; fitur dan infrastruktur belum dibuat.
 Sprint adalah pengelompokan pekerjaan; tanggal dan kapasitas belum ditetapkan.
 AI ditambahkan saat fiturnya mulai dibangun, bukan dependency wajib awal.
 Struktur tidak membuktikan kesiapan produksi atau kelulusan FR/NFR.
+
+## Pembaruan Website Editor — 2026-09-21
+
+Tahap frontend editor tersedia di `/editor`: sunting teks/gambar/desain dan
+struktur section, preview, undo/redo, simpan draft lokal dan cadangan JSON.
+Kontrak dokumen, katalog tema dan renderer telah dipisahkan ke packages
+contracts, themes dan site-renderer sesuai batas impor.
+
+Ini belum menyelesaikan alur server langkah 5–8. ERD asli, membership/site
+authorization, media storage, persistensi draft server, provisioning dan
+publikasi immutable masih perlu dihubungkan. Rincian kebutuhan dan urutannya
+ada di `docs/runbooks/website-editor.md`; draft lokal tidak dianggap website
+terpublikasi atau penyimpanan milik tenant.

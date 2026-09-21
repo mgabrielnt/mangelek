@@ -1,7 +1,7 @@
 # @saas/contracts
 
-Kontrak Zod untuk request, response, event, dan jobs.
+Implemented: `@saas/contracts/website` exports the version-1 local website document, section types, aggregate size limit and import validation. It is browser-safe and imports neither application nor database code.
 
-Status: struktur saja. Dependencies, entrypoint, dan perintah runtime
-ditambahkan setelah versi kompatibel dipilih. Belum dapat dijalankan.
-Lihat docs/planning/implementation.md dan docs/architecture/boundaries.md.
+Other planned request, response, event and job contracts remain scaffolds; the website validator currently uses explicit TypeScript checks, not Zod.
+
+See docs/planning/implementation.md, docs/architecture/boundaries.md and docs/runbooks/website-editor.md.

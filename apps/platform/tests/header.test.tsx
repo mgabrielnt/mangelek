@@ -56,3 +56,30 @@ test("Mobile Escape restores focus to its trigger", async () => {
   assert.equal(panel("mobile-navigation").hidden, true);
   assert.equal(document.activeElement, button("mobile-navigation"));
 });
+
+test("Mouse can cross the space between a trigger and its panel without dismissing it", async () => {
+  const trigger = button("nav-products");
+  const enter = new window.MouseEvent("pointerover", { bubbles: true });
+  Object.defineProperty(enter, "pointerType", { value: "mouse" });
+  await act(() => trigger.dispatchEvent(enter));
+  assert.equal(panel("nav-products").hidden, false);
+  await act(() => trigger.dispatchEvent(new window.MouseEvent("click", { bubbles: true, detail: 1 })));
+  assert.equal(panel("nav-products").hidden, false, "a mouse click must not undo hover opening");
+  await act(() => trigger.dispatchEvent(new window.MouseEvent("pointerout", {
+    bubbles: true, relatedTarget: document.querySelector(".navShell"),
+  })));
+  assert.equal(panel("nav-products").hidden, false, "the navbar gap is inside the safe area");
+  await act(() => panel("nav-products").querySelector<HTMLAnchorElement>("a")!.focus());
+  assert.equal(panel("nav-products").hidden, false);
+});
+
+test("Home navbar floats after scrolling and returns to transparent state at the top", async () => {
+  const header = document.querySelector(".siteHeader")!;
+  assert.equal(header.getAttribute("data-scrolled"), "false");
+  Object.defineProperty(window, "scrollY", { configurable: true, value: 120 });
+  await act(() => window.dispatchEvent(new window.Event("scroll")));
+  assert.equal(header.getAttribute("data-scrolled"), "true");
+  Object.defineProperty(window, "scrollY", { configurable: true, value: 0 });
+  await act(() => window.dispatchEvent(new window.Event("scroll")));
+  assert.equal(header.getAttribute("data-scrolled"), "false");
+});

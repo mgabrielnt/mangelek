@@ -1,6 +1,9 @@
 {
-    "name":  "@saas/contracts",
-    "version":  "0.0.0",
-    "private":  true,
-    "type":  "module"
+  "name": "@saas/contracts",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./website": "./src/website.ts"
+  }
 }

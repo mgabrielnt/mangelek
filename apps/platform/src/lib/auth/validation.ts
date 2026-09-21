@@ -1,3 +1,4 @@
+import { resolveDesign, designQuery } from "@/data/template-designs";
 export type AuthMode = "login" | "signup" | "forgot" | "reset";
 export type AuthErrors = Partial<Record<"name" | "email" | "password", string>>;
 
@@ -23,5 +24,17 @@ export function authErrorMessage(code?: string) {
 }
 
 export function safeAuthDestination(value: string | null) {
-  return value === "/reset-password" ? "/reset-password" : "/account";
+  if(value==="/reset-password"||value==="/subscription")return value;
+  if(!value||value.length>1000||!value.startsWith("/")||value.startsWith("//")||value.includes("\\"))return "/account";
+  try{
+    const url=new URL(value,"https://mangelek.invalid");
+    if(url.origin!=="https://mangelek.invalid")return "/account";
+    if(url.pathname==="/checkout"){
+      const design=resolveDesign({template:url.searchParams.get("template")??undefined,palette:url.searchParams.get("palette")??undefined,font:url.searchParams.get("font")??undefined});
+      return `/checkout?${designQuery(design)}&period=${url.searchParams.get("period")==="yearly"?"yearly":"monthly"}`;
+    }
+    const order=url.searchParams.get("order");
+    if(url.pathname==="/checkout/status"&&order&&/^mgl-[a-f0-9]{32}$/.test(order))return `/checkout/status?order=${order}`;
+  }catch{/* Allow only normalized internal purchase routes. */}
+  return "/account";
 }

@@ -22,7 +22,10 @@
     "react": "19.2.7",
     "react-dom": "19.2.7",
     "three": "0.185.1",
-    "three-globe": "2.45.2"
+    "three-globe": "2.45.2",
+    "@saas/contracts": "workspace:*",
+    "@saas/themes": "workspace:*",
+    "@saas/site-renderer": "workspace:*"
   },
   "devDependencies": {
     "@types/node": "24.10.1",

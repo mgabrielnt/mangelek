@@ -1,6 +1,13 @@
 {
-    "name":  "@saas/themes",
-    "version":  "0.0.0",
-    "private":  true,
-    "type":  "module"
+  "name": "@saas/themes",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./catalog": "./src/catalog.ts",
+    "./draft": "./src/draft.ts"
+  },
+  "dependencies": {
+    "@saas/contracts": "workspace:*"
+  }
 }

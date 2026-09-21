@@ -7,6 +7,15 @@ export function useNavigation() {
   const toggle = useRef<HTMLButtonElement>(null);
   const [active, setActive] = useState<string | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const leaveTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const keepOpen = useCallback(() => { if (leaveTimer.current) clearTimeout(leaveTimer.current); }, []);
+  useEffect(() => {
+    const sync = () => setScrolled(window.scrollY > 48);
+    sync();
+    window.addEventListener("scroll", sync, { passive: true });
+    return () => { window.removeEventListener("scroll", sync); keepOpen(); };
+  }, [keepOpen]);
   const close = useCallback(() => { setActive(null); setMobileOpen(false); }, []);
   useEffect(() => {
     const desktop = matchMedia("(min-width: 961px)");
@@ -34,6 +43,9 @@ export function useNavigation() {
       document.removeEventListener("keydown", escape);
     };
   }, [active, mobileOpen, close]);
-  return { root, toggle, active, setActive, mobileOpen, close,
+  return { root, toggle, active, setActive, mobileOpen, close, scrolled, keepOpen,
+    leave: () => { keepOpen(); leaveTimer.current = setTimeout(() => {
+      if (!root.current?.contains(document.activeElement)) setActive(null);
+    }, 220); },
     toggleMobile: () => { setActive(null); setMobileOpen((open) => !open); } };
 }

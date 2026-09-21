@@ -6,20 +6,20 @@ import { useNavigation } from "./hooks/useNavigation";
 
 export function Header({ activePage }: { activePage?: "pricing" | undefined } = {}) {
   const nav = useNavigation();
-  return <header className="siteHeader">
+  return <header className="siteHeader" data-home={!activePage} data-scrolled={nav.scrolled} data-open={Boolean(nav.active)||nav.mobileOpen}>
     <a className="skipLink" href="#main-content">Lewati navigasi</a>
-    <div ref={nav.root} className="navShell" onBlur={(event) => {
+    <div ref={nav.root} className="navShell" onPointerEnter={nav.keepOpen} onPointerLeave={nav.leave} onBlur={(event) => {
       if (!event.currentTarget.contains(event.relatedTarget as Node)) nav.close();
     }} onClick={(event) => {
       if ((event.target as Element).closest("a")) nav.close();
     }}>
       <a className="navBrand" href="/" aria-label="Mangelek — beranda">
-        <span className="navBrandMark" aria-hidden="true">m.</span><span>mangelek</span>
+        <span>mangelek.</span>
       </a>
       <DesktopNavigation active={nav.active} setActive={nav.setActive} activePage={activePage} />
       <div className="navActions">
         <a className="navSecondary" href="/login">Log in</a>
-        <a className="navCta" href="/signup">Mulai <span aria-hidden="true">↗</span></a>
+        <a className="navCta" href="/templates">Mulai sekarang</a>
       </div>
       <button ref={nav.toggle} type="button" className="mobileToggle"
         aria-controls="mobile-navigation" aria-expanded={nav.mobileOpen}

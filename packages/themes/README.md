@@ -2,6 +2,5 @@
 
 Metadata, token, versi, dan konfigurasi awal tema.
 
-Status: struktur saja. Dependencies, entrypoint, dan perintah runtime
-ditambahkan setelah versi kompatibel dipilih. Belum dapat dijalankan.
+Implemented: browser-safe catalog for two live templates, six palettes and three font packs (`@saas/themes/catalog`), plus initial website documents (`@saas/themes/draft`). Versioned tenant theme installation remains a future integration.
 Lihat docs/planning/implementation.md dan docs/architecture/boundaries.md.

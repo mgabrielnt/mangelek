@@ -1,6 +1,19 @@
 {
-    "name":  "@saas/site-renderer",
-    "version":  "0.0.0",
-    "private":  true,
-    "type":  "module"
+  "name": "@saas/site-renderer",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/SiteRenderer.tsx"
+  },
+  "dependencies": {
+    "@saas/contracts": "workspace:*",
+    "@saas/themes": "workspace:*"
+  },
+  "peerDependencies": {
+    "react": "^19.2.7"
+  },
+  "devDependencies": {
+    "@types/react": "19.2.7"
+  }
 }

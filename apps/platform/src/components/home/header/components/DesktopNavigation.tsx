@@ -1,31 +1,10 @@
 import { productLinks, supportLinks } from "@/data/navigation";
+import { templateCategories } from "@/data/templates";
 import { NavDropdown } from "./NavDropdown";
-
-type Props = { active: string | null; setActive: (id: string | null) => void; activePage?: "pricing" | undefined };
-
-export function DesktopNavigation({ active, setActive, activePage }: Props) {
-  return <nav className="desktopNavigation" aria-label="Navigasi utama">
-    <ul className="navList">
-      <NavDropdown id="products" label="Products" active={active} setActive={setActive}>
-        <p className="navPanelLabel">SATU PLATFORM. BANYAK KEMUNGKINAN.</p>
-        <ul className="navProductList">{productLinks.map((item) => <li key={item.title}>
-          <a className="navProduct" href={item.href}>
-            <span className="navProductIcon" aria-hidden="true">{item.icon}</span>
-            <span><strong>{item.title}</strong><small>{item.description}</small></span>
-            <span className="navProductArrow" aria-hidden="true">↗</span>
-          </a>
-        </li>)}</ul>
-      </NavDropdown>
-      <li><a className="navLink" href="/pricing" aria-current={activePage === "pricing" ? "page" : undefined}
-        onFocus={() => setActive(null)}>Pricing</a></li>
-      <li><a className="navLink" href="/blogs" onFocus={() => setActive(null)}>Blogs</a></li>
-      <NavDropdown id="support" label="Support" active={active} setActive={setActive}>
-        <ul className="navSupportList">{supportLinks.map((item) => <li key={item.title}>
-          <a className="navSupport" href={item.href}>
-            <strong>{item.title}</strong><small>{item.description}</small>
-          </a>
-        </li>)}</ul>
-      </NavDropdown>
-    </ul>
-  </nav>;
-}
+type Props={active:string|null;setActive:(id:string|null)=>void;activePage?:"pricing"|undefined};
+export function DesktopNavigation({active,setActive,activePage}:Props){return <nav className="desktopNavigation" aria-label="Navigasi utama"><ul className="navList">
+<NavDropdown id="products" label="Products" active={active} setActive={setActive}><div className="navMegaGrid"><div><h2>Bangun website Anda</h2><ul className="navProductList">{productLinks.map(item=><li key={item.title}><a className="navProduct" href={item.href}><strong>{item.title}</strong><small>{item.description}</small></a></li>)}</ul></div><div><h2>Mulai dari sini</h2><a className="navMegaLink" href="/templates">Jelajahi semua template</a><a className="navMegaLink" href="/pricing">Paket Website + CMS</a><a className="navMegaLink" href="/blogs">Panduan website bisnis</a></div><div className="navMegaFeature"><h3>Website Anda.<br/>Kemungkinan baru.</h3><p>Pilih desain, temukan warna, dan mulai membentuk ruang digital bisnis Anda.</p><a href="/templates/restaurant">Coba live preview</a></div></div></NavDropdown>
+<NavDropdown id="solutions" label="Solutions" active={active} setActive={setActive}><div className="navSolutions"><div><h2>Untuk bisnis Anda</h2><div className="navSolutionLinks">{templateCategories.map(item=><a href={`/templates/${item.id}`} key={item.id}>{item.label}</a>)}</div></div><div className="navMegaFeature"><h3>Temukan karakter<br/>bisnis Anda.</h3><p>Enam arah desain, dengan warna dan font pilihan Anda.</p><a href="/templates">Lihat koleksi template</a></div></div></NavDropdown>
+<NavDropdown id="support" label="Resources" active={active} setActive={setActive}><div className="navResources"><div><h2>Panduan & bantuan</h2><ul className="navSupportList">{supportLinks.map(item=><li key={item.title}><a className="navSupport" href={item.href}><strong>{item.title}</strong><small>{item.description}</small></a></li>)}</ul></div><div><a className="navMegaLink" href="/blogs">Blogs</a><a className="navMegaLink" href="/subscription">Langganan saya</a><a className="navMegaLink" href="/login">Masuk ke akun</a></div></div></NavDropdown>
+<li><a className="navLink" href="/pricing" aria-current={activePage==="pricing"?"page":undefined} onFocus={()=>setActive(null)}>Pricing</a></li>
+</ul></nav>;}

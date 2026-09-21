@@ -14,7 +14,9 @@ export default async function AccountPage() {
   return <div className="authFormWrap authAccount">
     <div className="authIntro"><h1 id="auth-title">Selamat datang<br />di Mangelek.</h1><p>Anda telah masuk dengan <strong>{user.email}</strong>.</p></div>
     <p>Temukan tema yang sesuai dengan karakter bisnis Anda, atau pelajari paket Website + CMS.</p>
-    <Link className="authPrimary" href="/#templates">Jelajahi tema website</Link>
+    <Link className="authPrimary" href="/templates">Jelajahi tema website</Link>
+    <Link className="authGoogle" href="/subscription">Langganan dan pembayaran</Link>
+    <Link className="authGoogle" href="/editor">Website Editor — draft lokal</Link>
     <Link className="authGoogle" href="/pricing">Lihat paket dan harga</Link>
     <SignOutButton />
   </div>;
