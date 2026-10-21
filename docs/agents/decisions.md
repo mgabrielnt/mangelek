@@ -20,3 +20,5 @@ Keputusan yang mengubah BRD/FRD diberi nomor K-29 dst. dan harus masuk ke BRD/FR
 | 2026-10-21 | D-013 | Bila biaya arsitektur kumulatif melewati cadangan BRD Rp150.000, agent bertanya dulu pos modal mana yang dipakai. | Gab |
 | 2026-10-21 | D-014 | Tahap biaya mengikuti BRD 11.2 (Supabase Pro saat ≥ 6 website berbayar); usulan "maks 25% pendapatan" dibatalkan. | Gab |
 | 2026-10-21 | D-015 / K-29 | Backup database harian ke R2 sejak Tahap 0 (RPO ≤ 24 jam), menggantikan backup mingguan FRD 7.6. | Gab |
+| 2026-10-22 | D-016 | Langganan Cloudflare Workers Paid ditunda sampai deploy staging pertama (S-01 F7); pengembangan lokal memakai wrangler/miniflare dan kunci uji Turnstile. Biaya Workers Paid baru dihitung sejak itu. | Gab |
+| 2026-10-22 | D-017 | Repo GitHub publik: BRD, xlsx, dan diagram bisnis (B1, B2) disimpan lokal saja lewat .gitignore. | Gab |
