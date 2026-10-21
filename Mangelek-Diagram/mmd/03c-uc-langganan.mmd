@@ -1,0 +1,31 @@
+---
+title: "5.2.3 Use case — langganan, domain, dan hak data (hijau = baru v3.0)"
+---
+flowchart LR
+  pel["«aktor»<br/><b>Pelanggan</b> (PEL)"]:::actor
+  pwu["«aktor»<br/><b>Pengunjung website</b> (PWU)"]:::actor
+  subgraph S["Sistem Mangelek"]
+    direction TB
+    u12(["UC-12 Memperpanjang<br/>langganan"]):::uc
+    u21(["UC-21 Menjadwalkan ganti<br/>template atau tingkat"]):::ucn
+    u13(["UC-13 Berhenti<br/>berlangganan"]):::uc
+    u14(["UC-14 Memperpanjang<br/>domain"]):::uc
+    u23(["UC-23 Mengajukan<br/>permintaan hak data"]):::ucn
+  end
+  adm["«aktor»<br/><b>Operator admin</b> (ADM)"]:::actor
+  mid["«sistem»<br/>Midtrans"]:::ext
+  res["«sistem»<br/>Reseller domain"]:::ext
+  pel --- u12
+  pel --- u21
+  pel --- u13
+  pel --- u14
+  pel --- u23
+  pwu --- u23
+  u21 -. "«extend»" .-> u12
+  u12 --- mid
+  u14 --- res
+  u23 --- adm
+  classDef actor fill:#FFF4E0,stroke:#B7791F,stroke-width:1.5px,color:#1A1A1A
+  classDef uc fill:#EEF3FB,stroke:#1F3864,stroke-width:1.5px,color:#1A1A1A
+  classDef ucn fill:#E2F0D9,stroke:#38761D,stroke-width:1.5px,color:#1A1A1A
+  classDef ext fill:#F2F2F2,stroke:#718096,stroke-width:1.2px,color:#1A1A1A

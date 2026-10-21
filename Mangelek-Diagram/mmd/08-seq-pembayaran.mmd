@@ -1,0 +1,32 @@
+---
+title: "5.4.1 Sequence — notifikasi Midtrans sampai fulfillment"
+---
+sequenceDiagram
+  participant MT as Midtrans<br/>(Snap + Status API)
+  participant API as API webhook<br/>/v1/webhooks
+  participant DB as Postgres<br/>(orders, seats, outbox)
+  participant WK as Worker<br/>(Queues + jobs)
+  participant RS as Resend<br/>(email)
+  MT->>+API: POST notifikasi pembayaran
+  Note over API: Cek signature_key SHA512 (waktu-konstan)
+  alt tanda tangan salah
+    API->>DB: Simpan event tidak sah
+    API-->>MT: 401
+  else dedupe_key sudah ada
+    API-->>MT: 200 tanpa efek (duplikat)
+  else peristiwa baru
+    API->>DB: INSERT payment_events
+    API->>WK: Antrekan pemrosesan
+    API-->>-MT: 200 dalam ≤ 5 detik
+  end
+  WK->>MT: GET Status API (order_id percobaan)
+  MT-->>WK: transaction_status, gross_amount, IDR
+  alt settlement / capture+accept dan jumlah = total
+    WK->>DB: Transaksi: kunci order, paid, invoice, kursi held → active, tulis outbox
+    DB-->>WK: outbox order.paid (dispatcher)
+    Note over WK: Konsumen paralel: SUB, PRV, DOM, NTF, perubahan terjadwal
+    WK->>RS: Email lunas + invoice
+  else jumlah atau order tidak cocok
+    WK->>DB: Tetap pending + tandai rekonsiliasi
+    WK->>RS: Peringatan ke admin
+  end

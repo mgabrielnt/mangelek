@@ -1,0 +1,49 @@
+---
+title: "3.2 Diagram konteks — 4 aktor, komponen Mangelek, 7 sistem eksternal"
+---
+flowchart TB
+  pen(["<b>Pengunjung (PEN)</b><br/>calon pelanggan"]):::actor
+  pel(["<b>Pelanggan (PEL)</b><br/>pemilik UMKM, 1–10 website"]):::actor
+  pwu(["<b>Pengunjung website (PWU)</b><br/>pembeli UMKM"]):::actor
+  adm(["<b>Operator admin (ADM)</b><br/>7 peran + MFA"]):::actor
+
+  subgraph MGL["Sistem Mangelek"]
+    plat["<b>Aplikasi platform</b><br/>Next.js · pemasaran, checkout,<br/>dashboard, editor, admin"]:::sys
+    api["<b>API /v1 + webhook</b><br/>route handler · OpenAPI v5.3"]:::sys
+    jobs["<b>Jobs</b><br/>Queues + Cron · provisioning,<br/>domain, build, email, penjadwal"]:::sys
+    sites["<b>Website pelanggan</b><br/>Workers · hostname → site →<br/>release aktif, formulir"]:::sys
+    data[("<b>Data</b><br/>Postgres + Auth (RLS), R2")]:::db
+    status["<b>Halaman status</b><br/>statis, host terpisah"]:::sys
+  end
+
+  goo["Google OAuth"]:::ext
+  mid["Midtrans<br/>Snap QRIS/VA + Status API"]:::ext
+  res["Reseller domain<br/>(kandidat Exabytes)"]:::ext
+  cf["Cloudflare for SaaS<br/>hostname + TLS"]:::ext
+  rsd["Resend<br/>email"]:::ext
+  ts["Turnstile<br/>cek bot"]:::ext
+  maps["Google Maps<br/>Embed + Maps URLs"]:::ext
+
+  pen -- "jelajah, daftar" --> plat
+  pel -- "bayar, edit, terbit" --> plat
+  adm -- "panel admin" --> plat
+  pwu -- "buka website, formulir" --> sites
+  pel -. "cek status" .-> status
+  plat -- "JSON" --> api
+  api -- "SQL + RLS" --> data
+  api -- "outbox" --> jobs
+  jobs -- "SQL" --> data
+  sites -- "baca release" --> data
+  jobs -- "terbitkan berkas status" --> status
+  plat -- "OIDC" --> goo
+  api -- "Snap + cek status / notifikasi" --> mid
+  jobs -- "cek, daftar, perpanjang" --> res
+  jobs -- "buat hostname" --> cf
+  jobs -- "kirim email" --> rsd
+  sites -- "verifikasi token" --> ts
+  pwu -. "peta setelah klik, petunjuk arah" .-> maps
+
+  classDef actor fill:#FFF4E0,stroke:#B7791F,stroke-width:1.5px,color:#1A1A1A
+  classDef sys fill:#EEF3FB,stroke:#1F3864,stroke-width:1.5px,color:#1A1A1A
+  classDef db fill:#DCE6F7,stroke:#1F3864,stroke-width:1.5px,color:#1A1A1A
+  classDef ext fill:#F2F2F2,stroke:#718096,stroke-width:1.2px,color:#1A1A1A

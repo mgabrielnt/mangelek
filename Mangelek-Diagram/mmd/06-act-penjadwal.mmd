@@ -1,0 +1,30 @@
+---
+title: "5.3.3 Activity — penjadwal masa aktif (Cron tiap jam, SUB-012)"
+---
+flowchart TB
+  s((Cron tiap jam)):::term --> b1["Hitung jam terlewat sejak<br/>putaran sukses terakhir"]:::sis
+  b1 --> b2["Cari langganan per website, domain,<br/>kursi, dan perubahan terjadwal yang<br/>masuk ambang (zona waktu site, RB-12)"]:::sis
+  b2 --> d1{"Masih ada item?"}:::dec
+  d1 -- "tidak" --> b9["Catat putaran sukses"]:::sis
+  b9 --> e((Selesai)):::term
+  d1 -- "ya" --> d2{"Kunci dedupe<br/>sudah ada?"}:::dec
+  d2 -- "ya" --> b3["Lewati item"]:::sis
+  b3 --> d1
+  d2 -- "tidak" --> d3{"Jenis item"}:::dec
+  d3 -- "langganan" --> l1["H-7 order perpanjangan + email<br/>H-1 pengingat · H grace (berhenti: suspended)<br/>H+1, H+7 tenggang · H+8 suspended (503)<br/>H+14 win-back · H+28 peringatan hapus<br/>H+30 expired → site.purge"]:::sis
+  d3 -- "domain" --> l2["H-30 quote + order domain_renewal<br/>H-7, H-3 pengingat · lewat H-3 batal<br/>habis: expired, kembali ke subdomain"]:::sis
+  d3 -- "kursi / perubahan" --> l3["Tahanan kursi > 30 menit: released<br/>Perubahan terjadwal tak dibayar H+7:<br/>cancelled + kursi dilepas"]:::sis
+  l1 --> b4["Terapkan transisi + outbox<br/>dalam satu transaksi"]:::ok
+  l2 --> b4
+  l3 --> b4
+  b4 --> b5["Antre email pukul 09.00 lokal<br/>(NTF-008, prioritas NTF-010)"]:::sis
+  b5 --> d1
+  classDef pel fill:#FFF4E0,stroke:#B7791F,stroke-width:1.5px,color:#1A1A1A
+  classDef sis fill:#EEF3FB,stroke:#1F3864,stroke-width:1.5px,color:#1A1A1A
+  classDef ven fill:#F2F2F2,stroke:#718096,stroke-width:1.2px,color:#1A1A1A
+  classDef dec fill:#FFF2CC,stroke:#B7791F,stroke-width:1.5px,color:#1A1A1A
+  classDef ok fill:#E2F0D9,stroke:#38761D,stroke-width:1.5px,color:#1A1A1A
+  classDef bad fill:#FBE4E4,stroke:#B03A2E,stroke-width:1.5px,color:#1A1A1A
+  classDef term fill:#1F3864,stroke:#1F3864,color:#FFFFFF
+  classDef bar fill:#1F3864,stroke:#1F3864
+  classDef key fill:#FFFFFF,stroke:#9AA7BD,color:#1A1A1A

@@ -4,6 +4,7 @@
   "private": true,
   "type": "module",
   "exports": {
-    "./website": "./src/website.ts"
+    "./website": "./src/website.ts",
+    "./cloud-document": "./src/cloud-document.ts"
   }
 }

@@ -1,0 +1,22 @@
+---
+title: "5.4.6 Sequence — blok Lokasi: peta setelah klik dan petunjuk arah"
+---
+sequenceDiagram
+  actor PW as Pengunjung
+  participant WS as Website UMKM<br/>(edge, HTML statis)
+  participant GE as Google Maps<br/>Embed API
+  participant GM as Google Maps<br/>(aplikasi / web)
+  PW->>WS: Buka halaman
+  WS-->>PW: Alamat, jam buka, status “Buka sekarang”, gambar peta statis
+  Note over PW,WS: Belum ada permintaan ke Google (BRU-24, NFR-28)
+  opt Pengunjung menekan “Tampilkan peta”
+    PW->>WS: Klik
+    WS->>GE: Muat iframe embed (kunci dibatasi ke Maps Embed API)
+    GE-->>PW: Peta interaktif
+    Note over WS: Catat peristiwa map_open (tanpa data pribadi)
+  end
+  opt Pengunjung menekan “Petunjuk Arah”
+    PW->>GM: Buka maps/dir/?api=1&destination=lat,lng (+ place_id)
+    GM-->>PW: Rute dari lokasi pengunjung
+    Note over WS: Catat directions_click
+  end

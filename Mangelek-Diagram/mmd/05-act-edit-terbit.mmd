@@ -1,0 +1,39 @@
+---
+title: "5.3.2 Activity — edit, simpan, dan terbit"
+---
+flowchart TB
+  subgraph K["Keterangan warna"]
+    direction LR
+    k1["Pelanggan"]:::pel ~~~ k2["Sistem Mangelek"]:::sis ~~~ k3["Vendor"]:::ven
+  end
+  s((Mulai)):::term --> a1["Buka editor website terpilih"]:::pel
+  a1 --> b1["Cek pemilik, tenant, website,<br/>dan status langganan (EDT-013)"]:::sis
+  b1 --> d1{"Boleh menulis?"}:::dec
+  d1 -- "tidak: grace / suspended" --> x1["Editor hanya-baca,<br/>arahkan ke Bayar (E-READ-ONLY)"]:::bad
+  d1 -- "ya" --> b2["Kirim draf terbaru + etag (EDT-001)"]:::sis
+  b2 --> a2["Klik elemen di pratinjau atau panel:<br/>ubah teks, gambar, blok, varian, latar;<br/>duplikat bagian, undo / redo"]:::pel
+  a2 --> b3["Simpan otomatis 3 detik:<br/>validasi V-20 + If-Match"]:::sis
+  b3 --> d2{"etag cocok?"}:::dec
+  d2 -- "tidak: konflik" --> b4["Dialog konflik: muat terbaru,<br/>unduh, atau salin"]:::dec
+  b4 --> a2
+  d2 -- "ya" --> b5["Revisi baru + audit draft.saved,<br/>“Tersimpan pukul hh:mm”"]:::sis
+  b5 --> d3{"Tekan Terbitkan?"}:::dec
+  d3 -- "belum, masih mengedit" --> a2
+  d3 -- "ya" --> a3["Daftar periksa (teks alternatif, SEO),<br/>konfirmasi terbit"]:::pel
+  a3 --> b6["Cek periode + kuota, bekukan revisi,<br/>buat release (queued)"]:::sis
+  b6 --> v1["Jobs: build HTML statis ke R2,<br/>JSON-LD LocalBusiness, cek anggaran"]:::ven
+  v1 --> v2["Validasi skema, aset, tautan (PUB-002)"]:::ven
+  v2 --> d4{"Lolos?"}:::dec
+  d4 -- "ya" --> b7["Aktifkan release (CAS), purge cache,<br/>site.published"]:::sis
+  b7 --> ok1["Website baru tayang ≤ 60 detik"]:::ok
+  d4 -- "tidak" --> x2["Release failed,<br/>versi lama tetap tayang"]:::bad
+  x2 --> a4["Pesan gagal + tombol Coba Lagi"]:::pel
+  classDef pel fill:#FFF4E0,stroke:#B7791F,stroke-width:1.5px,color:#1A1A1A
+  classDef sis fill:#EEF3FB,stroke:#1F3864,stroke-width:1.5px,color:#1A1A1A
+  classDef ven fill:#F2F2F2,stroke:#718096,stroke-width:1.2px,color:#1A1A1A
+  classDef dec fill:#FFF2CC,stroke:#B7791F,stroke-width:1.5px,color:#1A1A1A
+  classDef ok fill:#E2F0D9,stroke:#38761D,stroke-width:1.5px,color:#1A1A1A
+  classDef bad fill:#FBE4E4,stroke:#B03A2E,stroke-width:1.5px,color:#1A1A1A
+  classDef term fill:#1F3864,stroke:#1F3864,color:#FFFFFF
+  classDef bar fill:#1F3864,stroke:#1F3864
+  classDef key fill:#FFFFFF,stroke:#9AA7BD,color:#1A1A1A

@@ -1,0 +1,87 @@
+---
+title: "ERD v3 — G. Operasi · 6 entitas + 2 rujukan (kotak ringkas)"
+---
+erDiagram
+  outbox {
+    uuid id PK
+    uuid tenant_id FK
+    text event_type
+    text aggregate_type
+    uuid aggregate_id
+    text dedupe_key UK
+    jsonb payload
+    text status
+    timestamptz available_at
+    timestamptz dispatched_at
+  }
+  job_runs {
+    uuid id PK
+    uuid tenant_id FK
+    uuid outbox_id FK
+    text job_type
+    text idempotency_key UK
+    text status
+    int attempts
+    int max_attempts
+    timestamptz lease_until
+    timestamptz next_retry_at
+    text result_ref
+    text last_error_code
+  }
+  idempotency_records {
+    uuid id PK
+    uuid tenant_id FK
+    uuid actor_id UK
+    text operation UK
+    text client_key UK
+    text request_hash
+    text state
+    int response_status
+    jsonb response_body
+    timestamptz expires_at
+  }
+  audit_events {
+    uuid id PK
+    uuid tenant_id FK
+    text actor_ref
+    text action
+    text object_type
+    uuid object_id
+    text outcome
+    uuid correlation_id
+    jsonb metadata_redacted
+  }
+  usage_counters {
+    uuid id PK
+    uuid tenant_id FK
+    uuid site_id FK,UK
+    text metric UK
+    timestamptz window_start UK
+    timestamptz window_end
+    int used
+  }
+  exports {
+    uuid id PK
+    uuid tenant_id FK
+    uuid site_id FK
+    text requested_by
+    text kind
+    jsonb params
+    uuid job_id FK
+    text status
+    text object_key
+    timestamptz expires_at
+  }
+  sites {
+    uuid id PK
+    uuid tenant_id FK
+  }
+  tenants {
+    uuid id PK
+  }
+  job_runs ||--o{ exports : "job_id"
+  outbox ||--o{ job_runs : "outbox_id"
+  sites ||--o{ exports : "site_id"
+  sites ||--o{ usage_counters : "site_id"
+  tenants ||--o{ audit_events : "tenant_id"
+  tenants ||--o{ idempotency_records : "tenant_id"

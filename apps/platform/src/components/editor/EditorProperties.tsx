@@ -1,10 +1,11 @@
 "use client";
 import { useRef, useState } from "react";
 import { palettes, fontPacks } from "@/data/template-designs";
-import { MAX_IMAGE_BYTES, sectionNames, type SiteDraft, type SiteSection } from "@/lib/editor/document";
+import { MAX_IMAGE_BYTES, validButtonUrl, sectionNames, type SiteDraft, type SiteSection } from "@/lib/editor/document";
+import { EditorImageLibrary } from "./EditorImageLibrary";
 import { EditorIcon } from "./EditorIcon";
 
-export function EditorProperties({ draft, section, styleMode, onStyleMode, update, change, onError }: { draft: SiteDraft; section: SiteSection; styleMode: boolean; onStyleMode: (v: boolean) => void; update: (patch: Partial<SiteSection>) => boolean; change: (next: SiteDraft) => void; onError: (message: string) => void }) {
+export function EditorProperties({ draft, document, section, styleMode, onStyleMode, update, change, onError }: { draft: SiteDraft; document: SiteDraft; section: SiteSection; styleMode: boolean; onStyleMode: (v: boolean) => void; update: (patch: Partial<SiteSection>) => boolean; change: (next: SiteDraft) => void; onError: (message: string) => void }) {
   const [uploading, setUploading] = useState(false);
   const imageInput = useRef<HTMLInputElement>(null);
   async function upload(file?: File) {
@@ -31,12 +32,14 @@ export function EditorProperties({ draft, section, styleMode, onStyleMode, updat
       <label className="editorField">Judul<textarea rows={3} maxLength={200} value={section.title} onChange={e => update({ title: e.target.value })} /></label>
       <label className="editorField">Deskripsi<textarea rows={5} maxLength={4000} value={section.body} onChange={e => update({ body: e.target.value })} /></label>
       {section.kind === "hero" && <>
-        <label className="editorField">Teks tombol<input maxLength={80} value={section.button} onChange={e => update({ button: e.target.value })} /><small>Mengarah ke bagian berikutnya pada halaman.</small></label>
+        <label className="editorField">Teks tombol<input maxLength={80} value={section.button} onChange={e => update({ button: e.target.value })} /></label>
+        <label className="editorField">Tujuan tombol<input type="text" inputMode="url" maxLength={2048} value={section.buttonUrl ?? ""} placeholder="https://… atau /kontak" aria-invalid={!validButtonUrl(section.buttonUrl ?? "")} onChange={e => update({ buttonUrl: e.target.value })} /><small>{validButtonUrl(section.buttonUrl ?? "") ? "Kosongkan untuk menuju bagian berikutnya. Mendukung halaman, HTTPS, email, dan telepon." : "Gunakan HTTPS, /alamat-halaman, mailto:email, atau tel:nomor."}</small></label>
         <div className="editorImageControl"><h3>Gambar pembuka</h3>{section.image ? <img src={section.image} alt="Gambar pembuka yang dipilih" /> : <p className="editorMuted">Belum ada gambar.</p>}
           <input ref={imageInput} type="file" accept="image/jpeg,image/png,image/webp" className="editorSrOnly" id="editor-image" onChange={e => void upload(e.target.files?.[0])} disabled={uploading} />
           <label htmlFor="editor-image" className="editorSecondary editorUpload"><EditorIcon name="upload" />{uploading ? "Membaca gambar…" : "Ganti gambar"}</label><p className="editorMuted">JPG, PNG, WebP · Maks. 1,5 MB</p>
           {section.image && <button className="editorTextButton" onClick={() => update({ image: "", imageAlt: "" })}>Hapus gambar</button>}
         </div>
+        <EditorImageLibrary document={document} current={section.image} choose={(image, imageAlt) => update({ image, imageAlt })} />
         <label className="editorField">Deskripsi gambar<input maxLength={300} value={section.imageAlt} onChange={e => update({ imageAlt: e.target.value })} /><small>Jelaskan isi gambar untuk pengguna pembaca layar.</small></label>
       </>}
       {section.kind === "collection" && <div className="editorItems"><h3>Isi bagian</h3>{section.items.map((item, i) => <fieldset key={i}><legend>Item {i + 1}</legend><label className="editorField">Nama<input maxLength={100} value={item.title} onChange={e => update({ items: section.items.map((v, j) => j === i ? { ...v, title: e.target.value } : v) })} /></label><label className="editorField">Keterangan<textarea rows={3} maxLength={1000} value={item.body} onChange={e => update({ items: section.items.map((v, j) => j === i ? { ...v, body: e.target.value } : v) })} /></label><button className="editorTextButton" onClick={() => update({ items: section.items.filter((_, j) => j !== i) })}>Hapus item {i + 1}</button></fieldset>)}<button className="editorSecondary" disabled={section.items.length >= 6} onClick={() => update({ items: [...section.items, { title: "Layanan baru", body: "Jelaskan layanan Anda." }] })}><EditorIcon name="plus" />Tambah item</button></div>}

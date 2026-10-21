@@ -1,0 +1,60 @@
+---
+title: "ERD v3 — H3. Kepatuhan data, laporan, dan halaman status · 5 entitas + 1 rujukan (kotak ringkas) · Fase 2: abuse_reports"
+---
+erDiagram
+  abuse_reports {
+    uuid id PK
+    uuid tenant_id FK
+    uuid site_id FK
+    text category
+    text description
+    text reporter_email_hash
+    text status
+    text handled_by
+  }
+  data_requests {
+    uuid id PK
+    text subject_email_hash
+    uuid site_id FK
+    text kind
+    text status
+    timestamptz verified_at
+    timestamptz due_at
+    timestamptz responded_at
+    text handled_by
+    text response_ref
+  }
+  data_incidents {
+    uuid id PK
+    timestamptz detected_at
+    text summary
+    jsonb data_categories
+    int affected_count
+    timestamptz notified_subjects_at
+    timestamptz notified_authority_at
+    text status
+  }
+  status_incidents {
+    uuid id PK
+    text title
+    jsonb components
+    text impact
+    text status
+    timestamptz started_at
+    timestamptz resolved_at
+  }
+  status_updates {
+    uuid id PK
+    uuid incident_id FK
+    text status
+    text message
+    text posted_by
+    timestamptz posted_at
+  }
+  sites {
+    uuid id PK
+    uuid tenant_id FK
+  }
+  sites ||--o{ abuse_reports : "site_id"
+  sites ||--o{ data_requests : "site_id"
+  status_incidents ||--o{ status_updates : "incident_id"

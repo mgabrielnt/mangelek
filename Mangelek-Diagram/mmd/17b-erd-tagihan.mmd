@@ -1,0 +1,193 @@
+---
+title: "ERD v3 — B. Katalog, pemasaran, dan tagihan · 14 entitas + 3 rujukan (kotak ringkas) · Fase 2: referral_codes, referral_rewards"
+---
+erDiagram
+  plans {
+    uuid id PK
+    text code UK
+    text name
+    int tier_rank
+    jsonb features
+    int quota_version
+    jsonb quotas
+    boolean enabled
+  }
+  plan_prices {
+    uuid id PK
+    uuid plan_id FK
+    int period_months
+    int amount_rupiah
+    text currency
+    timestamptz valid_from
+    timestamptz valid_until
+  }
+  templates {
+    uuid id PK
+    text code UK
+    text name
+    text category
+    boolean enabled
+    int sort_order
+  }
+  template_versions {
+    uuid id PK
+    uuid template_id FK,UK
+    int version UK
+    int schema_version
+    jsonb manifest
+    text object_prefix
+    text preview_url
+    text tier
+    int seat_limit
+    jsonb animation_pack
+    int perf_budget_kb
+    int quality_score
+    text status
+  }
+  subscriptions {
+    uuid id PK
+    uuid tenant_id FK
+    uuid site_id FK,UK
+    uuid plan_id FK
+    text status
+    timestamptz active_until
+    timestamptz grace_until
+    timestamptz retention_until
+    boolean auto_renew
+    boolean cancel_at_period_end
+    timestamptz canceled_at
+    text cancel_reason
+  }
+  subscription_periods {
+    uuid id PK
+    uuid tenant_id FK
+    uuid subscription_id FK
+    uuid order_line_id FK,UK
+    timestamptz starts_at
+    timestamptz ends_at
+    jsonb quota_snapshot
+  }
+  orders {
+    uuid id PK
+    uuid tenant_id FK
+    text purpose
+    uuid site_id FK
+    uuid subscription_id FK
+    uuid template_version_id FK
+    uuid merchant_order_id UK
+    text invoice_number UK
+    text cycle_key UK
+    text status
+    int total_rupiah
+    jsonb billing_snapshot
+    timestamptz expires_at
+    timestamptz paid_at
+  }
+  order_lines {
+    uuid id PK
+    uuid tenant_id FK
+    uuid order_id FK
+    uuid plan_price_id FK
+    text kind
+    text description
+    int quantity
+    int unit_rupiah
+    int total_rupiah
+    int period_months
+    jsonb quota_snapshot
+  }
+  payments {
+    uuid id PK
+    uuid tenant_id FK
+    uuid order_id FK
+    text provider UK
+    text provider_order_ref UK
+    int attempt_no
+    uuid transaction_id UK
+    text status
+    text method
+    int amount_rupiah
+    timestamptz token_expires_at
+    timestamptz paid_at
+    timestamptz provider_checked_at
+  }
+  payment_events {
+    uuid id PK
+    uuid payment_id FK
+    text provider UK
+    text dedupe_key UK
+    text merchant_order_ref
+    boolean signature_valid
+    jsonb payload_redacted
+    timestamptz received_at
+    timestamptz processed_at
+    text processing_status
+    text error_code
+  }
+  refunds {
+    uuid id PK
+    uuid tenant_id FK
+    uuid payment_id FK
+    text refund_key UK
+    text provider_ref
+    int amount_rupiah
+    text reason_category
+    text reason
+    text status
+    text requested_by
+    timestamptz requested_at
+    timestamptz completed_at
+  }
+  waitlist_entries {
+    uuid id PK
+    text name
+    text email UK
+    text phone_e164 UK
+    text business_type
+    uuid consent_document_id FK
+  }
+  referral_codes {
+    uuid id PK
+    uuid tenant_id FK
+    text code UK
+    boolean active
+  }
+  referral_rewards {
+    uuid id PK
+    uuid tenant_id FK
+    uuid referral_code_id FK
+    uuid referred_tenant_id FK,UK
+    uuid qualifying_order_id FK
+    text status
+    timestamptz granted_at
+  }
+  legal_documents {
+    uuid id PK
+  }
+  sites {
+    uuid id PK
+    uuid tenant_id FK
+  }
+  tenants {
+    uuid id PK
+  }
+  legal_documents ||--o{ waitlist_entries : "consent_document_id"
+  order_lines ||--o| subscription_periods : "order_line_id"
+  orders ||--o{ order_lines : "order_id"
+  orders ||--o{ payments : "order_id"
+  orders ||--o{ referral_rewards : "qualifying_order_id"
+  payments ||--o{ payment_events : "payment_id"
+  payments ||--o{ refunds : "payment_id"
+  plan_prices ||--o{ order_lines : "plan_price_id"
+  plans ||--o{ plan_prices : "plan_id"
+  plans ||--o{ subscriptions : "plan_id"
+  referral_codes ||--o{ referral_rewards : "referral_code_id"
+  sites ||--o{ orders : "site_id"
+  sites ||--o| subscriptions : "site_id"
+  subscriptions ||--o{ orders : "subscription_id"
+  subscriptions ||--o{ subscription_periods : "subscription_id"
+  template_versions ||--o{ orders : "template_version_id"
+  templates ||--o{ template_versions : "template_id"
+  tenants ||--o{ orders : "tenant_id"
+  tenants ||--o{ referral_codes : "tenant_id"
+  tenants ||--o| referral_rewards : "referred_tenant_id"

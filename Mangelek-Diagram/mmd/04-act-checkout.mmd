@@ -1,0 +1,55 @@
+---
+title: "5.3.1 Activity — checkout sampai aktivasi"
+---
+flowchart TB
+  subgraph K["Keterangan warna"]
+    direction LR
+    k1["Pelanggan"]:::pel ~~~ k2["Sistem Mangelek"]:::sis ~~~ k3["Vendor"]:::ven
+  end
+  s((Mulai)):::term --> a1["Pilih kategori, template, palet, font<br/>(tingkat mengikuti template)"]:::pel
+  a1 --> a2["Isi nama usaha, kota, periode<br/>bulanan / tahunan"]:::pel
+  a2 --> d0{"Template<br/>Eksklusif?"}:::dec
+  d0 -- "ya" --> b0["Kunci baris template, cek kursi<br/>dan kategori + kota (TIER-004)"]:::sis
+  b0 --> d00{"Kursi tersedia?"}:::dec
+  d00 -- "tidak" --> x0["E-SEAT-UNAVAILABLE:<br/>tawarkan template lain / daftar tunggu"]:::bad
+  d00 -- "ya" --> b00["Tahan kursi 30 menit"]:::sis
+  d0 -- "tidak" --> d1
+  b00 --> d1{"Beli domain baru?"}:::dec
+  d1 -- "ya" --> b1["Validasi nama (V-06),<br/>cek ketersediaan"]:::sis
+  b1 --> v1["Reseller: cek nama dan harga<br/>(≤ 3 detik)"]:::ven
+  v1 --> b2["Kunci quote 30 menit<br/>(biaya + Rp25.000)"]:::sis
+  b2 --> a3["Isi data registran (V-07)"]:::pel
+  d1 -- "tidak: subdomain /<br/>domain sendiri" --> b3
+  a3 --> b3["Hitung total + tagihan berikutnya<br/>(PAY-001)"]:::sis
+  b3 --> a4["Tinjau total, tekan Bayar"]:::pel
+  a4 --> b4["Cek syarat: email terverifikasi, Syarat disetujui,<br/>batas website, tingkat = template (PAY-003)"]:::sis
+  b4 --> b5["Buat order + baris (idempoten), buka Snap"]:::sis
+  b5 --> a5["Bayar QRIS / VA di halaman Snap"]:::pel
+  a5 --> v2["Midtrans mengirim notifikasi"]:::ven
+  v2 --> b6["Cek tanda tangan SHA512<br/>+ GET Status API"]:::sis
+  b6 --> d2{"Lunas dan<br/>jumlah cocok?"}:::dec
+  d2 -- "tidak" --> x1["Order tetap pending,<br/>pelanggan bisa lanjut bayar (PAY-012)"]:::bad
+  d2 -- "ya" --> b7["Order paid, invoice, kursi aktif,<br/>outbox order.paid"]:::ok
+  b7 --> f1[" "]:::bar
+  f1 --> p1["Email lunas + invoice"]:::sis
+  f1 --> p2["Periode masa aktif (SUB-002)"]:::sis
+  f1 --> p3["Buat site, revisi 1, release 1"]:::sis
+  f1 --> p4["Antrekan registrasi domain<br/>(bila membeli)"]:::sis
+  p3 --> p3b["Tayang di subdomain ≤ 5 menit"]:::ok
+  p4 -.-> v3["Reseller + Cloudflare:<br/>domain + HTTPS ≤ 24 jam (5.4.2)"]:::ven
+  p1 --> j1[" "]:::bar
+  p2 --> j1
+  p3b --> j1
+  j1 --> a6["Buka wizard onboarding (ONB-001)"]:::pel
+  a6 --> e((Selesai)):::term
+  classDef pel fill:#FFF4E0,stroke:#B7791F,stroke-width:1.5px,color:#1A1A1A
+  classDef sis fill:#EEF3FB,stroke:#1F3864,stroke-width:1.5px,color:#1A1A1A
+  classDef ven fill:#F2F2F2,stroke:#718096,stroke-width:1.2px,color:#1A1A1A
+  classDef dec fill:#FFF2CC,stroke:#B7791F,stroke-width:1.5px,color:#1A1A1A
+  classDef ok fill:#E2F0D9,stroke:#38761D,stroke-width:1.5px,color:#1A1A1A
+  classDef bad fill:#FBE4E4,stroke:#B03A2E,stroke-width:1.5px,color:#1A1A1A
+  classDef term fill:#1F3864,stroke:#1F3864,color:#FFFFFF
+  classDef bar fill:#1F3864,stroke:#1F3864
+  classDef key fill:#FFFFFF,stroke:#9AA7BD,color:#1A1A1A
+  style f1 height:8px
+  style j1 height:8px

@@ -26,7 +26,7 @@ export function SubscriptionOverview({ email, orders, unavailable, now }: Props)
     <header className="subscriptionHeading"><div><h1>Langganan saya.</h1><p>Ruang untuk mengelola langkah berikutnya.</p></div><Link href="/templates" className="subscriptionTextLink">Jelajahi template <BlogIcon name="arrow"/></Link></header>
     <div className="subscriptionLayout">
       <nav className="subscriptionSidebar" aria-label="Navigasi langganan">
-        <a href="#subscription-overview">Ringkasan</a><a href="#subscription-history">Riwayat pembayaran</a><Link href={`/editor?template=${current?.template === "service" ? "service" : "restaurant"}`}>Website Editor</Link><a href="#subscription-help">Bantuan</a>
+        <a href="#subscription-overview">Ringkasan</a><a href="#subscription-history">Riwayat pembayaran</a><Link href={`/editor?template=${current?.template === "service" ? "service" : "restaurant"}`}>Website Editor</Link><Link href={`/app?template=${current?.template === "service" ? "service" : "restaurant"}`}>Dashboard</Link><a href="#subscription-help">Bantuan</a>
         {email && <p className="subscriptionIdentity">Akun Anda<strong>{email}</strong></p>}
       </nav>
       <div className="subscriptionContent">

@@ -1,0 +1,28 @@
+---
+title: "ERD v3 — F. Notifikasi · 2 entitas + 1 rujukan (kotak ringkas)"
+---
+erDiagram
+  notification_deliveries {
+    uuid id PK
+    uuid tenant_id FK
+    uuid outbox_id FK,UK
+    text channel UK
+    text template_code
+    text recipient_ref UK
+    int priority
+    timestamptz scheduled_for
+    text status
+    uuid provider_message_id
+    int attempt_count
+    timestamptz next_retry_at
+  }
+  email_suppressions {
+    uuid id PK
+    text email_hash UK
+    text reason
+  }
+  outbox {
+    uuid id PK
+    uuid tenant_id FK
+  }
+  outbox ||--o{ notification_deliveries : "outbox_id"

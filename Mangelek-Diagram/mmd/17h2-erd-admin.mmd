@@ -1,0 +1,56 @@
+---
+title: "ERD v3 — H2. Peran admin, persetujuan, dan kontrol · 5 entitas + 2 rujukan (kotak ringkas) · Fase 2: customer_notes"
+---
+erDiagram
+  admin_role_assignments {
+    uuid id PK
+    uuid operator_id FK,UK
+    text role UK
+    text granted_by
+    timestamptz revoked_at
+  }
+  admin_approvals {
+    uuid id PK
+    text action
+    text object_type
+    uuid object_id
+    text payload_hash
+    text reason
+    text requested_by
+    text decided_by
+    text status
+    timestamptz not_before
+    timestamptz expires_at
+    timestamptz executed_at
+  }
+  impersonation_sessions {
+    uuid id PK
+    uuid operator_id FK
+    uuid tenant_id FK
+    text reason
+    timestamptz started_at
+    timestamptz ends_at
+    timestamptz ended_at
+  }
+  customer_notes {
+    uuid id PK
+    uuid tenant_id FK
+    text body
+    text created_by
+  }
+  feature_flags {
+    text key PK
+    boolean enabled
+    text message
+    text updated_by
+  }
+  platform_operators {
+    uuid id PK
+  }
+  tenants {
+    uuid id PK
+  }
+  platform_operators ||--o{ admin_role_assignments : "operator_id"
+  platform_operators ||--o{ impersonation_sessions : "operator_id"
+  tenants ||--o{ customer_notes : "tenant_id"
+  tenants ||--o{ impersonation_sessions : "tenant_id"

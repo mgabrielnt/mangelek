@@ -1,0 +1,43 @@
+---
+title: "5.2.2 Use case — mengelola isi website, lead, dan CRM (hijau = baru v3.0)"
+---
+flowchart LR
+  pel["«aktor»<br/><b>Pelanggan</b> (PEL)"]:::actor
+  pwu["«aktor»<br/><b>Pengunjung website</b> (PWU)"]:::actor
+  subgraph S["Sistem Mangelek"]
+    direction TB
+    u6(["UC-06 Mengedit dan<br/>menyimpan draf"]):::uc
+    u22(["UC-22 Menyusun halaman dengan<br/>blok, varian, dan Lokasi"]):::ucn
+    u7(["UC-07 Menerbitkan dan<br/>memulihkan versi"]):::uc
+    u8(["UC-08 Mengelola media"]):::uc
+    u9(["UC-09 Menghubungkan<br/>domain sendiri"]):::uc
+    u10(["UC-10 Mengirim<br/>formulir kontak"]):::uc
+    u11(["UC-11 Mengelola lead"]):::uc
+    u15(["UC-15 Melihat analitik<br/>dan laporan"]):::uc
+    u27(["UC-27 Mengelola pipeline<br/>dan tindak lanjut lead"]):::ucn
+    u28(["UC-28 Mengimpor, menganalisis,<br/>dan mengotomasi CRM"]):::ucn
+  end
+  cf["«sistem»<br/>Cloudflare for SaaS"]:::ext
+  rsd["«sistem»<br/>Resend"]:::ext
+  maps["«sistem»<br/>Google Maps"]:::ext
+  pel --- u6
+  pel --- u22
+  pel --- u7
+  pel --- u8
+  pel --- u9
+  pel --- u11
+  pel --- u15
+  pel --- u27
+  pel --- u28
+  pwu --- u10
+  u22 -. "«extend»" .-> u6
+  u6 -. "«include»" .-> u8
+  u27 -. "«extend»" .-> u11
+  u28 -. "«extend»" .-> u27
+  u9 --- cf
+  u10 --- rsd
+  u22 --- maps
+  classDef actor fill:#FFF4E0,stroke:#B7791F,stroke-width:1.5px,color:#1A1A1A
+  classDef uc fill:#EEF3FB,stroke:#1F3864,stroke-width:1.5px,color:#1A1A1A
+  classDef ucn fill:#E2F0D9,stroke:#38761D,stroke-width:1.5px,color:#1A1A1A
+  classDef ext fill:#F2F2F2,stroke:#718096,stroke-width:1.2px,color:#1A1A1A

@@ -1,0 +1,153 @@
+---
+title: "ERD v3 — I. CRM pelanggan · 11 entitas + 1 rujukan (kotak ringkas) · Fase 2: crm_tags, contact_tags, crm_custom_fields, crm_automations"
+---
+erDiagram
+  contacts {
+    uuid id PK
+    uuid tenant_id FK
+    uuid site_id FK,UK
+    text name
+    text email_norm UK
+    text phone_e164 UK
+    text company
+    text source
+    jsonb first_touch
+    text owner_note
+    timestamptz marketing_consent_at
+    text marketing_consent_source
+    timestamptz unsubscribed_at
+    int score
+    jsonb custom
+    timestamptz last_activity_at
+    uuid merged_into_id FK
+    timestamptz deleted_at
+  }
+  crm_pipelines {
+    uuid id PK
+    uuid tenant_id FK
+    uuid site_id FK,UK
+    text name
+    boolean is_default UK
+  }
+  crm_stages {
+    uuid id PK
+    uuid tenant_id FK
+    uuid pipeline_id FK,UK
+    text name
+    int position UK
+    text kind
+    int rot_days
+  }
+  deals {
+    uuid id PK
+    uuid tenant_id FK
+    uuid site_id FK
+    uuid contact_id FK
+    uuid pipeline_id FK
+    uuid stage_id FK
+    text title
+    int value_idr
+    jsonb items
+    date expected_close_on
+    text status
+    text lost_reason
+    text lost_note
+    timestamptz won_at
+    timestamptz lost_at
+    timestamptz first_response_at
+    timestamptz stage_changed_at
+  }
+  crm_activities {
+    uuid id PK
+    uuid tenant_id FK
+    uuid site_id FK
+    uuid contact_id FK
+    uuid deal_id FK
+    text kind
+    text body
+    jsonb meta
+    text actor
+    text created_by
+    text edited_until
+  }
+  crm_tasks {
+    uuid id PK
+    uuid tenant_id FK
+    uuid site_id FK
+    uuid contact_id FK
+    uuid deal_id FK
+    text title
+    timestamptz due_at
+    boolean has_time
+    text status
+    timestamptz done_at
+    text source
+  }
+  message_templates {
+    uuid id PK
+    uuid tenant_id FK
+    uuid site_id FK,UK
+    text channel UK
+    text name UK
+    text subject
+    text body
+    jsonb variables
+  }
+  crm_tags {
+    uuid id PK
+    uuid tenant_id FK
+    uuid site_id FK,UK
+    text name UK
+    text color
+  }
+  contact_tags {
+    uuid id PK
+    uuid tenant_id FK
+    uuid contact_id FK
+    uuid tag_id FK
+  }
+  crm_custom_fields {
+    uuid id PK
+    uuid tenant_id FK
+    uuid site_id FK,UK
+    text entity UK
+    text key UK
+    text label
+    boolean type
+    jsonb options
+  }
+  crm_automations {
+    uuid id PK
+    uuid tenant_id FK
+    uuid site_id FK
+    text name
+    text trigger
+    jsonb conditions
+    jsonb actions
+    boolean enabled
+    int run_count
+  }
+  sites {
+    uuid id PK
+    uuid tenant_id FK
+  }
+  contacts ||--o{ contact_tags : "contact_id"
+  contacts ||--o{ contacts : "merged_into_id"
+  contacts ||--o{ crm_activities : "contact_id"
+  contacts ||--o{ crm_tasks : "contact_id"
+  contacts ||--o{ deals : "contact_id"
+  crm_pipelines ||--o{ crm_stages : "pipeline_id"
+  crm_pipelines ||--o{ deals : "pipeline_id"
+  crm_stages ||--o{ deals : "stage_id"
+  crm_tags ||--o{ contact_tags : "tag_id"
+  deals ||--o{ crm_activities : "deal_id"
+  deals ||--o{ crm_tasks : "deal_id"
+  sites ||--o{ contacts : "site_id"
+  sites ||--o{ crm_activities : "site_id"
+  sites ||--o{ crm_automations : "site_id"
+  sites ||--o{ crm_custom_fields : "site_id"
+  sites ||--o{ crm_pipelines : "site_id"
+  sites ||--o{ crm_tags : "site_id"
+  sites ||--o{ crm_tasks : "site_id"
+  sites ||--o{ deals : "site_id"
+  sites ||--o{ message_templates : "site_id"

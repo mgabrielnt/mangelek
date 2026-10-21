@@ -1,0 +1,24 @@
+---
+title: "5.5 State peluang CRM — tahapan terbuka (status open), Menang, Kalah"
+---
+flowchart LR
+  subgraph T["Terbuka · status open · tahapan bisa diganti nama, maks 8"]
+    direction LR
+    s0(( )):::start -- "lead.created /<br/>kontak manual / impor" --> B("Baru"):::st
+    B:::st -- "balas WA/email dari CRM<br/>atau seret kartu" --> D("Dihubungi"):::st
+    D -- "kirim penawaran" --> P("Penawaran"):::st
+    P -. "perlu tindak lanjut" .-> D
+  end
+  T -- "seret ke Menang<br/>(won_at)" --> W("Menang · won"):::won
+  T -- "seret ke Kalah<br/>+ alasan wajib" --> L("Kalah · lost"):::lost
+  W -. "buka ulang" .-> T
+  L -. "buka ulang" .-> T
+  W --> e0((( ))):::start
+  L --> e0
+  N["Tanpa aktivitas ≥ rot_days → tanda mandek (CRM-013)<br/>Setiap perpindahan = aktivitas stage_changed"]:::note
+  P ~~~ N
+  classDef st fill:#EEF3FB,stroke:#1F3864,stroke-width:1.5px,color:#1A1A1A
+  classDef won fill:#E2F0D9,stroke:#38761D,stroke-width:1.5px,color:#1A1A1A
+  classDef lost fill:#FBEBEB,stroke:#A33A3A,stroke-width:1.5px,color:#1A1A1A
+  classDef start fill:#1F3864,stroke:#1F3864,color:#1F3864
+  classDef note fill:#FFFBEA,stroke:#D6B656,stroke-width:1px,color:#1A1A1A

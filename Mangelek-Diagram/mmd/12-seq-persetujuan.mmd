@@ -1,0 +1,26 @@
+---
+title: "5.4.5 Sequence — persetujuan aksi sensitif (dua orang)"
+---
+sequenceDiagram
+  actor A as Operator A<br/>(Keuangan)
+  participant ADM as Panel admin<br/>+ API
+  participant DB as Postgres<br/>(admin_approvals, audit)
+  actor B as Operator B<br/>(Pemilik)
+  participant MT as Midtrans<br/>(dashboard refund)
+  A->>+ADM: Ajukan refund Rp250.000 + alasan
+  Note over ADM: Cek izin peran (ADM-014)
+  ADM->>DB: admin_approvals pending + hash payload
+  ADM-->>-A: 202 E-APPROVAL-REQUIRED
+  ADM->>B: Pemberitahuan persetujuan
+  B->>+ADM: Setujui
+  alt penyetuju = peminta sebelum 24 jam
+    ADM-->>B: 409 E-APPROVAL-INVALID
+  else hash payload berubah atau lewat 7 hari
+    ADM-->>B: 409 E-APPROVAL-INVALID
+  else sah
+    ADM->>DB: approved, kunci baris pembayaran
+    ADM->>MT: Refund dikerjakan, catat provider_ref
+    ADM->>DB: executed + audit peminta dan penyetuju
+    ADM-->>-B: Selesai
+  end
+  Note over A,B: Mode satu operator: A boleh menyetujui sendiri setelah jeda 24 jam dengan alasan tertulis

@@ -1,0 +1,29 @@
+---
+title: "5.4.3 Sequence — terbitkan release"
+---
+sequenceDiagram
+  actor PL as Pelanggan<br/>(editor)
+  participant API as API<br/>/v1/sites
+  participant DB as Postgres<br/>(sites, releases)
+  participant WK as Worker<br/>(build release)
+  participant R2 as R2 + edge<br/>(Worker Sites)
+  PL->>+API: POST publishes + Idempotency-Key
+  API->>DB: Cek periode dan kuota website
+  API->>DB: Bekukan revisi
+  API->>DB: Release queued + outbox site.publish
+  API-->>-PL: 202 + id pekerjaan
+  DB->>+WK: outbox site.publish
+  WK->>R2: Tulis HTML statis + JSON-LD ke prefix baru
+  Note over WK: Validasi skema, aset, tautan, anggaran berat
+  alt validasi lolos
+    WK->>DB: CAS active_release_id bila desired masih sama
+    WK->>R2: Purge cache (site_id)
+    WK->>DB: site.published + audit
+  else gagal
+    WK->>DB: Release failed, release aktif tetap
+  end
+  deactivate WK
+  loop sampai ready atau failed
+    PL->>API: GET /v1/jobs/{id}
+    API-->>PL: Status pekerjaan
+  end

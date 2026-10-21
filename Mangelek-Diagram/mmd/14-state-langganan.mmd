@@ -1,0 +1,35 @@
+---
+title: "5.5 State — status langganan per website"
+---
+stateDiagram-v2
+  direction TB
+  [*] --> pending: order website dibuat
+  pending --> active: lunas
+  active --> active: perpanjang sebelum H / perubahan terjadwal diterapkan
+  active --> berhenti: pelanggan berhenti
+  berhenti --> active: batal berhenti / bayar
+  active --> grace: H lewat tanpa bayar
+  grace --> active: lunas ≤ H+7
+  grace --> suspended: H+8
+  berhenti --> suspended: H (tanpa tenggang)
+  suspended --> active: lunas sebelum H+30
+  suspended --> expired: H+30
+  expired --> [*]
+  pending: pending<br/>belum lunas
+  active: active<br/>tayang, bisa diedit
+  berhenti: active + berhenti<br/>tayang sampai H
+  grace: grace<br/>tayang, editor hanya-baca (H+1 s.d. H+7)
+  suspended: suspended<br/>website nonaktif 503 (H+8 s.d. H+29)
+  expired: expired<br/>isi dihapus, kursi dilepas
+  note right of suspended
+    Tangguhan admin di tenants.status / sites.status
+    mengalahkan semua status langganan (RB-11)
+  end note
+  classDef ok fill:#DCE6F7,stroke:#1F3864,color:#1A1A1A
+  classDef warn fill:#FFF2CC,stroke:#B7791F,color:#1A1A1A
+  classDef bad fill:#FBE4E4,stroke:#B03A2E,color:#1A1A1A
+  classDef gone fill:#E5E5E5,stroke:#718096,color:#1A1A1A
+  class active,berhenti ok
+  class grace warn
+  class suspended bad
+  class expired gone

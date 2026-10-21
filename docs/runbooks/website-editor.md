@@ -21,7 +21,7 @@ The renderer accepts a validated document, never arbitrary HTML. Uploads accept 
 
 ## Required before cloud editing and publication
 
-1. **Approved original data model / ERD and role matrix.** The baseline explicitly says these documents are not yet copied. Confirm tenant, membership, site, page, draft revision, media and publication relationships; site ownership and editor/admin permissions. This implementation does not invent production database migrations against an unknown model.
+1. **Apply and validate the v5.2 data model.** The Sept 22 Drive/Notion plan is now retrieved and archived. Follow `../planning/editor-v5.2-alignment.md`; the canonical schema replaces the old missing-ERD assumption. The existing billing_orders prototype is not that schema. The draft RPC proposal is not an applied migration.
 2. **Supabase project and environment configuration.** Follow `auth-setup.md`; configure Google OAuth if required. Configure secrets locally or in the deployment secret store, never in chat or client code. Confirm the production/staging hostnames.
 3. **Site provisioning contract.** A verified payment must map to an authorized tenant/site and entitlement. Billing order IDs alone are not site ownership. Specify site creation, trial/edit rights, expired-subscription behavior, and manual activation handoff.
 4. **Cloud draft persistence.** Implement server authorization for every read/write, tenant isolation/RLS, validated document size/version, optimistic concurrency revision checks, conflict recovery and audit logs. Preserve local draft export until migration into an authorized site succeeds. Never silently attach a shared-browser draft to a signed-in account.
@@ -30,3 +30,7 @@ The renderer accepts a validated document, never arbitrary HTML. Uploads accept 
 7. **Operations and acceptance.** Approve hosting/deployment adapter, domain/DNS ownership flow, backup/restore, logging, rate limits and quotas. Test cross-tenant denial, expired access, concurrent edits, malformed media/content, publish/rollback and end-to-end theme→edit→publish→lead on staging.
 
 No live database migration, provider setup, upload bucket, public deployment, or payment was performed. Do not label cloud persistence or publication ready on the strength of local draft tests.
+
+## 23 September 2026 update
+
+See [v5.2 alignment](../planning/editor-v5.2-alignment.md) for current source authority, API groundwork, schema differences and activation prerequisites. Local editor saves now detect newer drafts and offer download/load recovery. Cloud API is feature-gated and not connected to the legacy local UI. No cross-device or private preview acceptance is claimed.

@@ -1,0 +1,60 @@
+---
+title: "ERD v3 — A. Identitas dan akses · 7 entitas"
+---
+erDiagram
+  auth_users {
+    uuid id PK
+  }
+  profiles {
+    uuid id PK,FK
+    text display_name
+    text locale
+    text phone_e164
+    boolean marketing_opt_out
+    jsonb signup_attribution
+  }
+  tenants {
+    uuid id PK
+    text name
+    text status
+    text reference_code UK
+    text suspension_reason
+    timestamptz suspended_at
+    boolean legal_hold
+    timestamptz deleted_at
+  }
+  memberships {
+    uuid id PK
+    uuid tenant_id FK
+    uuid user_id FK,UK
+    text role
+  }
+  platform_operators {
+    uuid id PK
+    uuid user_id FK,UK
+    boolean active
+    timestamptz mfa_enrolled_at
+    timestamptz last_login_at
+  }
+  legal_documents {
+    uuid id PK
+    text kind UK
+    int version UK
+    timestamptz effective_at
+    text content_hash
+    text url
+  }
+  consents {
+    uuid id PK
+    uuid tenant_id FK
+    text subject_type UK
+    uuid subject_id UK
+    uuid legal_document_id FK,UK
+    timestamptz accepted_at
+    text ip_hash
+  }
+  auth_users ||--o{ memberships : "user_id"
+  auth_users ||--o{ platform_operators : "user_id"
+  auth_users ||--|| profiles : "id"
+  legal_documents ||--o{ consents : "legal_document_id"
+  tenants ||--o| memberships : "tenant_id"

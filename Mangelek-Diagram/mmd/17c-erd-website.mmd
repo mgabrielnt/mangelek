@@ -1,0 +1,133 @@
+---
+title: "ERD v3 — C. Website, konten, media, dan publikasi · 10 entitas + 3 rujukan (kotak ringkas)"
+---
+erDiagram
+  sites {
+    uuid id PK
+    uuid tenant_id FK
+    uuid template_version_id FK
+    uuid origin_order_line_id FK,UK
+    text category
+    text city_code
+    text slug UK
+    text title
+    text status
+    uuid active_release_id FK,UK
+    uuid desired_release_id
+    int desired_mapping_revision
+    int active_mapping_revision
+    timestamptz deleted_at
+  }
+  site_settings {
+    uuid tenant_id FK
+    uuid site_id PK,FK
+    text timezone
+    text lead_email
+    timestamptz lead_email_verified_at
+    text public_form_token UK
+    text default_locale
+  }
+  onboarding_steps {
+    uuid id PK
+    uuid tenant_id FK
+    uuid site_id FK,UK
+    text step UK
+    text status
+    timestamptz completed_at
+  }
+  site_revisions {
+    uuid id PK
+    uuid tenant_id FK
+    uuid site_id FK,UK
+    int revision_no UK
+    text kind
+    int schema_version
+    jsonb document
+    text content_hash
+    text created_by
+  }
+  cms_collections {
+    uuid id PK
+    uuid tenant_id FK
+    uuid site_id FK,UK
+    text key UK
+    int schema_version
+    jsonb schema_json
+  }
+  cms_items {
+    uuid id PK
+    uuid tenant_id FK
+    uuid collection_id FK,UK
+    text slug UK
+    jsonb data
+    int revision_no
+    int sort_order
+    timestamptz deleted_at
+  }
+  media_assets {
+    uuid id PK
+    uuid tenant_id FK
+    uuid site_id FK
+    text object_key UK
+    text original_name
+    text mime_type
+    int bytes
+    int width
+    int height
+    text sha256
+    text alt_text
+    text status
+    timestamptz delete_after
+    text created_by
+  }
+  revision_assets {
+    uuid id PK
+    uuid tenant_id FK
+    uuid revision_id FK,UK
+    uuid media_asset_id FK,UK
+  }
+  releases {
+    uuid id PK
+    uuid tenant_id FK
+    uuid revision_id FK
+    int release_no UK
+    text object_prefix UK
+    text manifest_hash
+    text status
+    text error_code
+    timestamptz activated_at
+  }
+  preview_sessions {
+    uuid id PK
+    uuid tenant_id FK
+    uuid site_id FK
+    uuid revision_id FK
+    text token_hash UK
+    timestamptz expires_at
+    text created_by
+  }
+  order_lines {
+    uuid id PK
+    uuid tenant_id FK
+  }
+  template_versions {
+    uuid id PK
+  }
+  tenants {
+    uuid id PK
+  }
+  cms_collections ||--o{ cms_items : "collection_id"
+  media_assets ||--o{ revision_assets : "media_asset_id"
+  order_lines ||--o| sites : "origin_order_line_id"
+  releases ||--o{ sites : "active_release_id"
+  site_revisions ||--o{ preview_sessions : "revision_id"
+  site_revisions ||--o{ releases : "revision_id"
+  site_revisions ||--o{ revision_assets : "revision_id"
+  sites ||--o{ cms_collections : "site_id"
+  sites ||--o{ media_assets : "site_id"
+  sites ||--o{ onboarding_steps : "site_id"
+  sites ||--o{ preview_sessions : "site_id"
+  sites ||--o{ site_revisions : "site_id"
+  sites ||--o| site_settings : "site_id"
+  template_versions ||--o{ sites : "template_version_id"
+  tenants ||--o{ sites : "tenant_id"

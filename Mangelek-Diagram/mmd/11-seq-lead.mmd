@@ -1,0 +1,31 @@
+---
+title: "5.4.4 Sequence — formulir lead sampai CRM"
+---
+sequenceDiagram
+  actor PW as Pengunjung<br/>(website UMKM)
+  participant API as API formulir<br/>(publik)
+  participant DB as Postgres<br/>(leads, CRM, outbox)
+  participant WK as Worker<br/>+ Resend
+  actor OW as Pemilik<br/>(email, PWA, CRM)
+  PW->>+API: POST kiriman + token Turnstile, request_key
+  Note over API: Validasi V-13, hostname → site, cek Turnstile di server
+  alt honeypot terisi
+    API-->>PW: 202 umum (kiriman dibuang)
+  else Turnstile gagal
+    API-->>PW: 403 E-BOT-CHECK
+  else lewat batas 5/IP/jam, 100/hari, atau kuota
+    API-->>PW: 429 E-RATE-LIMITED
+  else lolos
+    API->>DB: INSERT kiriman, lead, consent, atribusi UTM, outbox
+    API-->>-PW: 202 + pesan terima kasih
+  end
+  DB->>+WK: lead.created
+  WK->>DB: Upsert kontak (email/E.164, RB-28), peluang Baru, aktivitas, tugas 1 jam
+  Note over WK,DB: Idempoten per lead_id, kuota 5.000 kontak (RB-27)
+  WK->>OW: Email lead, prioritas P1 (≤ 2 menit)
+  WK-->>OW: Push PWA “Lead baru” tanpa data pribadi (Should)
+  opt email terpental
+    WK->>DB: Suppression + spanduk di dashboard
+  end
+  deactivate WK
+  OW->>DB: Buka kontak, balas WhatsApp, pindah ke Dihubungi

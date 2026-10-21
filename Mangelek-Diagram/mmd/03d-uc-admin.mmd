@@ -1,0 +1,31 @@
+---
+title: "5.2.4 Use case — admin dan sistem (hijau = baru v3.0)"
+---
+flowchart LR
+  adm["«aktor»<br/><b>Operator admin</b> (ADM)<br/>Pemilik · Keuangan · Dukungan"]:::actor
+  sis["«aktor»<br/><b>Proses otomatis</b> (SIS)"]:::actor
+  subgraph S["Sistem Mangelek"]
+    direction TB
+    u4(["UC-04 Aktivasi otomatis<br/>setelah lunas"]):::uc
+    u16(["UC-16 Memulihkan<br/>pekerjaan gagal"]):::uc
+    u17(["UC-17 Mencatat<br/>refund manual"]):::uc
+    u24(["UC-24 Menyetujui<br/>aksi sensitif"]):::ucn
+    u18(["UC-18 Menangguhkan tenant<br/>atau website pelanggar"]):::uc
+    u25(["UC-25 Membantu pelanggan<br/>lewat tampilan hanya-baca"]):::ucn
+    u26(["UC-26 Memperbarui halaman<br/>status saat gangguan"]):::ucn
+  end
+  pel["«aktor»<br/><b>Pelanggan</b> (PEL)"]:::actor
+  adm --- u16
+  adm --- u17
+  adm --- u24
+  adm --- u18
+  adm --- u25
+  adm --- u26
+  sis --- u4
+  sis --- u26
+  u17 -. "«include» bila > Rp200.000" .-> u24
+  u25 -. "email pemberitahuan" .-> pel
+  classDef actor fill:#FFF4E0,stroke:#B7791F,stroke-width:1.5px,color:#1A1A1A
+  classDef uc fill:#EEF3FB,stroke:#1F3864,stroke-width:1.5px,color:#1A1A1A
+  classDef ucn fill:#E2F0D9,stroke:#38761D,stroke-width:1.5px,color:#1A1A1A
+  classDef ext fill:#F2F2F2,stroke:#718096,stroke-width:1.2px,color:#1A1A1A

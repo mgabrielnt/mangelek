@@ -1,0 +1,83 @@
+---
+title: "ERD v3 — E. Lead dan analitik · 4 entitas + 4 rujukan (kotak ringkas)"
+---
+erDiagram
+  form_submissions {
+    uuid id PK
+    uuid tenant_id FK
+    uuid site_id FK,UK
+    text form_key
+    text request_key UK
+    jsonb payload
+    text spam_status
+    uuid consent_document_id FK
+    timestamptz consented_at
+    text ip_hash
+    text user_agent
+    timestamptz delete_after
+  }
+  leads {
+    uuid id PK
+    uuid tenant_id FK
+    uuid site_id FK
+    uuid form_submission_id FK,UK
+    uuid contact_id FK
+    text source
+    text name
+    text email
+    text phone_e164
+    jsonb utm
+    timestamptz read_at
+    timestamptz deleted_at
+  }
+  analytics_events {
+    uuid id PK
+    uuid tenant_id FK
+    uuid site_id FK
+    uuid release_id FK
+    timestamptz occurred_at
+    text kind
+    text path
+    text referrer_host
+    text device
+    text country
+    text visitor_hash
+  }
+  analytics_daily {
+    uuid id PK
+    uuid tenant_id FK
+    uuid site_id FK,UK
+    date date UK
+    int views
+    int visitors
+    int wa_clicks
+    int directions_clicks
+    int map_opens
+    int leads
+    jsonb top_paths
+    jsonb top_referrers
+    jsonb devices
+  }
+  contacts {
+    uuid id PK
+    uuid tenant_id FK
+  }
+  legal_documents {
+    uuid id PK
+  }
+  releases {
+    uuid id PK
+    uuid tenant_id FK
+  }
+  sites {
+    uuid id PK
+    uuid tenant_id FK
+  }
+  contacts ||--o{ leads : "contact_id"
+  form_submissions ||--o| leads : "form_submission_id"
+  legal_documents ||--o{ form_submissions : "consent_document_id"
+  releases ||--o{ analytics_events : "release_id"
+  sites ||--o{ analytics_daily : "site_id"
+  sites ||--o{ analytics_events : "site_id"
+  sites ||--o{ form_submissions : "site_id"
+  sites ||--o{ leads : "site_id"

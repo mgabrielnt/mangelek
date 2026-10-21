@@ -1,0 +1,31 @@
+---
+title: "5.4.2 Sequence — registrasi domain dan HTTPS"
+---
+sequenceDiagram
+  participant DB as Postgres<br/>(domain_orders)
+  participant WK as Worker<br/>(domain.register)
+  participant RA as Reseller API<br/>(registrar)
+  participant CF as Cloudflare<br/>for SaaS
+  participant RS as Resend<br/>(email)
+  DB->>+WK: order.paid (ada domain)
+  WK->>DB: Kunci baris, status submitting
+  WK->>RA: Cek saldo deposit
+  RA-->>WK: saldo_rupiah
+  opt saldo < biaya registrasi
+    Note over WK: Tahan, ulang tiap jam hingga 24 jam
+    WK->>RS: Peringatan admin, lalu failed_review
+  end
+  WK->>RA: Daftar 1 tahun (registran = pelanggan)
+  RA-->>WK: sukses, atau habis waktu
+  opt habis waktu atau 5xx (status unknown)
+    WK->>RA: Cek info domain dulu, baru ulang
+  end
+  WK->>DB: Domain registered, terikat ke satu site
+  WK->>RA: DNS: CNAME www ke target SaaS
+  WK->>CF: Buat custom hostname (validasi HTTP)
+  loop tiap 10 menit sampai TLS aktif
+    WK->>CF: Cek status hostname + TLS
+    CF-->>WK: pending / active
+  end
+  WK->>DB: Jadikan binding kanonik
+  WK->>-RS: Email "Domain aktif" (≤ 24 jam)

@@ -1,0 +1,33 @@
+---
+title: "5.3.4 Activity — ganti template atau tingkat terjadwal (BRU-17)"
+---
+flowchart TB
+  subgraph K["Keterangan warna"]
+    direction LR
+    k1["Pelanggan"]:::pel ~~~ k2["Sistem Mangelek"]:::sis ~~~ k3["Vendor"]:::ven
+  end
+  s((Mulai)):::term --> a1["Halaman Langganan: pilih template<br/>dan tingkat baru"]:::pel
+  a1 --> b1["Tampilkan tanggal berlaku (awal periode<br/>berikutnya) dan harga baru, tanpa prorata"]:::sis
+  b1 --> d1{"Target Eksklusif?"}:::dec
+  d1 -- "ya" --> b2["Pesan kursi (reserved) bila tersedia;<br/>bila tidak: E-SEAT-UNAVAILABLE"]:::sis
+  d1 -- "tidak" --> b3
+  b2 --> b3["Simpan scheduled_changes (satu terbuka)"]:::sis
+  b3 --> a2["Opsional: pratinjau isi di template baru<br/>(SUB-014) atau batalkan"]:::pel
+  a2 --> b4["H-7: order perpanjangan memakai harga baru;<br/>email menyebut perubahan + tautan pratinjau"]:::sis
+  b4 --> d2{"Perpanjangan lunas<br/>sebelum H+8?"}:::dec
+  d2 -- "tidak" --> x1["Perubahan cancelled, kursi dilepas;<br/>langganan ikut siklus tenggang"]:::bad
+  d2 -- "ya" --> b5["Periode baru mulai: ganti plan_id"]:::sis
+  b5 --> d3{"Template berubah?"}:::dec
+  d3 -- "tidak" --> ok1
+  d3 -- "ya" --> b6["Salin data usaha, item CMS, blok berpadanan;<br/>blok tanpa padanan disimpan tersembunyi (RB-24)"]:::sis
+  b6 --> b7["Validasi V-20, build release,<br/>aktifkan dengan CAS"]:::sis
+  b7 --> ok1["Website tayang dengan template dan tingkat baru;<br/>kursi lama dilepas; status applied"]:::ok
+  classDef pel fill:#FFF4E0,stroke:#B7791F,stroke-width:1.5px,color:#1A1A1A
+  classDef sis fill:#EEF3FB,stroke:#1F3864,stroke-width:1.5px,color:#1A1A1A
+  classDef ven fill:#F2F2F2,stroke:#718096,stroke-width:1.2px,color:#1A1A1A
+  classDef dec fill:#FFF2CC,stroke:#B7791F,stroke-width:1.5px,color:#1A1A1A
+  classDef ok fill:#E2F0D9,stroke:#38761D,stroke-width:1.5px,color:#1A1A1A
+  classDef bad fill:#FBE4E4,stroke:#B03A2E,stroke-width:1.5px,color:#1A1A1A
+  classDef term fill:#1F3864,stroke:#1F3864,color:#FFFFFF
+  classDef bar fill:#1F3864,stroke:#1F3864
+  classDef key fill:#FFFFFF,stroke:#9AA7BD,color:#1A1A1A

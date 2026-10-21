@@ -1,0 +1,62 @@
+---
+title: "ERD v3 — H1. Kursi Eksklusif dan perubahan terjadwal · 3 entitas + 5 rujukan (kotak ringkas) · Fase 2: vouchers"
+---
+erDiagram
+  template_seats {
+    uuid id PK
+    uuid tenant_id FK
+    uuid template_version_id FK,UK
+    uuid site_id FK
+    uuid order_id FK
+    text category UK
+    text city_code UK
+    text status
+    timestamptz hold_expires_at
+    timestamptz released_at
+  }
+  scheduled_changes {
+    uuid id PK
+    uuid tenant_id FK
+    uuid subscription_id FK,UK
+    uuid target_plan_price_id FK
+    uuid target_template_version_id FK
+    uuid seat_id FK
+    text status
+    text effective_cycle_key
+    text created_by
+    timestamptz applied_at
+  }
+  vouchers {
+    uuid id PK
+    text code UK
+    int percent_off
+    int max_uses
+    int used
+    timestamptz valid_from
+    timestamptz valid_until
+  }
+  orders {
+    uuid id PK
+    uuid tenant_id FK
+  }
+  plan_prices {
+    uuid id PK
+  }
+  sites {
+    uuid id PK
+    uuid tenant_id FK
+  }
+  subscriptions {
+    uuid id PK
+    uuid tenant_id FK
+  }
+  template_versions {
+    uuid id PK
+  }
+  orders ||--o{ template_seats : "order_id"
+  plan_prices ||--o{ scheduled_changes : "target_plan_price_id"
+  sites ||--o{ template_seats : "site_id"
+  subscriptions ||--o{ scheduled_changes : "subscription_id"
+  template_seats ||--o| scheduled_changes : "seat_id"
+  template_versions ||--o{ scheduled_changes : "target_template_version_id"
+  template_versions ||--o{ template_seats : "template_version_id"

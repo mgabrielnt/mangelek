@@ -1,0 +1,35 @@
+---
+title: "5.1 Flowchart end-to-end — setelah lunas, semua langkah berjalan otomatis"
+---
+flowchart TB
+  s((Mulai)):::term --> a1["Pilih kategori, template,<br/>dan tingkat"]:::pel
+  a1 --> d0{"Template<br/>Eksklusif?"}:::dec
+  d0 -- "ya" --> b0["Tahan kursi 30 menit<br/>(10 per template, 1 per kota)"]:::sis
+  d0 -- "tidak" --> a2
+  b0 --> a2["Daftar dan verifikasi email"]:::pel
+  a2 --> a3["Pilih domain baru, domain sendiri,<br/>atau subdomain + periode"]:::pel
+  a3 --> b1["Quote domain terkunci 30 menit,<br/>hitung total"]:::sis
+  b1 --> a4["Tinjau total, tekan Bayar"]:::pel
+  a4 --> v1["Midtrans: bayar QRIS / VA,<br/>kirim notifikasi"]:::ven
+  v1 --> d1{"Notifikasi sah dan<br/>jumlah cocok?"}:::dec
+  d1 -- "tidak" --> x1["Order tetap pending,<br/>kedaluwarsa 24 jam"]:::bad
+  d1 -- "ya" --> b2["Masa aktif, kursi aktif, website,<br/>email (pekerjaan paralel)"]:::sis
+  b2 --> b3["Website tayang di subdomain ≤ 5 menit"]:::ok
+  b2 -.-> v2["Reseller + Cloudflare:<br/>domain dan HTTPS ≤ 24 jam"]:::ven
+  b3 --> a5["Wizard, klik-untuk-ubah, blok + Lokasi, Terbitkan<br/>(website tambahan: alur yang sama dari dashboard)"]:::pel
+  a5 --> b4["Release tayang ≤ 60 detik<br/>+ JSON-LD LocalBusiness"]:::sis
+  b4 --> w1["Pengunjung: WhatsApp per item,<br/>Petunjuk Arah, formulir"]:::pel
+  w1 --> b5["Simpan lead, email pemilik ≤ 2 menit"]:::sis
+  b5 --> b6["H-7: tagihan perpanjangan per website"]:::sis
+  b6 --> d2{"Lunas sebelum H+8?"}:::dec
+  d2 -- "ya" --> b7["Periode baru + terapkan<br/>ganti template/tingkat terjadwal"]:::ok
+  b7 --> b6
+  d2 -- "tidak" --> x2["H+8 nonaktif, H+30 isi dihapus,<br/>kursi dilepas"]:::bad
+
+  classDef pel fill:#FFF4E0,stroke:#B7791F,stroke-width:1.5px,color:#1A1A1A
+  classDef sis fill:#EEF3FB,stroke:#1F3864,stroke-width:1.5px,color:#1A1A1A
+  classDef ven fill:#F2F2F2,stroke:#718096,stroke-width:1.2px,color:#1A1A1A
+  classDef dec fill:#FFF2CC,stroke:#B7791F,stroke-width:1.5px,color:#1A1A1A
+  classDef ok fill:#E2F0D9,stroke:#38761D,stroke-width:1.5px,color:#1A1A1A
+  classDef bad fill:#FBE4E4,stroke:#B03A2E,stroke-width:1.5px,color:#1A1A1A
+  classDef term fill:#1F3864,stroke:#1F3864,color:#FFFFFF

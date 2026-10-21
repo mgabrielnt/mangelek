@@ -1,0 +1,27 @@
+---
+title: "5.5 State — kursi Eksklusif (BRU-18)"
+---
+stateDiagram-v2
+  direction LR
+  [*] --> held: checkout template Eksklusif (TIER-004)
+  [*] --> reserved: jadwalkan ganti ke Eksklusif (SUB-011)
+  held --> active: order lunas (TIER-005)
+  held --> released: 30 menit lewat / order kedaluwarsa
+  reserved --> active: perpanjangan lunas, perubahan diterapkan
+  reserved --> released: jadwal dibatalkan / tidak dibayar sampai H+7
+  active --> released: website dihapus H+30 / turun tingkat
+  released --> [*]
+  held: held<br/>ditahan 30 menit
+  reserved: reserved<br/>dipesan untuk periode berikutnya
+  active: active<br/>terikat satu website
+  released: released<br/>kursi kembali tersedia
+  note right of active
+    held + reserved + active ≤ 10 per template
+    dan ≤ 1 per kategori per kota
+  end note
+  classDef ok fill:#E2F0D9,stroke:#38761D,color:#1A1A1A
+  classDef warn fill:#FFF2CC,stroke:#B7791F,color:#1A1A1A
+  classDef gone fill:#E5E5E5,stroke:#718096,color:#1A1A1A
+  class active ok
+  class held,reserved warn
+  class released gone

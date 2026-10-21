@@ -1,0 +1,98 @@
+---
+title: "ERD v3 — D. Domain dan hostname · 6 entitas + 3 rujukan (kotak ringkas)"
+---
+erDiagram
+  domain_tlds {
+    uuid id PK
+    text tld UK
+    boolean enabled
+    int markup_rupiah
+    boolean requires_documents
+    text registrar
+  }
+  domain_quotes {
+    uuid id PK
+    uuid tenant_id FK
+    text fqdn
+    text operation
+    text registrar
+    int cost_rupiah
+    int fee_rupiah
+    int tax_rupiah
+    int total_rupiah
+    int renewal_estimate_rupiah
+    boolean available
+    timestamptz expires_at
+  }
+  domains {
+    uuid id PK
+    uuid tenant_id FK
+    text fqdn UK
+    text registrar
+    text provider_domain_ref
+    text registrant_ref
+    boolean managed
+    text status
+    timestamptz registered_at
+    timestamptz expires_at
+    boolean auto_renew
+    text dns_zone_ref
+    jsonb dns_snapshot
+    timestamptz transfer_requested_at
+  }
+  domain_orders {
+    uuid id PK
+    uuid tenant_id FK
+    uuid order_line_id FK,UK
+    uuid quote_id FK,UK
+    uuid domain_id FK
+    text operation
+    text request_key UK
+    bytea registrant_snapshot_enc
+    text registrant_ref
+    text status
+    int attempts
+    text error_code
+    timestamptz next_check_at
+  }
+  hostname_bindings {
+    uuid id PK
+    uuid tenant_id FK
+    uuid site_id FK,UK
+    uuid domain_id FK
+    text hostname UK
+    text provider_hostname_ref
+    text ownership_token_hash
+    text ownership_status
+    text dns_status
+    text tls_status
+    text binding_status
+    boolean is_canonical
+    timestamptz verified_at
+    timestamptz last_probe_at
+  }
+  registrar_balance_checks {
+    uuid id PK
+    text registrar
+    int balance_rupiah
+    boolean low_balance
+    timestamptz checked_at
+  }
+  order_lines {
+    uuid id PK
+    uuid tenant_id FK
+  }
+  sites {
+    uuid id PK
+    uuid tenant_id FK
+  }
+  tenants {
+    uuid id PK
+  }
+  domain_quotes ||--o{ domain_orders : "quote_id"
+  domains ||--o{ domain_orders : "domain_id"
+  domains ||--o{ hostname_bindings : "domain_id"
+  order_lines ||--o| domain_orders : "order_line_id"
+  sites ||--o{ hostname_bindings : "site_id"
+  tenants ||--o{ domain_quotes : "tenant_id"
+  tenants ||--o{ domains : "tenant_id"

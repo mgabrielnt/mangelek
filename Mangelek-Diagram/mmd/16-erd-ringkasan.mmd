@@ -1,0 +1,39 @@
+---
+title: "5.6 ERD v3 ringkasan — 73 entitas dalam 9 kelompok, garis = FK antarkelompok"
+---
+flowchart LR
+  A["<b>A. Identitas dan akses</b> (7)<br/>auth_users, profiles, tenants<br/>memberships, platform_operators<br/>legal_documents, consents"]:::gA
+  B["<b>B. Katalog dan tagihan</b> (14)<br/>plans, plan_prices, templates<br/>template_versions, subscriptions<br/>subscription_periods, orders<br/>order_lines, payments<br/>payment_events, refunds<br/>waitlist_entries, referral_codes †<br/>referral_rewards †"]:::gB
+  C["<b>C. Website dan konten</b> (10)<br/>sites, site_settings<br/>onboarding_steps, site_revisions<br/>cms_collections, cms_items<br/>media_assets, revision_assets<br/>releases, preview_sessions"]:::gC
+  D["<b>D. Domain</b> (6)<br/>domain_tlds, domain_quotes<br/>domains, domain_orders<br/>hostname_bindings<br/>registrar_balance_checks"]:::gD
+  E["<b>E. Lead dan analitik</b> (4)<br/>form_submissions, leads<br/>analytics_events, analytics_daily"]:::gE
+  F["<b>F. Notifikasi</b> (2)<br/>notification_deliveries<br/>email_suppressions"]:::gF
+  G["<b>G. Operasi</b> (6)<br/>outbox, job_runs<br/>idempotency_records, audit_events<br/>usage_counters, exports"]:::gG
+  H["<b>H. Tingkat, admin, kepatuhan</b> (13)<br/>template_seats, scheduled_changes<br/>admin_role_assignments<br/>admin_approvals<br/>impersonation_sessions<br/>customer_notes †, abuse_reports †<br/>feature_flags, data_requests<br/>data_incidents, status_incidents<br/>status_updates, vouchers †"]:::gH
+  I["<b>I. CRM pelanggan</b> (11)<br/>contacts, crm_pipelines<br/>crm_stages, deals, crm_activities<br/>crm_tasks, message_templates<br/>crm_tags †, contact_tags †<br/>crm_custom_fields †<br/>crm_automations †"]:::gI
+  I -- "contact_id" --> E
+  A -- "consent_document_id" --> E
+  A -- "consent_document_id, referred_tenant_id, tenant_id" --> B
+  B -- "order_line_id" --> D
+  B -- "origin_order_line_id, template_version_id" --> C
+  B -- "order_id, subscription_id, target_plan_price_id …" --> H
+  G -- "outbox_id" --> F
+  A -- "operator_id, tenant_id" --> H
+  C -- "release_id, site_id" --> E
+  C -- "site_id" --> H
+  C -- "site_id" --> I
+  C -- "site_id" --> G
+  C -- "site_id" --> D
+  C -- "site_id" --> B
+  A -- "tenant_id" --> G
+  A -- "tenant_id" --> D
+  A -- "tenant_id" --> C
+  classDef gA fill:#E8F0FB,stroke:#1F3864,stroke-width:1.5px,color:#1A1A1A,text-align:left
+  classDef gB fill:#FFF4E0,stroke:#1F3864,stroke-width:1.5px,color:#1A1A1A,text-align:left
+  classDef gC fill:#E9F5E9,stroke:#1F3864,stroke-width:1.5px,color:#1A1A1A,text-align:left
+  classDef gD fill:#F3E8FA,stroke:#1F3864,stroke-width:1.5px,color:#1A1A1A,text-align:left
+  classDef gE fill:#FDECEC,stroke:#1F3864,stroke-width:1.5px,color:#1A1A1A,text-align:left
+  classDef gF fill:#E6F4F7,stroke:#1F3864,stroke-width:1.5px,color:#1A1A1A,text-align:left
+  classDef gG fill:#F0F0F0,stroke:#1F3864,stroke-width:1.5px,color:#1A1A1A,text-align:left
+  classDef gH fill:#FFF9DB,stroke:#1F3864,stroke-width:1.5px,color:#1A1A1A,text-align:left
+  classDef gI fill:#E2F0D9,stroke:#1F3864,stroke-width:1.5px,color:#1A1A1A,text-align:left
