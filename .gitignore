@@ -21,3 +21,14 @@ test-results/
 *.key
 .DS_Store
 Thumbs.db
+# Claude Code (tim agent)
+.claude/tmp/
+.claude/settings.local.json
+.claude/agent-memory-local/
+.claude/worktrees/
+
+# Dokumen bisnis: simpan lokal saja (repo publik)
+*.xlsx
+docs/requirements/brd/
+Mangelek-Diagram/**/B1-*
+Mangelek-Diagram/**/B2-*
