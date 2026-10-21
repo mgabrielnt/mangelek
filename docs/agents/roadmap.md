@@ -5,7 +5,7 @@ S-01 adalah irisan tipis end-to-end lebih dulu. Status: Belum · Aktif · Selesa
 
 | Irisan | Isi | Modul FRD | Sprint BRD | Status |
 | --- | --- | --- | --- | --- |
-| S-01 | Alur inti: katalog template → akun → site dari order uji → editor simpan cloud → terbitkan → situs di subdomain → formulir → lead di kotak masuk CRM. Termasuk fondasi skema tenant/site + RLS + uji isolasi, dan penyelarasan harga tiga tingkat. | MKT, ACC, PRV, EDT, PUB, LEAD, CRM (kotak masuk) | 1, 3, 4 (sebagian) | Belum |
+| S-01 | Alur inti: katalog template → akun → site dari order uji → editor simpan cloud → terbitkan → situs di subdomain → formulir → lead di kotak masuk CRM. Termasuk fondasi skema tenant/site + RLS + uji isolasi, dan penyelarasan harga tiga tingkat. | MKT, ACC, PRV, EDT, PUB, LEAD, CRM (kotak masuk) | 1, 3, 4 (sebagian) | Aktif (F2) |
 | S-02 | Checkout tiga tingkat + Midtrans (QRIS/VA), notifikasi terverifikasi, pembuatan website otomatis, 14 skenario sandbox | PAY, PRV, TIER | 2 | Belum |
 | S-03 | Legal dan privasi, WhatsApp per item, CRM inti lengkap | LGL, LEAD, CRM | 4 | Belum |
 | S-04 | Siklus tagihan per website dan email otomatis | SUB, NTF | 5 | Belum |
